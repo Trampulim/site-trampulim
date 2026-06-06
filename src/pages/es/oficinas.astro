@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const talleres = [
+  {
+    titulo: 'El Juego del Payaso – Estado',
+    tipo: 'Iniciación',
+    descricao: 'Una iniciación al payaso que deconstruye prejuicios y equipa a los artistas con herramientas fundamentales para el trabajo escénico. El estado del payaso requiere una lógica específica — y este taller enseña ese lenguaje a través de juegos escénicos, prácticas, entrenamientos, investigaciones y reflexiones.',
+    publicoAlvo: 'Actores, performers, estudiantes de artes escénicas y circenses con cualquier nivel de experiencia.',
+  },
+  {
+    titulo: 'Invención de la Invasión',
+    tipo: 'Intervención callejera',
+    descricao: 'Taller con capacidad para hasta 30 artistas. Los participantes reciben herramientas prácticas para crear intervenciones callejeras improvisadas en espacios cotidianos. Aborda la relación con el espacio público, el transeúnte como cómplice involuntario y el arte de la presencia en lo inesperado.',
+    publicoAlvo: 'Artistas de circo, calle y teatro con interés en intervención urbana.',
+  },
+  {
+    titulo: 'Taller Trampulimpro',
+    tipo: 'Improvisación teatral',
+    descricao: 'La combinación entre el payaso y la improvisación teatral como práctica de expansión de la presencia escénica. El taller enfatiza ejercicios físicos, espontaneidad y expresión cómica, explorando lo que sucede cuando lo inesperado se convierte en oportunidad de creación.',
+    publicoAlvo: 'Profesionales de las artes escénicas, estudiantes de teatro y artistas de circo.',
+  },
+];
+---
+
+<Layout
+  title="Talleres"
+  description="Talleres de payaso, improvisación e intervención callejera del Grupo Trampulim para artistas y estudiantes de las artes escénicas."
+  lang="es"
+>
+  <section class="container-site py-16">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Formación</p>
+    <h1 class="section-title">Talleres</h1>
+    <p class="text-gray-500 max-w-xl mb-12">
+      Ser payaso es un estado que requiere una lógica específica. Los talleres del Grupo Trampulim enseñan
+      ese lenguaje a través de juegos escénicos, ofreciendo herramientas para proyectos artísticos o
+      desarrollo personal.
+    </p>
+
+    <div class="space-y-8">
+      {talleres.map((o) => (
+        <article class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+          <p class="text-trampulim-red text-xs font-semibold uppercase tracking-widest mb-1">{o.tipo}</p>
+          <h2 class="text-2xl font-display mb-3">{o.titulo}</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">{o.descricao}</p>
+          <p class="text-sm text-gray-400">
+            <span class="font-semibold text-gray-600">Público destinatario:</span> {o.publicoAlvo}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-gray-500 mb-6">¿Interesado en recibir un taller del Grupo Trampulim?</p>
+      <a
+        href={`https://wa.me/5531986891687?text=${encodeURIComponent('¡Hola! Estoy interesado en recibir un taller del Grupo Trampulim. Me gustaría más información.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+      >
+        Hablar por WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

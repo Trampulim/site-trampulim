@@ -1,0 +1,222 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const espetaculos = [
+  // 2024
+  {
+    titulo: 'A Rainha Procura',
+    sinopse: 'Espetáculo familiar inspirado no xadrez. Uma rainha em luto sai em busca de peças para restaurar o seu reino.',
+    href: '/repertorio/espetaculos#a-rainha-procura',
+    foto: '/a-rainha-procura-pri-garcia.jpg',
+    credito: 'Pri Garcia',
+    destaque: true,
+  },
+  // 2023
+  {
+    titulo: 'Casamento',
+    sinopse: 'O casamento como terreno fértil para a comédia. Uma exploração bem-humorada das dinâmicas do matrimônio.',
+    href: '/repertorio/espetaculos#casamento',
+    foto: '/casamento-dsc08554.jpg',
+    credito: 'Lina Mintz',
+    destaque: false,
+  },
+  // 2022
+  {
+    titulo: 'Partida',
+    sinopse: 'Benedita Jacarandá foge do seu criador. Uma investigação poética sobre relações fraturadas e identidade.',
+    href: '/repertorio/espetaculos#partida',
+    foto: '/partida-tamas-bodolay-3.jpg',
+    credito: 'Tamás Bodolay',
+    destaque: false,
+  },
+  // 2009
+  {
+    titulo: 'Manotas Musicais',
+    sinopse: 'Benedita e Sabonete tentam apresentar um concerto clássico improvável — e o público vira a orquestra.',
+    href: '/repertorio/espetaculos#manotas-musicais',
+    foto: '/manotas-arnaldo-sete.jpg',
+    credito: 'Arnaldo Sete',
+    destaque: false,
+  },
+  // 2008
+  {
+    titulo: 'Pratubatê',
+    sinopse: 'Show de percussão interativo onde cada espectador recebe um tambor e assume o papel de protagonista.',
+    href: '/repertorio/espetaculos#pratubate',
+    foto: '/pratubate-andre-fossati.jpg',
+    credito: 'André Fossati',
+    destaque: false,
+  },
+  // 2006
+  {
+    titulo: 'Invasão de Palhaços',
+    sinopse: 'Palhaços invadem espaços inesperados com instrumentos e improvisação. Performance de rua que transforma qualquer lugar em palco.',
+    href: '/repertorio/espetaculos#invasao-de-palhacos',
+    foto: '/invasao-bs-fotografias.jpg',
+    credito: 'BS Fotografias',
+    destaque: false,
+  },
+  // 2003
+  {
+    titulo: 'Uma Surpresa Para Benedita',
+    sinopse: 'Uma palhaça devotada prepara um jantar especial. Os imprevistos revelam, com humor, dinâmicas de relacionamento.',
+    href: '/repertorio/espetaculos#uma-surpresa-para-benedita',
+    foto: '/uma-surpresa-netum-lima.jpg',
+    credito: 'Netum Lima',
+    destaque: false,
+  },
+];
+
+const numeros = [
+  { valor: '30+', label: 'anos de trajetória' },
+  { valor: '870+', label: 'apresentações realizadas' },
+  { valor: '21', label: 'espetáculos criados' },
+  { valor: '19', label: 'prêmios e reconhecimentos' },
+];
+---
+
+<Layout
+  title="Início"
+  description="Grupo Trampulim de Circo e Teatro — palhaçaria, espetáculos e arte desde 1994 em Belo Horizonte."
+>
+
+  <!-- ── HERO com foto de fundo ── -->
+  <section class="relative bg-trampulim-dark text-white overflow-hidden" style="min-height: 88vh; display: flex; align-items: flex-end;">
+    <!-- Imagem de fundo com overlay -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/hero-teste.jpg"
+        alt=""
+        aria-hidden="true"
+        class="w-full h-full object-cover opacity-50"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-trampulim-dark/50 via-trampulim-dark/40 to-trampulim-dark"></div>
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="relative z-10 container-site text-center py-24 w-full">
+      <h1 class="text-5xl md:text-7xl font-display font-extrabold mb-6 leading-tight tracking-tight">
+        Grupo Trampulim
+      </h1>
+      <p class="text-white/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+        Com nariz e sapato na bagagem, o Grupo Trampulim criou, nos últimos 30 anos, uma porção mágica de espetáculos.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/repertorio/espetaculos" class="btn-primary text-base px-8 py-4">
+          Ver Repertório
+        </a>
+        <a href="/contato" class="text-white/70 hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+          Fale Conosco <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Números de prova social ── -->
+  <section class="bg-trampulim-dark text-white border-t border-white/10">
+    <div class="container-site py-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      {numeros.map((n) => (
+        <div class="py-2">
+          <p class="text-2xl md:text-3xl font-display font-bold text-trampulim-yellow">{n.valor}</p>
+          <p class="text-white/50 text-xs uppercase tracking-wider mt-1">{n.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Espetáculos ── -->
+  <section class="py-20 container-site">
+    <p class="eyebrow mb-2">Repertório</p>
+    <h2 class="text-4xl md:text-5xl font-display font-bold mb-4">Nossos Espetáculos</h2>
+    <p class="text-trampulim-text/60 max-w-lg mb-12 text-base leading-relaxed">
+      Trinta anos de criação, pesquisa e palco. Produções para todos os públicos.
+    </p>
+
+    <!-- Grid com destaque editorial no primeiro card -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {espetaculos.map((e) => (
+        <a
+          href={e.href}
+          class={`group block bg-white overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${e.destaque ? 'sm:col-span-2' : ''}`}
+        >
+          <div class={`relative overflow-hidden ${e.destaque ? 'aspect-[16/7]' : 'aspect-[4/3]'}`}>
+            <img
+              src={e.foto}
+              alt={e.titulo}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <!-- Overlay com crédito -->
+            <span class="absolute bottom-2 right-3 text-white/60 text-[10px] font-medium bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded-full">
+              © {e.credito}
+            </span>
+          </div>
+          <div class="p-5 md:p-6">
+            <h3 class={`font-display font-semibold mb-2 group-hover:text-trampulim-red transition-colors ${e.destaque ? 'text-2xl' : 'text-lg'}`}>
+              {e.titulo}
+            </h3>
+            <p class="text-trampulim-text/60 text-sm leading-relaxed">{e.sinopse}</p>
+            <span class="inline-block mt-4 text-trampulim-red text-sm font-semibold group-hover:gap-2 transition-all">
+              Saiba mais →
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Nas Empresas com vídeo ── -->
+  <section class="bg-trampulim-dark text-white py-16 px-4">
+    <div class="container-site">
+      <div class="mb-10">
+        <p class="eyebrow text-trampulim-yellow mb-2">Para empresas</p>
+        <h2 class="text-3xl md:text-4xl font-display font-bold">Arte que conecta equipes</h2>
+      </div>
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <!-- Vídeo -->
+        <div class="w-full md:w-3/5 overflow-hidden shadow-xl aspect-video">
+          <iframe
+            src="https://www.youtube.com/embed/5pKA35A3hmc"
+            title="Pratubatê — Grupo Trampulim"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="w-full h-full"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <!-- CTA -->
+        <div class="w-full md:w-2/5 flex flex-col gap-5">
+          <p class="text-white/70 leading-relaxed text-sm md:text-base">
+            Há mais de 30 anos criamos conexões fortes de um jeito leve e divertido por meio da arte.
+            Pratubatê, Trampulimprovisa e performances personalizadas para o seu evento corporativo.
+          </p>
+          <a
+            href={`https://wa.me/5531986891687?text=${encodeURIComponent('Olá! Vi o vídeo do Pratubatê e gostaria de saber mais sobre os serviços do Grupo Trampulim para empresas.')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary inline-flex items-center gap-2 self-start"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Falar pelo WhatsApp
+          </a>
+          <a href="/nas-empresas" class="text-white/50 hover:text-white text-sm transition-colors">
+            Conhecer todos os serviços →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Oficinas ── -->
+  <section class="py-16 container-site text-center border-t border-gray-100">
+    <p class="eyebrow mb-2">Formação</p>
+    <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Oficinas</h2>
+    <p class="text-trampulim-text/60 max-w-md mx-auto mb-8 text-sm leading-relaxed">
+      Formação em palhaço, improvisação e intervenção de rua. Para atores, estudantes e artistas de circo.
+    </p>
+    <a href="/oficinas" class="btn-primary">Ver Oficinas</a>
+  </section>
+
+</Layout>

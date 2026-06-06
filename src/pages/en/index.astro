@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const shows = [
+  {
+    titulo: 'A Rainha Procura',
+    sinopse: 'A family show inspired by chess. A queen in mourning sets out to find pieces to restore her kingdom.',
+    href: '/en/repertorio/espetaculos#a-rainha-procura',
+    foto: '/a-rainha-procura-pri-garcia.jpg',
+    credito: 'Pri Garcia',
+  },
+  {
+    titulo: 'Casamento',
+    sinopse: 'Marriage as fertile ground for comedy. A humorous exploration of the dynamics of matrimony.',
+    href: '/en/repertorio/espetaculos#casamento',
+    foto: '/casamento-dsc08554.jpg',
+    credito: 'Lina Mintz',
+  },
+  {
+    titulo: 'Partida',
+    sinopse: 'Benedita Jacarandá flees her creator. A poetic investigation into fractured relationships and identity.',
+    href: '/en/repertorio/espetaculos#partida',
+    foto: '/partida-tamas-bodolay-3.jpg',
+    credito: 'Tamás Bodolay',
+  },
+  {
+    titulo: 'Manotas Musicais',
+    sinopse: 'Benedita and Sabonete attempt to perform an unlikely classical concert — and the audience becomes the orchestra.',
+    href: '/en/repertorio/espetaculos#manotas-musicais',
+    foto: '/manotas-arnaldo-sete.jpg',
+    credito: 'Arnaldo Sete',
+  },
+  {
+    titulo: 'Pratubatê',
+    sinopse: 'An interactive percussion show where every audience member receives a drum and takes centre stage.',
+    href: '/en/repertorio/espetaculos#pratubate',
+    foto: '/pratubate-andre-fossati.jpg',
+    credito: 'André Fossati',
+  },
+  {
+    titulo: 'Invasão de Palhaços',
+    sinopse: 'Clowns invade unexpected spaces armed with instruments and improvisation. Street performance that turns any place into a stage.',
+    href: '/en/repertorio/espetaculos#invasao-de-palhacos',
+    foto: '/invasao-bs-fotografias.jpg',
+    credito: 'BS Fotografias',
+  },
+  {
+    titulo: 'Uma Surpresa Para Benedita',
+    sinopse: 'A devoted clown prepares a special dinner. The unexpected twists reveal, with humour and warmth, the dynamics of a relationship.',
+    href: '/en/repertorio/espetaculos#uma-surpresa-para-benedita',
+    foto: '/uma-surpresa-netum-lima.jpg',
+    credito: 'Netum Lima',
+  },
+];
+
+const numbers = [
+  { valor: '30+', label: 'years of history' },
+  { valor: '870+', label: 'performances' },
+  { valor: '21', label: 'shows created' },
+  { valor: '19', label: 'awards & recognition' },
+];
+---
+
+<Layout
+  title="Home"
+  description="Grupo Trampulim — clown, circus and theatre from Belo Horizonte, Brazil, since 1994."
+  lang="en"
+>
+  <!-- Hero -->
+  <section
+    class="relative min-h-[90vh] flex flex-col"
+    style="background-image: url('/IMG_2781.jpg'); background-size: cover; background-position: center top;"
+  >
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+    <div class="relative z-10 container-site flex flex-col justify-end pb-16 pt-32 flex-1">
+      <p class="text-trampulim-yellow uppercase tracking-widest text-xs font-semibold mb-3">
+        Belo Horizonte, Brazil · since 1994
+      </p>
+      <h1 class="text-white text-4xl md:text-6xl font-display leading-tight mb-6 max-w-2xl">
+        30+ years of clown, circus and theatre in Brazil and the world.
+      </h1>
+      <div class="flex flex-wrap gap-4">
+        <a href="/en/repertorio/espetaculos" class="btn-primary">See our shows</a>
+        <a href="/en/contato" class="bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-full px-6 py-3 text-sm font-semibold hover:bg-white/20 transition">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Numbers -->
+  <section class="bg-trampulim-dark text-white py-12">
+    <div class="container-site grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {numbers.map((n) => (
+        <div>
+          <p class="text-3xl md:text-4xl font-display text-trampulim-yellow mb-1">{n.valor}</p>
+          <p class="text-white/60 text-sm">{n.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Shows -->
+  <section class="container-site py-16">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Repertoire</p>
+    <h2 class="section-title mb-10">Our Shows</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {shows.map((e) => (
+        <a href={e.href} class="group block overflow-hidden">
+          <div class="overflow-hidden aspect-[4/3]">
+            <img
+              src={e.foto}
+              alt={e.titulo}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="pt-4 pb-2">
+            <h3 class="font-display text-lg mb-1 group-hover:text-trampulim-red transition-colors">{e.titulo}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">{e.sinopse}</p>
+            <p class="text-xs text-gray-300 mt-2">Photo: {e.credito}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="/en/repertorio/espetaculos" class="btn-secondary">All shows</a>
+    </div>
+  </section>
+
+  <!-- For Companies -->
+  <section class="bg-trampulim-dark text-white py-20 px-4">
+    <div class="container-site max-w-3xl">
+      <p class="text-trampulim-yellow uppercase tracking-widest text-xs font-semibold mb-2">For companies</p>
+      <h2 class="text-3xl md:text-4xl font-display mb-4">Trampulim for Companies</h2>
+      <p class="text-white/70 text-lg mb-8 leading-relaxed">
+        Pratubatê is our interactive percussion show designed for corporate events. The audience receives drums and becomes the protagonist — a collective connection experience through music.
+      </p>
+      <a href="/en/nas-empresas" class="btn-primary">Learn more</a>
+    </div>
+  </section>
+
+  <!-- Workshops -->
+  <section class="container-site py-16">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Training</p>
+    <h2 class="section-title mb-4">Workshops</h2>
+    <p class="text-gray-500 max-w-xl mb-8">
+      Being a clown is a state that requires a specific logic. Grupo Trampulim's workshops teach this language through scenic games.
+    </p>
+    <a href="/en/oficinas" class="btn-secondary">See workshops</a>
+  </section>
+</Layout>

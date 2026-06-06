@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const numeros = [
+  {
+    titulo: 'A Receita',
+    criacao: 'Benedita Jacarandá & Sabonete',
+    descricao: 'Benedita é uma chef de cozinha cheia de invenções culinárias. Com a ajuda (duvidosa) do seu assistente Sabonete, ela tenta seguir uma receita até o fim — sem deixar que ele estrague a sua reputação. Uma cena cômica de timing preciso e cumplicidade de palco.',
+  },
+  {
+    titulo: 'Flerte e Dance',
+    criacao: 'Benedita Jacarandá',
+    descricao: 'Solo de dança e palhaçaria inspirado no clássico "Flash Dance". Benedita Jacarandá enfrenta o conflito entre o seu desejo de dançar e as limitações do próprio corpo. Coreografia, humor físico e vulnerabilidade em cena.',
+  },
+  {
+    titulo: 'Dirty Dance',
+    criacao: 'Socorro Baby & Johnny Alfinete',
+    descricao: 'Uma paródia afetiva da famosa cena de "Time of My Life" do filme Dirty Dancing. Socorro Baby e Johnny Alfinete revisitam o clássico dos anos 80 com toda a dedicação e nenhuma elegância. Um verdadeiro tributo à paixão e ao ridículo.',
+  },
+  {
+    titulo: 'Rotina',
+    criacao: 'Tiago Mafra',
+    descricao: 'Uma criação solo de Tiago Mafra que coloca um palhaço frente a frente com o esmagamento do cotidiano. O palhaço, que vive da esperança e do afeto, precisa enfrentar a ironia de uma rotina cada vez mais pesada. Palhaçaria e crítica poética do tempo presente.',
+  },
+  {
+    titulo: 'Bexiga Imperativa',
+    criacao: 'Adriana Morales',
+    descricao: 'Criação de Adriana Morales que transforma uma experiência pessoal traumática em matéria-prima de humor. A performance trabalha a vulnerabilidade, o ridículo e a coragem de rir de si mesmo como ato de cura e resistência.',
+  },
+];
+---
+
+<Layout
+  title="Intervenções e Números"
+  description="Cenas curtas e números de palco do Grupo Trampulim para festas, festivais e eventos."
+>
+  <section class="container-site py-16">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Repertório</p>
+    <h1 class="section-title">Intervenções e Números</h1>
+    <p class="text-gray-500 max-w-xl mb-4">
+      Números menores que podem se encaixar em situações que vão além do palco. Formatos ideais para
+      festas, festivais e eventos que precisam de um toque especial.
+    </p>
+    <p class="text-gray-500 max-w-xl mb-12">
+      Cada número é uma miniatura com começo, meio e fim — condensando em poucos minutos toda a precisão
+      e energia do trabalho do grupo.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {numeros.map((n) => (
+        <article class="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
+          <h2 class="text-xl font-display mb-1">{n.titulo}</h2>
+          <p class="text-trampulim-red text-xs font-semibold uppercase tracking-wide mb-3">{n.criacao}</p>
+          <p class="text-gray-600 text-sm leading-relaxed">{n.descricao}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 bg-trampulim-dark text-white rounded-2xl p-8 text-center">
+      <h3 class="text-2xl font-display mb-3">Quer um desses números no seu evento?</h3>
+      <p class="text-white/70 mb-6">Entre em contato e vamos conversar sobre o formato ideal para a sua programação.</p>
+      <a
+        href={`https://wa.me/5531986891687?text=${encodeURIComponent('Olá! Gostaria de informações sobre os números e intervenções do Grupo Trampulim para um evento.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+      >
+        Falar pelo WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

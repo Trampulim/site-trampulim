@@ -1,0 +1,52 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const team = [
+  { nome: 'Tiago Mafra', personagem: 'Sabonete', funcao: 'Clown, direction, musician, co-creator' },
+  { nome: 'Adriana Morales', personagem: 'Benedita Jacarandá', funcao: 'Clown, artistic direction, research, production' },
+  { nome: 'Poliana Tuchia', personagem: 'Socorro', funcao: 'Clown, actress, musician, content management (since 2003)' },
+  { nome: 'Chaya Vazquez', personagem: 'Conselhos', funcao: 'Clown, percussionist, sound designer' },
+  { nome: 'Rafael Protzner', personagem: 'Alfinete', funcao: 'Clown, actor, theatre researcher' },
+  { nome: 'Isabela Leite', personagem: 'Batata Doce', funcao: 'Clown, percussionist and production (since 2011)' },
+  { nome: 'Marcos Nascimento', personagem: 'Môishôi', funcao: 'Clown, stage management and technician (15+ years)' },
+];
+
+const support = [
+  { nome: 'Flávia Mafra', funcao: 'Lighting, photography, finance (since 2000)' },
+  { nome: 'Polyane Santos', funcao: 'Production and client liaison (since 2016)' },
+  { nome: 'Maria Carolina Campos', funcao: 'Cultural projects consultant (since 2007)' },
+  { nome: 'Márcio Júnior', funcao: 'Technical crew (since 2003)' },
+];
+---
+
+<Layout title="Technical Sheet" description="Grupo Trampulim's full team — artists, characters and collaborators." lang="en">
+  <section class="container-site py-16 max-w-4xl">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Grupo Trampulim</p>
+    <h1 class="section-title">Technical Sheet</h1>
+    <p class="text-gray-500 mb-10 max-w-xl">
+      "Together we are stronger" is the principle that has kept the group united for three decades, producing circus,
+      theatre and artistic training across Brazil and the world.
+    </p>
+
+    <h2 class="text-2xl font-display mb-6">Artistic cast</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+      {team.map((m) => (
+        <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
+          <p class="font-semibold text-lg">{m.nome}</p>
+          <p class="text-trampulim-red text-sm font-medium">{m.personagem}</p>
+          <p class="text-gray-500 text-sm mt-1">{m.funcao}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="text-2xl font-display mb-6">Support team</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {support.map((m) => (
+        <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
+          <p class="font-semibold">{m.nome}</p>
+          <p class="text-gray-500 text-sm mt-1">{m.funcao}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

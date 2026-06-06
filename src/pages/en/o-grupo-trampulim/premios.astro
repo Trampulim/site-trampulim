@@ -1,0 +1,37 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const awards = [
+  { ano: 2025, descricao: 'Award for Cultural Agents (PNAB) — Belo Horizonte City Hall' },
+  { ano: 2022, descricao: 'New Dramaturgies Award for the production "Partida"' },
+  { ano: 2021, descricao: 'Lei Aldir Blanc funding for virtual projects' },
+  { ano: 2016, descricao: 'Cena Música e Trilha Cultural BDMG Award for touring "ACORDA"' },
+  { ano: 2015, descricao: 'Rosivaldo Olivetto Trophy — best show, costume, make-up and supporting actress' },
+  { ano: 2015, descricao: 'Carequinha Award — "PupuRIR"' },
+  { ano: 2014, descricao: 'Cena Minas Award and Carequinha Award' },
+  { ano: 2013, descricao: 'BDMG Cultura Award — "Invasão de Palhaços"' },
+  { ano: 2011, descricao: 'Carequinha Award and Street Arts Award — "Riso Passageiro"' },
+  { ano: 2010, descricao: 'Myriam Muniz Award — "Risco e Riso"' },
+  { ano: 2009, descricao: 'Usiminas Simparc Award (outstanding performances) and Sesc Sated Award' },
+  { ano: 2007, descricao: 'Carequinha Award — "Uma dúzia de Trampulim"' },
+];
+---
+
+<Layout title="Awards" description="Awards and recognition received by Grupo Trampulim over 30 years of artistic work." lang="en">
+  <section class="container-site py-16 max-w-3xl">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Grupo Trampulim</p>
+    <h1 class="section-title">Awards & Recognition</h1>
+    <p class="text-gray-500 mb-10">Three decades of artistic creation recognised by national circus, theatre and street arts awards.</p>
+    <ol class="relative border-l border-trampulim-red/30 space-y-8">
+      {awards.map((p) => (
+        <li class="ml-6">
+          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-trampulim-red rounded-full ring-4 ring-trampulim-light">
+            <span class="w-2 h-2 bg-white rounded-full"></span>
+          </span>
+          <time class="text-xs font-semibold uppercase text-trampulim-red tracking-wider">{p.ano}</time>
+          <p class="text-gray-700 mt-1 leading-relaxed">{p.descricao}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Layout>

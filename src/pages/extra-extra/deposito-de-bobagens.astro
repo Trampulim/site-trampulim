@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const channelUrl = 'https://www.youtube.com/GrupoTrampulim';
+
+const videos = [
+  'SjYSDXdwT9E', '2trSyyfmiLI', 'dqCLR5qAS4Q', 'FlBrG1S-_mk', '9gN1CNyqsL4',
+  'kODAsQxNN9A', 'Lvj2LdzOxU0', 'CF71dI6FAzo', 'DA9MLx4g3yg', 'LDe_OS4xMt4',
+  '5UHzsmfvU8I', 'NRunuc0KK94', 'SCs2xWXeN-c', 'faOecG0jEZg', 'ithl6hijbnc',
+  '6hg2NRf1KBE', 'RiRcdn8-ROY', '9CfoRxX28w0', 'HCO4qu05He4', 'kK2PaSy3hR4',
+];
+---
+
+<Layout
+  title="Depósito de Bobagens"
+  description="Vídeos do canal do YouTube do Grupo Trampulim — espetáculos, bastidores e produções audiovisuais."
+>
+  <section class="container-site py-16">
+    <p class="eyebrow mb-2">Extra, Extra</p>
+    <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">Depósito de Bobagens</h1>
+    <p class="text-trampulim-text/60 max-w-xl mb-12 leading-relaxed">
+      Espetáculos, bastidores, experimentos e bobagens de todo o tipo. Uma seleção de vídeos do nosso canal no YouTube.
+    </p>
+
+    <!-- Grelha de vídeos (facade: carrega o vídeo só ao clicar) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {videos.map((id) => (
+        <button
+          type="button"
+          class="yt-facade group relative aspect-video w-full overflow-hidden shadow-sm bg-trampulim-dark cursor-pointer"
+          data-id={id}
+          aria-label="Reproduzir vídeo"
+        >
+          <img
+            src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+            alt=""
+            loading="lazy"
+            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+          />
+          <!-- Botão play -->
+          <span class="absolute inset-0 flex items-center justify-center">
+            <span class="w-16 h-16 rounded-full bg-trampulim-red/90 group-hover:bg-trampulim-red flex items-center justify-center shadow-lg transition-colors">
+              <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </span>
+        </button>
+      ))}
+    </div>
+
+    <!-- CTA canal -->
+    <div class="text-center mt-14">
+      <a
+        href={channelUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary inline-flex items-center gap-2"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+        </svg>
+        Ver todos no YouTube
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.querySelectorAll('.yt-facade').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-id');
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      iframe.title = 'Grupo Trampulim';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.className = 'absolute inset-0 w-full h-full';
+      btn.innerHTML = '';
+      btn.appendChild(iframe);
+    });
+  });
+</script>

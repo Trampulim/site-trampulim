@@ -1,0 +1,63 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const acts = [
+  {
+    titulo: 'The Recipe',
+    criacao: 'Benedita Jacarandá & Sabonete',
+    descricao: 'Benedita is a chef full of culinary inventions. With the (dubious) help of her assistant Sabonete, she tries to follow a recipe through to the end — without letting him ruin her reputation. A comic scene of precise timing and stage complicity.',
+  },
+  {
+    titulo: 'Flerte e Dance',
+    criacao: 'Benedita Jacarandá',
+    descricao: 'A solo of dance and clownery inspired by the classic "Flash Dance". Benedita Jacarandá faces the conflict between her desire to dance and the limitations of her own body. Choreography, physical humour and vulnerability on stage.',
+  },
+  {
+    titulo: 'Dirty Dance',
+    criacao: 'Socorro Baby & Johnny Alfinete',
+    descricao: 'An affectionate parody of the famous "Time of My Life" scene from Dirty Dancing. Socorro Baby and Johnny Alfinete revisit the 80s classic with every ounce of dedication and not a shred of elegance. A genuine tribute to passion and the ridiculous.',
+  },
+  {
+    titulo: 'Routine',
+    criacao: 'Tiago Mafra',
+    descricao: 'A solo creation by Tiago Mafra that places a clown face to face with the crushing weight of everyday life. The clown, who lives on hope and affection, must confront the irony of an ever-heavier routine. Clownery and poetic critique of the present moment.',
+  },
+  {
+    titulo: 'Imperative Bladder',
+    criacao: 'Adriana Morales',
+    descricao: 'A creation by Adriana Morales that transforms a personal traumatic experience into the raw material of humour. The performance works with vulnerability, the ridiculous and the courage to laugh at oneself as an act of healing and resistance.',
+  },
+];
+---
+
+<Layout title="Interventions & Acts" description="Short scenes and stage acts by Grupo Trampulim for parties, festivals and events." lang="en">
+  <section class="container-site py-16">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Repertoire</p>
+    <h1 class="section-title">Interventions & Acts</h1>
+    <p class="text-gray-500 max-w-xl mb-4">
+      Shorter pieces that can fit into situations beyond the theatre stage. Ideal formats for parties,
+      festivals and events that need a special touch.
+    </p>
+    <p class="text-gray-500 max-w-xl mb-12">
+      Each act is a miniature with a beginning, middle and end — condensing in a few minutes all the precision
+      and energy of the group's work.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {acts.map((n) => (
+        <article class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+          <h2 class="text-xl font-display mb-1">{n.titulo}</h2>
+          <p class="text-trampulim-red text-xs font-semibold uppercase tracking-widest mb-3">{n.criacao}</p>
+          <p class="text-gray-600 leading-relaxed text-sm">{n.descricao}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-gray-500 mb-6">Want a Grupo Trampulim intervention at your event?</p>
+      <a href={`https://wa.me/5531986891687?text=${encodeURIComponent('Hello! I am interested in a Grupo Trampulim intervention at my event. Could I receive more information?')}`} target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Chat on WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

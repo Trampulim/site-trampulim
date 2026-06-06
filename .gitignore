@@ -1,0 +1,14 @@
+# Dependências e build (regenerados automaticamente)
+node_modules/
+dist/
+.astro/
+
+# Sistema
+.DS_Store
+*.log
+npm-debug.log*
+
+# Backups e material de origem (não vão pro site publicado)
+backups/
+marcas_backup_original/
+*.docx

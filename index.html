@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Grupo Trampulim — Teatro, palhaçaria e produção audiovisual desde 1994. Espetáculos, intervenções e trabalho corporativo em Belo Horizonte e por todo o Brasil." />
+  <meta property="og:title" content="Grupo Trampulim — Arte que invade o coração" />
+  <meta property="og:description" content="Teatro, palhaçaria e audiovisual desde 1994. Conheça nossos espetáculos e serviços." />
+  <meta property="og:image" content="https://lh3.googleusercontent.com/d/1RtXWgWe_MWFz4k1gcEu1MBEuAvZ3fmoK=w1200" />
+  <title>Grupo Trampulim — Arte que Invade o Coração</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== TOKENS ===== */
+    :root {
+      --red:    #e63946;
+      --navy:   #12122a;
+      --gold:   #f5c518;
+      --white:  #ffffff;
+      --gray:   #f5f5f5;
+      --text:   #111111;
+      --muted:  #6b6b6b;
+      --radius: 10px;
+      --header-h: 68px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--header-h);
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+    nav a {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    nav a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .header-social {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 12px;
+    }
+    .header-social a {
+      width: 32px; height: 32px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .header-social a:hover { background: var(--red); }
+    .header-social svg { width: 16px; height: 16px; fill: #fff; }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: auto;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Mobile nav drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: var(--header-h); left: 0; right: 0;
+      background: var(--navy);
+      padding: 16px 24px 24px;
+      z-index: 99;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-drawer.open { display: block; }
+    .nav-drawer a {
+      display: block;
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-drawer a:last-child { border-bottom: none; }
+    .nav-drawer .drawer-social {
+      display: flex; gap: 12px;
+      margin-top: 20px;
+    }
+    .nav-drawer .drawer-social a {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0; border-bottom: none;
+    }
+    .nav-drawer .drawer-social svg { width: 18px; height: 18px; fill: #fff; }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 500px;
+      margin-top: var(--header-h);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--navy);
+    }
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.55;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(18,18,42,0.95) 0%,
+        rgba(18,18,42,0.4) 50%,
+        rgba(18,18,42,0.1) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 24px 52px;
+      max-width: 640px;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 12vw, 96px);
+      color: #fff;
+      line-height: 0.95;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .hero h1 em {
+      color: var(--red);
+      font-style: normal;
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      max-width: 400px;
+      margin-bottom: 28px;
+      line-height: 1.65;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(230,57,70,0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 28px rgba(230,57,70,0.5); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 20px;
+      right: 24px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.4);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    }
+
+    /* ===== SECTION BASE ===== */
+    section { padding: 72px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 7vw, 58px);
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 40px;
+    }
+
+    /* ===== QUEM SOMOS STRIP ===== */
+    .quem-somos {
+      background: var(--navy);
+      padding: 56px 24px;
+    }
+    .quem-somos .section-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .qs-text { flex: 1; min-width: 280px; }
+    .qs-text .section-label { color: var(--gold); }
+    .qs-text .section-title { color: #fff; }
+    .qs-text p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .qs-numbers {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .qs-num { text-align: center; }
+    .qs-num strong {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .qs-num span {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ===== ESPETÁCULOS ===== */
+    .espetaculos { background: var(--gray); }
+    .shows-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .show-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+    .show-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    .show-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--navy);
+      position: relative;
+    }
+    .show-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .show-card:hover .show-img img { transform: scale(1.05); }
+    .show-year {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--red);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+    .show-body { padding: 18px 20px 20px; }
+    .show-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .show-body h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .show-body p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .shows-cta {
+      text-align: center;
+      margin-top: 36px;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+      padding: 12px 28px;
+    }
+    .btn-outline:hover { background: var(--navy); color: #fff; }
+
+    /* ===== AUDIOVISUAL ===== */
+    .audiovisual { background: #fff; }
+    .yt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .yt-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--navy);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .yt-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+    }
+    .yt-thumb {
+      aspect-ratio: 16/9;
+      position: relative;
+      overflow: hidden;
+      background: #1a1a2e;
+    }
+    .yt-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .yt-card:hover .yt-thumb img { transform: scale(1.06); }
+    .yt-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.2s;
+    }
+    .yt-card:hover .yt-play { background: rgba(0,0,0,0.15); }
+    .yt-play-btn {
+      width: 48px; height: 48px;
+      background: rgba(255,0,0,0.88);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      transition: transform 0.2s;
+    }
+    .yt-card:hover .yt-play-btn { transform: scale(1.1); }
+    .yt-play-btn svg { width: 20px; height: 20px; fill: #fff; margin-left: 2px; }
+    .yt-info { padding: 14px 16px; }
+    .yt-info h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .yt-info span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+    }
+    .yt-channel-cta {
+      text-align: center;
+      margin-top: 32px;
+    }
+    .btn-yt {
+      background: #ff0000;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(255,0,0,0.3);
+    }
+    .btn-yt:hover { background: #cc0000; box-shadow: 0 6px 24px rgba(255,0,0,0.45); }
+    .btn-yt svg { width: 20px; height: 20px; fill: #fff; }
+
+    /* ===== CORPORATIVO ===== */
+    .corporativo { background: var(--gray); }
+    .corp-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .corp-text .section-title { color: var(--navy); }
+    .corp-text p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .corp-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .chip {
+      padding: 6px 14px;
+      background: #fff;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .corp-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .corp-visual-card {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      color: #fff;
+    }
+    .corp-visual-card .icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .corp-visual-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .corp-visual-card p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+    .corp-visual-card.highlight {
+      background: var(--red);
+    }
+
+    /* ===== CONTATO STRIP ===== */
+    .contato-strip {
+      background: var(--navy);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .contato-strip .section-label { color: var(--gold); }
+    .contato-strip .section-title { color: #fff; margin-bottom: 16px; }
+    .contato-strip p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+    .contato-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+    }
+    .btn-wa:hover { background: #1da854; }
+    .btn-wa svg, .btn-email svg { width: 18px; height: 18px; fill: #fff; }
+    .btn-email {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.2);
+    }
+    .btn-email:hover { background: rgba(255,255,255,0.18); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0b0b1c;
+      padding: 48px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-brand img { height: 48px; width: auto; margin-bottom: 12px; }
+    .footer-brand p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      max-width: 240px;
+      line-height: 1.65;
+    }
+    .footer-links h5 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 14px;
+    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-social h5 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 14px;
+    }
+    .social-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+    .social-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+    .social-btn svg { width: 16px; height: 16px; fill: currentColor; }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ===== WHATSAPP FAB ===== */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 200;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fab-pulse 3s ease-in-out infinite;
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(37,211,102,0.55);
+      animation: none;
+    }
+    .whatsapp-fab svg { width: 28px; height: 28px; fill: #fff; }
+    @keyframes fab-pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45); }
+      50% { box-shadow: 0 4px 28px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.1); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav, .header-social { display: none; }
+      .hamburger { display: flex; flex-direction: column; margin-left: auto; }
+
+      section { padding: 52px 20px; }
+
+      .quem-somos .section-inner { flex-direction: column; gap: 32px; }
+
+      .corp-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .corp-visual {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .shows-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .hero h1 { font-size: 52px; }
+      .hero-content { padding: 0 20px 44px; }
+    }
+
+    @media (max-width: 480px) {
+      .corp-visual { grid-template-columns: 1fr; }
+      .qs-numbers { gap: 20px; }
+      .shows-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <a href="#" class="logo" aria-label="Grupo Trampulim — Início">
+      <!-- Logo branca do Drive: marca TRAMPULIM grande_BRANCA.png -->
+      <img
+        src="https://lh3.googleusercontent.com/d/1wqN0YdyFOoRflQzMmlOzM9-fZTQp3ycS=w300"
+        alt="Grupo Trampulim"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+      />
+      <span style="display:none; font-family:'Bebas Neue',sans-serif; font-size:22px; color:#fff; letter-spacing:1px;">TRAMPULIM</span>
+    </a>
+
+    <nav>
+      <a href="#quem-somos">Quem Somos</a>
+      <a href="#espetaculos">Espetáculos</a>
+      <a href="#audiovisual">Audiovisual</a>
+      <a href="#corporativo">Corporativo</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="header-social">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/grupotrampulim/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/GrupoTrampulim" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/channel/UCp82IHRnWSJlpG-12k_cgZQ" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </div>
+
+    <!-- Hamburger (mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <nav class="nav-drawer" id="nav-drawer" role="navigation" aria-label="Menu principal">
+    <a href="#quem-somos" onclick="closeDrawer()">Quem Somos</a>
+    <a href="#espetaculos" onclick="closeDrawer()">Espetáculos</a>
+    <a href="#audiovisual" onclick="closeDrawer()">Audiovisual</a>
+    <a href="#corporativo" onclick="closeDrawer()">Corporativo</a>
+    <a href="#contato" onclick="closeDrawer()">Contato</a>
+    <div class="drawer-social">
+      <a href="https://www.instagram.com/grupotrampulim/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/GrupoTrampulim" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/channel/UCp82IHRnWSJlpG-12k_cgZQ" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="https://wa.me/5531XXXXXXXXX" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <!--
+    NOTA TÉCNICA: Para que as imagens do Google Drive apareçam no site,
+    cada ficheiro precisa de estar partilhado como "Qualquer pessoa com o link".
+    Aceder ao Drive → botão direito na imagem → Partilhar → "Qualquer pessoa com o link" → Leitor.
+  -->
+  <section class="hero" aria-label="Secção principal">
+    <div class="hero-bg">
+      <!-- Foto "A Rainha Procura" (TRATADAS SELEÇÃO 01) -->
+      <img
+        src="https://lh3.googleusercontent.com/d/1RtXWgWe_MWFz4k1gcEu1MBEuAvZ3fmoK=w1920"
+        alt="Grupo Trampulim em cena — A Rainha Procura"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Desde 1994 · Belo Horizonte</span>
+      <h1>Arte que<br>invade o<br><em>coração</em></h1>
+      <p class="hero-desc">Teatro, palhaçaria e audiovisual que transforma espaços, empresas e pessoas há mais de 30 anos.</p>
+      <div class="hero-btns">
+        <a href="#espetaculos" class="btn btn-primary">Ver Espetáculos</a>
+        <a href="#quem-somos" class="btn btn-ghost">Quem Somos</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ===== QUEM SOMOS ===== -->
+  <section class="quem-somos" id="quem-somos">
+    <div class="section-inner">
+      <div class="qs-text">
+        <p class="section-label">Nossa História</p>
+        <h2 class="section-title">30 anos de invasão e alegria</h2>
+        <p>
+          O Grupo Trampulim nasceu em 1994 em Belo Horizonte com uma missão: ocupar espaços com arte, risadas e humanidade.
+          Ao longo de três décadas construímos um repertório de espetáculos premiados, festivais internacionais (ÍMPETO),
+          residências artísticas em Portugal, e uma pesquisa singular em palhaçaria que chamamos de PalhaçaRIA perCURSO AFETAdo.
+        </p>
+        <p>
+          Em 2025 recebemos o Prêmio para Agentes Culturais da PNAB — um reconhecimento por nossa contribuição
+          ao desenvolvimento artístico e cultural de Belo Horizonte.
+        </p>
+        <a href="#" class="btn btn-ghost" style="border-color:rgba(255,255,255,0.25);">Ler nossa história completa</a>
+      </div>
+      <div class="qs-numbers">
+        <div class="qs-num"><strong>30+</strong><span>anos de história</span></div>
+        <div class="qs-num"><strong>37</strong><span>cidades no Brasil</span></div>
+        <div class="qs-num"><strong>15+</strong><span>espetáculos</span></div>
+        <div class="qs-num"><strong>3</strong><span>países</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ESPETÁCULOS ===== -->
+  <section class="espetaculos" id="espetaculos">
+    <div class="section-inner">
+      <p class="section-label">Repertório</p>
+      <h2 class="section-title">Espetáculos</h2>
+      <p class="section-sub">Produções teatrais, intervenções de rua e palhaçaria que ocupam palcos e espaços por todo o Brasil e no exterior.</p>
+
+      <div class="shows-grid">
+
+        <!-- A RAINHA PROCURA -->
+        <div class="show-card">
+          <div class="show-img">
+            <img
+              src="https://lh3.googleusercontent.com/d/1Heh99jPbdH_syFeQvG3yw0pG2QQqyERv=w800"
+              alt="A Rainha Procura — Grupo Trampulim"
+              loading="lazy"
+            />
+            <span class="show-year">2024</span>
+          </div>
+          <div class="show-body">
+            <p class="show-tag">Teatro</p>
+            <h3>A Rainha Procura</h3>
+            <p>Com direção de César Gouvêa, o mais recente espetáculo do grupo mergulha numa aventura real e imaginária em busca do que realmente importa.</p>
+          </div>
+        </div>
+
+        <!-- CASAMENTO -->
+        <div class="show-card">
+          <div class="show-img">
+            <img
+              src="https://lh3.googleusercontent.com/d/1ivxKBD2zDj1qPyi6LYaJCwkqkcZRcJbJ=w800"
+              alt="Casamento — Grupo Trampulim"
+              loading="lazy"
+            />
+            <span class="show-year">2023</span>
+          </div>
+          <div class="show-body">
+            <p class="show-tag">Teatro</p>
+            <h3>Casamento</h3>
+            <p>Direção do mexicano José Luís Saldanha. Uma cerimônia que subverte expectativas e celebra o absurdo do amor com palhaçaria e poesia.</p>
+          </div>
+        </div>
+
+        <!-- INVASÃO DE PALHAÇOS -->
+        <div class="show-card">
+          <div class="show-img">
+            <img
+              src="https://lh3.googleusercontent.com/d/10Ke5cZwTG6l2jNrItS1WUxUKm3NO08Wp=w800"
+              alt="Invasão de Palhaços — Grupo Trampulim"
+              loading="lazy"
+            />
+            <span class="show-year">2006</span>
+          </div>
+          <div class="show-body">
+            <p class="show-tag">Intervenção · Rua</p>
+            <h3>Invasão de Palhaços</h3>
+            <p>A intervenção que definiu um conceito: ocupar o espaço público com arte e alegria. Já invadiu cidades, ônibus, metrôs e festivais internacionais.</p>
+          </div>
+        </div>
+
+        <!-- PARTIDA -->
+        <div class="show-card">
+          <div class="show-img">
+            <img
+              src="https://lh3.googleusercontent.com/d/14HoulrP0Tmnz79lz6UOVR5g8Ku8H5SLL=w800"
+              alt="PARTIDA — Grupo Trampulim"
+              loading="lazy"
+            />
+            <span class="show-year">2022</span>
+          </div>
+          <div class="show-body">
+            <p class="show-tag">Solo · Premiado</p>
+            <h3>Partida</h3>
+            <p>Solo premiado em Belo Horizonte e apresentado no Festival Tem Graça em Lisboa em 2024. Uma peça sobre despedidas, recomeços e palhaços.</p>
+          </div>
+        </div>
+
+        <!-- MANOTAS MUSICAIS -->
+        <div class="show-card">
+          <div class="show-img">
+            <img
+              src="https://lh3.googleusercontent.com/d/1cVgv_Tqch6_RMhTat2wcFuyX3U9AYcuI=w800"
+              alt="Manotas Musicais — Grupo Trampulim"
+              loading="lazy"
+              style="object-position: top center;"
+            />
+            <span class="show-year">2008</span>
+          </div>
+          <div class="show-body">
+            <p class="show-tag">Palhaçaria · Música</p>
+            <h3>Manotas Musicais</h3>
+            <p>A música como ferramenta de jogo para o palhaço. Um espetáculo que transforma o público em cúmplice de uma orquestra caótica e hilária.</p>
+          </div>
+        </div>
+
+        <!-- PRATUBATÊ -->
+        <div class="show-card">
+          <div class="show-img" style="background: linear-gradient(135deg, #12122a 0%, #e63946 100%);">
+            <!-- Sem imagem disponível no Drive para Pratubatê — usar placeholder com cor de marca -->
+            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+              <span style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:rgba(255,255,255,0.25);letter-spacing:2px;">PRATUBATÊ</span>
+            </div>
+            <span class="show-year">2008</span>
+          </div>
+          <div class="show-body">
+            <p class="show-tag">Música · Circo</p>
+            <h3>Pratubatê</h3>
+            <p>A força dos tambores que transforma o público em protagonista. Um espetáculo-ritual que mistura percussão, circo e participação coletiva.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="shows-cta">
+        <a href="#" class="btn btn-outline">Ver todos os espetáculos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AUDIOVISUAL ===== -->
+  <section class="audiovisual" id="audiovisual">
+    <div class="section-inner">
+      <p class="section-label">Depósito de Bobagens</p>
+      <h2 class="section-title">Produção Audiovisual</h2>
+      <p class="section-sub">Vídeos, documentários e registros de espetáculos. Assista os mais vistos do nosso canal no YouTube.</p>
+
+      <div class="yt-grid">
+
+        <a class="yt-card" href="https://www.youtube.com/watch?v=IHIJkuCB7Jo" target="_blank" rel="noopener">
+          <div class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/IHIJkuCB7Jo/hqdefault.jpg" alt="Manotas Musicais — vídeo" loading="lazy" />
+            <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+          </div>
+          <div class="yt-info">
+            <h4>Manotas Musicais — apresentação completa</h4>
+            <span>Canal Grupo Trampulim</span>
+          </div>
+        </a>
+
+        <a class="yt-card" href="https://www.youtube.com/watch?v=5XBJy9E9dGA" target="_blank" rel="noopener">
+          <div class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/5XBJy9E9dGA/hqdefault.jpg" alt="Invasão de Palhaços" loading="lazy" />
+            <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+          </div>
+          <div class="yt-info">
+            <h4>Invasão de Palhaços — intervenção urbana</h4>
+            <span>Canal Grupo Trampulim</span>
+          </div>
+        </a>
+
+        <a class="yt-card" href="https://www.youtube.com/watch?v=x_QsHRi0AKA" target="_blank" rel="noopener">
+          <div class="yt-thumb">
+            <img src="https://i.ytimg.com/vi/x_QsHRi0AKA/hqdefault.jpg" alt="Pratubatê" loading="lazy" />
+            <div class="yt-play"><div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+          </div>
+          <div class="yt-info">
+            <h4>Pratubatê — ritual de tambores</h4>
+            <span>Canal Grupo Trampulim</span>
+          </div>
+        </a>
+
+        <a class="yt-card" href="https://www.youtube.com/channel/UCp82IHRnWSJlpG-12k_cgZQ" target="_blank" rel="noopener">
+          <div class="yt-thumb" style="background: linear-gradient(135deg,#1a1a2e,#e63946); display:flex; align-items:center; justify-content:center;">
+            <div style="text-align:center; color:#fff;">
+              <svg viewBox="0 0 24 24" style="width:48px;height:48px;fill:#fff;opacity:0.5;display:block;margin:0 auto 8px;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span style="font-size:13px;opacity:0.6;">Ver canal completo</span>
+            </div>
+          </div>
+          <div class="yt-info">
+            <h4>Mais vídeos no canal</h4>
+            <span>youtube.com/GrupoTrampulim</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="yt-channel-cta">
+        <a href="https://www.youtube.com/channel/UCp82IHRnWSJlpG-12k_cgZQ" target="_blank" rel="noopener" class="btn btn-yt">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Inscreva-se no Canal
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CORPORATIVO ===== -->
+  <section class="corporativo" id="corporativo">
+    <div class="section-inner">
+      <div class="corp-inner">
+        <div class="corp-text">
+          <p class="section-label">Para Empresas</p>
+          <h2 class="section-title">Trampulim nas Empresas</h2>
+          <p>
+            Transformamos eventos corporativos com criatividade, humor e conexão humana.
+            Desde 1994 levamos a linguagem do teatro e da palhaçaria para o universo empresarial —
+            com resultados que vão muito além da diversão.
+          </p>
+          <div class="corp-chips">
+            <span class="chip">Team Building</span>
+            <span class="chip">Eventos de Fim de Ano</span>
+            <span class="chip">Workshops de Criatividade</span>
+            <span class="chip">Oficinas de Palhaçaria</span>
+            <span class="chip">Shows Personalizados</span>
+            <span class="chip">Lançamentos de Produtos</span>
+          </div>
+          <a href="#contato" class="btn btn-primary">Falar com a gente</a>
+        </div>
+        <div class="corp-visual">
+          <div class="corp-visual-card highlight">
+            <div class="icon">🎭</div>
+            <h4>Conexão Humana</h4>
+            <p>Arte que aproxima equipes e desperta criatividade genuína</p>
+          </div>
+          <div class="corp-visual-card">
+            <div class="icon">😂</div>
+            <h4>Humor Inteligente</h4>
+            <p>Leveza com profundidade, diversão com propósito</p>
+          </div>
+          <div class="corp-visual-card">
+            <div class="icon">🏆</div>
+            <h4>30+ Anos</h4>
+            <p>Experiência comprovada em centenas de eventos empresariais</p>
+          </div>
+          <div class="corp-visual-card" style="background: var(--gold);">
+            <div class="icon">✨</div>
+            <h4 style="color: var(--navy);">Personalizado</h4>
+            <p style="color: rgba(18,18,42,0.7);">Cada ação criada sob medida para a sua empresa</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section class="contato-strip" id="contato">
+    <div class="section-inner">
+      <p class="section-label">Fale Conosco</p>
+      <h2 class="section-title">Vamos criar algo juntos?</h2>
+      <p>Espetáculos, workshops, eventos corporativos ou só um papo. A gente adora uma boa conversa.</p>
+      <div class="contato-btns">
+        <!-- SUBSTITUA 5531XXXXXXXXX pelo número real de WhatsApp -->
+        <a href="https://wa.me/5531XXXXXXXXX?text=Olá%20Trampulim!%20Gostaria%20de%20saber%20mais%20sobre%20os%20espetáculos." target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:contato@trampulim.com.br" class="btn btn-email">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          contato@trampulim.com.br
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <img
+            src="https://lh3.googleusercontent.com/d/1wqN0YdyFOoRflQzMmlOzM9-fZTQp3ycS=w240"
+            alt="Grupo Trampulim"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+          />
+          <span style="display:none; font-family:'Bebas Neue',sans-serif; font-size:20px; color:#fff;">TRAMPULIM</span>
+          <p>Teatro, palhaçaria e audiovisual desde 1994. Baseados em Belo Horizonte, circulando pelo Brasil e pelo mundo.</p>
+        </div>
+
+        <div class="footer-links">
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="#quem-somos">Quem Somos</a></li>
+            <li><a href="#espetaculos">Espetáculos</a></li>
+            <li><a href="#audiovisual">Audiovisual</a></li>
+            <li><a href="#corporativo">Para Empresas</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h5>Redes Sociais</h5>
+          <div class="social-row">
+            <a href="https://www.instagram.com/grupotrampulim/" target="_blank" rel="noopener" class="social-btn">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              @grupotrampulim
+            </a>
+            <a href="https://www.facebook.com/GrupoTrampulim" target="_blank" rel="noopener" class="social-btn">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              GrupoTrampulim
+            </a>
+            <a href="https://www.youtube.com/channel/UCp82IHRnWSJlpG-12k_cgZQ" target="_blank" rel="noopener" class="social-btn">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Grupo Trampulim de Circo e Teatro. Todos os direitos reservados.</p>
+        <p><a href="mailto:contato@trampulim.com.br">contato@trampulim.com.br</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FAB ===== -->
+  <!-- SUBSTITUA 5531XXXXXXXXX pelo número real de WhatsApp (ex: 5531999999999) -->
+  <a
+    href="https://wa.me/5531XXXXXXXXX?text=Olá%20Trampulim!%20Gostaria%20de%20saber%20mais."
+    class="whatsapp-fab"
+    target="_blank"
+    rel="noopener"
+    aria-label="Fale conosco no WhatsApp"
+    title="WhatsApp"
+  >
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Mobile hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('nav-drawer');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    // Header scroll effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+    }, { passive: true });
+
+    // Close drawer when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target) && !drawer.contains(e.target)) {
+        closeDrawer();
+      }
+    });
+  </script>
+
+</body>
+</html>

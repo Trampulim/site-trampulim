@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321
+    },
+    {
+      "name": "proposta-collectif",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4322"],
+      "port": 4322
+    }
+  ]
+}

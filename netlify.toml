@@ -1,0 +1,10 @@
+# Configuração de deploy do Netlify — Grupo Trampulim
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Quem acessar a raiz (trampulim.com.br) é levado ao site novo (/proposta/)
+[[redirects]]
+  from = "/"
+  to = "/proposta/index.html"
+  status = 302

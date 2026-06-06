@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const espetaculos = [
+  {
+    titulo: 'A Rainha Procura',
+    sinopse: 'Espectáculo familiar inspirado en el ajedrez. Una reina en duelo sale en busca de piezas para restaurar su reino.',
+    href: '/es/repertorio/espetaculos#a-rainha-procura',
+    foto: '/a-rainha-procura-pri-garcia.jpg',
+    credito: 'Pri Garcia',
+  },
+  {
+    titulo: 'Casamento',
+    sinopse: 'El matrimonio como terreno fértil para la comedia. Una exploración llena de humor sobre las dinámicas del matrimonio.',
+    href: '/es/repertorio/espetaculos#casamento',
+    foto: '/casamento-dsc08554.jpg',
+    credito: 'Lina Mintz',
+  },
+  {
+    titulo: 'Partida',
+    sinopse: 'Benedita Jacarandá escapa de su creador. Una investigación poética sobre relaciones fracturadas e identidad.',
+    href: '/es/repertorio/espetaculos#partida',
+    foto: '/partida-tamas-bodolay-3.jpg',
+    credito: 'Tamás Bodolay',
+  },
+  {
+    titulo: 'Manotas Musicais',
+    sinopse: 'Benedita y Sabonete intentan presentar un concierto clásico improbable — y el público se convierte en la orquesta.',
+    href: '/es/repertorio/espetaculos#manotas-musicais',
+    foto: '/manotas-arnaldo-sete.jpg',
+    credito: 'Arnaldo Sete',
+  },
+  {
+    titulo: 'Pratubatê',
+    sinopse: 'Show de percusión interactivo donde cada espectador recibe un tambor y asume el rol de protagonista.',
+    href: '/es/repertorio/espetaculos#pratubate',
+    foto: '/pratubate-andre-fossati.jpg',
+    credito: 'André Fossati',
+  },
+  {
+    titulo: 'Invasão de Palhaços',
+    sinopse: 'Payasos invaden espacios inesperados con instrumentos e improvisación. Una performance callejera que transforma cualquier lugar en escenario.',
+    href: '/es/repertorio/espetaculos#invasao-de-palhacos',
+    foto: '/invasao-bs-fotografias.jpg',
+    credito: 'BS Fotografias',
+  },
+  {
+    titulo: 'Uma Surpresa Para Benedita',
+    sinopse: 'Una payasa devota prepara una cena especial. Los imprevistos revelan, con humor, las dinámicas de una relación.',
+    href: '/es/repertorio/espetaculos#uma-surpresa-para-benedita',
+    foto: '/uma-surpresa-netum-lima.jpg',
+    credito: 'Netum Lima',
+  },
+];
+
+const numeros = [
+  { valor: '30+', label: 'años de trayectoria' },
+  { valor: '870+', label: 'presentaciones realizadas' },
+  { valor: '21', label: 'espectáculos creados' },
+  { valor: '19', label: 'premios y reconocimientos' },
+];
+---
+
+<Layout
+  title="Inicio"
+  description="Grupo Trampulim de Circo y Teatro — payasería, espectáculos y arte desde 1994 en Belo Horizonte, Brasil."
+  lang="es"
+>
+  <!-- Hero -->
+  <section
+    class="relative min-h-[90vh] flex flex-col"
+    style="background-image: url('/IMG_2781.jpg'); background-size: cover; background-position: center top;"
+  >
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+    <div class="relative z-10 container-site flex flex-col justify-end pb-16 pt-32 flex-1">
+      <p class="text-trampulim-yellow uppercase tracking-widest text-xs font-semibold mb-3">
+        Belo Horizonte, Brasil · desde 1994
+      </p>
+      <h1 class="text-white text-4xl md:text-6xl font-display leading-tight mb-6 max-w-2xl">
+        30+ años de payasería, circo y teatro en Brasil y el mundo.
+      </h1>
+      <div class="flex flex-wrap gap-4">
+        <a href="/es/repertorio/espetaculos" class="btn-primary">Ver espectáculos</a>
+        <a href="/es/contato" class="bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-full px-6 py-3 text-sm font-semibold hover:bg-white/20 transition">
+          Contacto
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Números -->
+  <section class="bg-trampulim-dark text-white py-12">
+    <div class="container-site grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {numeros.map((n) => (
+        <div>
+          <p class="text-3xl md:text-4xl font-display text-trampulim-yellow mb-1">{n.valor}</p>
+          <p class="text-white/60 text-sm">{n.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Espetáculos -->
+  <section class="container-site py-16">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Repertorio</p>
+    <h2 class="section-title mb-10">Nuestros Espectáculos</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {espetaculos.map((e) => (
+        <a href={e.href} class="group block overflow-hidden">
+          <div class="overflow-hidden aspect-[4/3]">
+            <img
+              src={e.foto}
+              alt={e.titulo}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="pt-4 pb-2">
+            <h3 class="font-display text-lg mb-1 group-hover:text-trampulim-red transition-colors">{e.titulo}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">{e.sinopse}</p>
+            <p class="text-xs text-gray-300 mt-2">Foto: {e.credito}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="/es/repertorio/espetaculos" class="btn-secondary">Ver todos los espectáculos</a>
+    </div>
+  </section>
+
+  <!-- Nas Empresas -->
+  <section class="bg-trampulim-dark text-white py-20 px-4">
+    <div class="container-site max-w-3xl">
+      <p class="text-trampulim-yellow uppercase tracking-widest text-xs font-semibold mb-2">Para empresas</p>
+      <h2 class="text-3xl md:text-4xl font-display mb-4">Trampulim en las Empresas</h2>
+      <p class="text-white/70 text-lg mb-8 leading-relaxed">
+        Pratubatê es nuestro espectáculo de percusión interactiva pensado para eventos corporativos. El público recibe tambores y se convierte en protagonista — una experiencia de conexión colectiva a través de la música.
+      </p>
+      <a href="/es/nas-empresas" class="btn-primary">Conocer más</a>
+    </div>
+  </section>
+
+  <!-- Oficinas -->
+  <section class="container-site py-16">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Formación</p>
+    <h2 class="section-title mb-4">Talleres</h2>
+    <p class="text-gray-500 max-w-xl mb-8">
+      Ser payaso es un estado que requiere una lógica específica. Los talleres del Grupo Trampulim enseñan ese lenguaje a través de juegos escénicos.
+    </p>
+    <a href="/es/oficinas" class="btn-secondary">Ver talleres</a>
+  </section>
+</Layout>

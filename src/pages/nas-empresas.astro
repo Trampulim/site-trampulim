@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Carrossel from '../components/Carrossel.astro';
+
+const galeriaPratubate = [
+  { src: '/galeria/pcorp-g1.jpg', credito: 'João Bosco' },
+  { src: '/galeria/pcorp-g2.jpg', credito: 'João Bosco' },
+  { src: '/galeria/pcorp-g3.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g4.jpg', credito: 'Jackson Romanelli' },
+  { src: '/galeria/pcorp-g5.jpg', credito: 'Jackson Romanelli' },
+  { src: '/galeria/pcorp-g6.jpg', credito: 'Cecília / Rede Cidadã' },
+  { src: '/galeria/pcorp-g7.jpg', credito: 'Polyane Santos' },
+  { src: '/galeria/pcorp-g8.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g9.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g10.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g11.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g12.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g13.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g14.jpg', credito: 'Divulgação' },
+];
+
+const numeros = [
+  { valor: '243+', label: 'eventos corporativos realizados' },
+  { valor: '247+', label: 'apresentações do Pratubatê' },
+  { valor: '30+', label: 'anos de experiência' },
+  { valor: '650+', label: 'tambores prontos para a sua equipe' },
+];
+
+const clientes = [
+  { nome: 'Stellantis', logo: '/marcas/stellantis.png' },
+  { nome: 'Petrobras', logo: '/marcas/petrobras.png' },
+  { nome: 'Vale', logo: '/marcas/vale.png' },
+  { nome: 'Mercado Livre', logo: '/marcas/mercadolivre.png' },
+  { nome: 'ArcelorMittal', logo: '/marcas/arcelormittal.png' },
+  { nome: 'Unimed', logo: '/marcas/unimed.png' },
+  { nome: 'Cemig', logo: '/marcas/cemig.png' },
+  { nome: 'Usiminas', logo: '/marcas/usiminas.png' },
+  { nome: 'Grupo Sicoob', logo: '/marcas/sicoob.png' },
+  { nome: 'Localiza', logo: '/marcas/localiza.png' },
+  { nome: 'Energisa', logo: '/marcas/energisa.png' },
+  { nome: 'Grupo Globo', logo: '/marcas/globo.png' },
+  { nome: 'Thyssenkrupp', logo: '/marcas/thyssenkrupp.png' },
+  { nome: 'VLI', logo: '/marcas/vli.png' },
+  { nome: 'Copasa', logo: '/marcas/copasa.png' },
+  { nome: 'AngloGold Ashanti', logo: '/marcas/anglogold.png' },
+  { nome: 'Hermes Pardini', logo: '/marcas/hermespardini.png' },
+  { nome: 'Hotmart', logo: '/marcas/hotmart.png' },
+  { nome: 'Forno de Minas', logo: '/marcas/fornodeminas.png' },
+  { nome: 'Sympla', logo: '/marcas/sympla.png' },
+  { nome: 'Gerdau', logo: '/marcas/gerdau.png' },
+  { nome: 'Natura', logo: '/marcas/natura.png' },
+  { nome: 'Sesc', logo: '/marcas/sesc.png' },
+  { nome: 'Sebrae', logo: '/marcas/sebrae.png' },
+  { nome: 'Pirelli', logo: '/marcas/pirelli.png' },
+  { nome: 'Fiat', logo: '/marcas/fiat.png' },
+  { nome: 'Itaú', logo: '/marcas/itau.png' },
+  { nome: 'FIESC', logo: '/marcas/fiesc.png' },
+  { nome: 'CNI', logo: '/marcas/cni.png' },
+];
+
+const beneficios = [
+  { titulo: 'Humanização e Unidade', descricao: 'A equipe se vê de uma nova forma, mais conectada e empática.' },
+  { titulo: 'Motivação e Bem-Estar', descricao: 'Uma injeção de ânimo que renova as energias e melhora o clima organizacional.' },
+  { titulo: 'Celebração', descricao: 'A memória de uma conquista coletiva que fortalece a cultura da empresa.' },
+];
+
+const etapas = [
+  { titulo: 'Pré-produção', descricao: 'Cuidamos de toda a logística técnica do Pratubatê no seu evento.' },
+  { titulo: 'Customização', descricao: 'Criamos um roteiro artístico personalizado após um briefing detalhado.' },
+  { titulo: 'Montagem', descricao: 'Nossa equipe prepara toda a estrutura com antecedência no dia do evento.' },
+  { titulo: 'Hora do show', descricao: 'Uma dinâmica pulsante e interativa de quase uma hora com música, ritmo e humor.' },
+];
+---
+
+<Layout
+  title="Nas Empresas"
+  description="Pratubatê — o espetáculo interativo do Grupo Trampulim que transforma equipes corporativas através da música e dos tambores."
+>
+  <!-- Hero -->
+  <section class="bg-trampulim-dark text-white py-20 px-4">
+    <div class="container-site max-w-3xl">
+      <p class="text-trampulim-yellow uppercase tracking-widest text-xs font-semibold mb-2">Para empresas</p>
+      <h1 class="text-4xl md:text-5xl font-display mb-6 leading-tight">Trampulim<br/>Nas Empresas</h1>
+      <p class="text-white/70 text-lg leading-relaxed">
+        Há mais de 30 anos criamos <strong class="text-white">conexões fortes de um jeito leve e divertido</strong> por meio da arte.
+        Usamos a energia e a profundidade das artes cênicas e da música para conectar pessoas e desenvolver
+        as competências mais importantes do mercado: comunicação, criatividade, empatia e colaboração.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pergunta gancho (fundo de tambores) -->
+  <section class="relative py-24 px-4 text-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="/tambores-bg.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-trampulim-dark/80"></div>
+    </div>
+    <div class="relative z-10 container-site max-w-2xl text-white">
+      <h2 class="text-3xl md:text-4xl font-display mb-6">Sua equipe está realmente em sintonia?</h2>
+      <p class="text-white/80 leading-relaxed text-lg mb-4">
+        No dia a dia corporativo, buscamos sinergia, comunicação e engajamento. Falamos sobre "remar na mesma direção",
+        mas, na prática, muitas vezes cada um está no seu próprio ritmo.
+      </p>
+      <p class="text-white/80 leading-relaxed text-lg">
+        Como quebrar a rotina e transformar um grupo de indivíduos em uma verdadeira orquestra, unida e pulsante?
+      </p>
+    </div>
+  </section>
+
+  <!-- Pratubatê destaque -->
+  <section class="bg-trampulim-light py-16 px-4">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-display mb-6">Pratubatê</h2>
+      <p class="text-xl text-gray-700 leading-relaxed mb-6">
+        Imagine um evento onde cada colaborador não é um mero espectador, mas o protagonista de uma experiência inesquecível.
+        Não é uma palestra. Não é um show. <strong>É uma ferramenta de conexão humana disfarçada de celebração.</strong>
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        PRATUBATÊ é um espetáculo interativo que utiliza a música e os tambores como ferramenta de comunicação.
+        Foi desenvolvido para empresas e instituições que buscam evocar o senso de equipe, de cooperação, de parceria e
+        de unidade dentro de um macro sistema. A empresa é como uma orquestra — cada setor tem sua afinação e potencialidade
+        distintas, mas todos trabalham em equipe em prol de um objetivo comum.
+      </p>
+      <p class="text-gray-600 leading-relaxed">
+        De repente, cada participante tem um tambor em mãos. O ceticismo inicial rapidamente dá lugar à curiosidade.
+        Sob nossa condução, o som tímido de um indivíduo começa a se unir ao do colega ao lado. Em minutos, o que era
+        ruído se torna ritmo. A comunicação acontece sem palavras. As hierarquias se dissolvem. A sala inteira vibra com
+        uma energia poderosa e uníssona — a prova viva de que, juntos, somos capazes de criar algo grandioso.
+      </p>
+
+      <!-- Vídeo Pratubatê corporativo -->
+      <div class="aspect-video overflow-hidden shadow-xl mt-10">
+        <iframe
+          src="https://www.youtube.com/embed/EEJ479If97o"
+          title="Pratubatê para empresas — Grupo Trampulim"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          class="w-full h-full"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <!-- Galeria Pratubatê corporativo -->
+      <div class="mt-8 max-w-3xl mx-auto">
+        <Carrossel id="pratubate-corp" fotos={galeriaPratubate} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefícios -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-2xl font-display mb-10 text-center">O legado que o Pratubatê deixa</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {beneficios.map((b) => (
+          <div class="bg-trampulim-light rounded-2xl p-7 border border-gray-100">
+            <h3 class="font-display text-xl mb-2">{b.titulo}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{b.descricao}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Números de impacto -->
+  <section class="bg-trampulim-dark text-white py-16 px-4">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-2xl font-display mb-10 text-center">Nossa história contada pelos resultados</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {numeros.map((n) => (
+          <div>
+            <p class="text-4xl font-display text-trampulim-yellow mb-2">{n.valor}</p>
+            <p class="text-white/60 text-sm leading-snug">{n.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Do contato aos aplausos -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-2xl font-display mb-10 text-center">Do contato aos aplausos</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {etapas.map((e, i) => (
+          <div class="text-center">
+            <div class="w-10 h-10 rounded-full bg-trampulim-red text-white font-bold flex items-center justify-center mx-auto mb-4 text-lg">
+              {i + 1}
+            </div>
+            <h3 class="font-semibold mb-2">{e.titulo}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{e.descricao}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Clientes -->
+  <section class="bg-trampulim-light py-16 px-4">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-2xl font-display mb-2 text-center">Principais clientes</h2>
+      <p class="text-center text-gray-500 text-sm mb-10">Empresas que já viveram a experiência Pratubatê</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        {clientes.map((c) => (
+          <div class="bg-white border border-gray-100 rounded-xl shadow-sm p-5 h-24 hover:shadow-md transition-shadow">
+            <img
+              src={c.logo}
+              alt={c.nome}
+              title={c.nome}
+              loading="lazy"
+              class="w-full h-full object-contain"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Outros serviços -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container-site max-w-4xl">
+      <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Também oferecemos</p>
+      <h2 class="text-2xl font-display mb-8">Outros serviços para empresas</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <article class="bg-trampulim-light rounded-2xl p-7 border border-gray-100">
+          <p class="text-trampulim-red text-xs font-semibold uppercase tracking-widest mb-1">Teatro de improvisação aplicado</p>
+          <h3 class="text-xl font-display mb-3">Trampulimprovisa</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            Três atores e um músico criam histórias ao vivo a partir de sugestões do público. Os jogos de improvisação
+            promovem reflexão corporativa de forma leve e envolvente, desenvolvendo criatividade, adaptabilidade,
+            comunicação, confiança e espírito de equipe.
+          </p>
+          <ul class="space-y-1">
+            {['Criatividade e inovação', 'Adaptabilidade a mudanças', 'Comunicação assertiva', 'Confiança e espírito de equipe'].map((b) => (
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <span class="text-trampulim-red mt-0.5">✓</span>{b}
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article class="bg-trampulim-light rounded-2xl p-7 border border-gray-100">
+          <p class="text-trampulim-red text-xs font-semibold uppercase tracking-widest mb-1">Criação sob medida</p>
+          <h3 class="text-xl font-display mb-3">Performances Personalizadas</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            Intervenções artísticas desenvolvidas especificamente para cada cliente. Trabalhamos em parceria com a empresa
+            para criar uma experiência que reflita a cultura e os objetivos do evento.
+          </p>
+          <ul class="space-y-1">
+            {['SIPATs e eventos de segurança', 'Treinamentos e workshops', 'Comemorações e datas especiais', 'Convenções e lançamentos'].map((b) => (
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <span class="text-trampulim-red mt-0.5">✓</span>{b}
+              </li>
+            ))}
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-4 text-center bg-trampulim-light border-t border-gray-100">
+    <div class="container-site max-w-xl">
+      <h2 class="text-3xl font-display mb-4">Vamos conversar?</h2>
+      <p class="text-gray-500 mb-2">
+        Temos vários formatos e versões — desde pocket até grandes produções, inclusive o que cabe no seu orçamento.
+      </p>
+      <p class="text-gray-500 mb-8">O valor varia de acordo com as características do evento. Atendemos todo o Brasil.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={`https://wa.me/5531986891687?text=${encodeURIComponent('Olá! Gostaria de informações sobre o Pratubatê para um evento corporativo.')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary"
+        >
+          Falar pelo WhatsApp
+        </a>
+        <a href="/contato" class="inline-block border border-trampulim-dark text-trampulim-dark px-6 py-3 rounded-full font-semibold hover:bg-trampulim-dark hover:text-white transition-colors">
+          Enviar mensagem
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

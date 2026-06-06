@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #F7F4EF;
+    color: #1C1917;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-trampulim-red text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-display mb-6 font-bold;
+  }
+  .container-site {
+    @apply max-w-6xl mx-auto px-4 md:px-8;
+  }
+  .eyebrow {
+    @apply text-trampulim-red uppercase tracking-widest text-xs font-semibold;
+  }
+}

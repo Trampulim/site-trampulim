@@ -1,0 +1,190 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const montagens = [
+  {
+    ano: '2024',
+    titulo: 'A Rainha Procura',
+    concepção: 'César Gouvêa e Elisa Rossin',
+    direção: 'César Gouvêa',
+    elenco: 'Adriana Morales, Tiago Mafra, Rafael Protzner e Ricardo Ikier',
+  },
+  {
+    ano: '2023',
+    titulo: 'Casamento',
+    concepção: 'Grupo Trampulim',
+    direção: 'José Luis Saldaña',
+    elenco: 'Adriana Morales e Tiago Mafra',
+  },
+  {
+    ano: '2022',
+    titulo: 'Partida',
+    concepção: 'Adriana Morales',
+    direção: 'Tiago Mafra',
+    elenco: 'Adriana Morales',
+  },
+  {
+    ano: '2019',
+    titulo: 'Academia Brasileira de Bestas',
+    concepção: 'Grupo Trampulim',
+    direção: 'Rafael Protzner',
+    elenco: 'Adriana Morales, Tiago Mafra, Rafael Protzner e convidados',
+  },
+  {
+    ano: '2017',
+    titulo: 'Acorda',
+    concepção: 'Adriana Morales, Tiago Mafra, Poliana Tuchia, Chaya Vazquez e Paula Manata',
+    direção: 'Paula Manata',
+    elenco: 'Adriana Morales, Tiago Mafra, Poliana Tuchia e Chaya Vazquez',
+  },
+  {
+    ano: '2012',
+    titulo: 'Pupurrir',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+  {
+    ano: '2011',
+    titulo: 'Experimento',
+    concepção: 'Grupo Trampulim',
+    direção: 'Rafael Protzner (formato) / Coletiva (cenas)',
+    elenco: 'Adriana Morales, Poliana Tuchia, Rafael Protzner, Tiago Mafra e convidados',
+  },
+  {
+    ano: '2009',
+    titulo: 'Manotas Musicais',
+    concepção: 'Adriana Morales e Tiago Mafra',
+    direção: 'Fernando Escrich',
+    elenco: 'Adriana Morales, Isabela Leite, Marcos Nascimento, Rafael Protzner e Tiago Mafra',
+  },
+  {
+    ano: '2008',
+    titulo: 'Pratubatê',
+    concepção: 'Adriana Morales e Tiago Mafra',
+    direção: 'Adriana Morales (artística) / Tiago Mafra (musical)',
+    elenco: 'Adriana Morales, Marcos Henrique, Isabela Leite e Tiago Mafra',
+  },
+  {
+    ano: '2008',
+    titulo: 'Labirinto',
+    concepção: 'Adriana Morales e Poliana Tuchia',
+    direção: 'Tiago Mafra',
+    elenco: 'Adriana Morales e Poliana Tuchia',
+  },
+  {
+    ano: '2006',
+    titulo: 'Invasão de Palhaços',
+    concepção: 'Adriana Morales e Tiago Mafra',
+    direção: 'Coletiva',
+    elenco: 'Adriana Morales, Chaya Vazquez, Poliana Tuchia, Rafael Protzner e Tiago Mafra',
+  },
+  {
+    ano: '2004',
+    titulo: 'Cordão do Riso',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+  {
+    ano: '2003',
+    titulo: 'Uma Surpresa para Benedita',
+    concepção: 'Adriana Morales e Tiago Mafra',
+    direção: 'Rogério Sette Câmara, Adriana Morales e Tiago Mafra',
+    elenco: 'Adriana Morales e Tiago Mafra',
+  },
+  {
+    ano: '2002',
+    titulo: 'Álbum de Família',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+  {
+    ano: '2001',
+    titulo: 'A Ponte',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+  {
+    ano: '1999',
+    titulo: 'Oraprocircus',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+  {
+    ano: '1997',
+    titulo: 'Panis Et Circensis',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+  {
+    ano: '1997',
+    titulo: 'O Bolo',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+  {
+    ano: '1996',
+    titulo: 'O Cortejo em Busca do Riso',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+  {
+    ano: '1995',
+    titulo: 'O Filme',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+  {
+    ano: '1994',
+    titulo: 'O Circo',
+    concepção: 'Grupo Trampulim',
+    direção: 'Grupo Trampulim',
+    elenco: 'Grupo Trampulim',
+  },
+];
+---
+
+<Layout
+  title="Cronologia de Montagens"
+  description="Linha do tempo das produções e marcos do Grupo Trampulim desde 1994."
+>
+  <section class="container-site py-16 max-w-3xl">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Grupo Trampulim</p>
+    <h1 class="section-title">Cronologia de Montagens</h1>
+    <p class="text-gray-500 mb-10">Trinta anos de criação, pesquisa e palco.</p>
+
+    <ol class="relative border-l border-gray-200 space-y-10">
+      {montagens.map((m) => (
+        <li class="ml-6">
+          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-trampulim-dark rounded-full ring-4 ring-trampulim-light">
+            <span class="w-2 h-2 bg-trampulim-yellow rounded-full"></span>
+          </span>
+          <time class="text-xs font-bold text-trampulim-red uppercase tracking-wider">{m.ano}</time>
+          <h3 class="font-semibold text-trampulim-dark mt-0.5 text-lg">{m.titulo}</h3>
+          <dl class="mt-2 space-y-1 text-sm text-gray-500">
+            <div class="flex gap-2">
+              <dt class="font-medium text-gray-700 shrink-0">Concepção:</dt>
+              <dd>{m.concepção}</dd>
+            </div>
+            <div class="flex gap-2">
+              <dt class="font-medium text-gray-700 shrink-0">Direção:</dt>
+              <dd>{m.direção}</dd>
+            </div>
+            <div class="flex gap-2">
+              <dt class="font-medium text-gray-700 shrink-0">Elenco:</dt>
+              <dd>{m.elenco}</dd>
+            </div>
+          </dl>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Layout>

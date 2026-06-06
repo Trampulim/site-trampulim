@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo Trampulim — Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #C0392B;
+      --yellow: #F1C40F;
+      --dark: #1A1A1A;
+      --light: #F9F6F0;
+      --gray: #6B7280;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--dark); }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Header ── */
+    header {
+      background: var(--dark);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 8px rgba(0,0,0,.3);
+    }
+    .header-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .logo:hover { color: var(--yellow); }
+    nav { display: flex; gap: 24px; font-size: .875rem; font-weight: 500; flex-wrap: wrap; }
+    nav a { color: rgba(255,255,255,.85); transition: color .15s; }
+    nav a:hover { color: var(--yellow); }
+    .social-icons { display: flex; gap: 12px; }
+    .social-icons a { color: rgba(255,255,255,.7); transition: color .15s; }
+    .social-icons a:hover { color: var(--yellow); }
+    .social-icons svg { width: 18px; height: 18px; }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--dark);
+      color: #fff;
+      text-align: center;
+      padding: 80px 24px 96px;
+    }
+    .hero-tag {
+      display: inline-block;
+      color: var(--yellow);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 20px; }
+    .hero p { color: rgba(255,255,255,.7); font-size: 1.1rem; max-width: 560px; margin: 0 auto 32px; line-height: 1.7; }
+    .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 14px 28px; border-radius: 9999px; font-weight: 600; font-size: .9rem; cursor: pointer; transition: opacity .15s, transform .15s; }
+    .btn:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-outline { border: 1px solid rgba(255,255,255,.35); color: #fff; }
+    .btn-outline:hover { border-color: #fff; }
+    .btn-dark { border: 1px solid var(--dark); color: var(--dark); }
+    .btn-dark:hover { background: var(--dark); color: #fff; }
+
+    /* ── Sections ── */
+    .section { padding: 72px 24px; }
+    .container { max-width: 1152px; margin: 0 auto; }
+    .section-tag { color: var(--red); font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 8px; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 16px; }
+    .section-subtitle { color: var(--gray); max-width: 480px; line-height: 1.6; margin-bottom: 48px; font-size: .95rem; }
+    .section-subtitle.center { text-align: center; margin-left: auto; margin-right: auto; }
+    .section-title.center { text-align: center; }
+
+    /* ── Cards grid ── */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .card {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.1); transform: translateY(-3px); }
+    .card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .card h3:hover { color: var(--red); }
+    .card p { color: var(--gray); font-size: .875rem; line-height: 1.65; }
+    .card-link { display: inline-block; margin-top: 16px; color: var(--red); font-size: .875rem; font-weight: 500; }
+    .card-link:hover { text-decoration: underline; }
+
+    /* ── Dark band ── */
+    .band {
+      background: var(--dark);
+      color: #fff;
+      padding: 64px 24px;
+    }
+    .band-inner { max-width: 1152px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .band h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 12px; }
+    .band p { color: rgba(255,255,255,.65); line-height: 1.6; max-width: 480px; font-size: .95rem; }
+
+    /* ── Footer ── */
+    footer { background: var(--dark); color: #fff; margin-top: 0; }
+    .footer-grid { max-width: 1152px; margin: 0 auto; padding: 56px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+    .footer-col h3 { font-size: 1.1rem; margin-bottom: 12px; }
+    .footer-col h4 { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 12px; }
+    .footer-col p, .footer-col a { color: rgba(255,255,255,.6); font-size: .875rem; line-height: 1.6; display: block; margin-bottom: 6px; transition: color .15s; }
+    .footer-col a:hover { color: var(--yellow); }
+    .footer-social { display: flex; flex-direction: column; gap: 8px; }
+    .footer-social a { display: flex; align-items: center; gap: 8px; }
+    .footer-social svg { width: 16px; height: 16px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 16px 24px; text-align: center; color: rgba(255,255,255,.3); font-size: .75rem; }
+
+    /* ── WhatsApp ── */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 50;
+      background: #25D366;
+      color: #fff;
+      border-radius: 9999px;
+      padding: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      transition: transform .2s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn svg { width: 24px; height: 24px; display: block; }
+
+    @media (max-width: 640px) {
+      nav { display: none; }
+      .band-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">Grupo Trampulim</a>
+    <nav>
+      <a href="#grupo">Grupo Trampulim</a>
+      <a href="#repertorio">Repertório</a>
+      <a href="#empresas">Nas Empresas</a>
+      <a href="#oficinas">Oficinas</a>
+      <a href="#videos">Extra, Extra</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/trampulim" target="_blank" aria-label="Instagram">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/GrupoTrampulim" target="_blank" aria-label="Facebook">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/GrupoTrampulim" target="_blank" aria-label="YouTube">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/grupo-trampulim/" target="_blank" aria-label="LinkedIn">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <span class="hero-tag">Circo · Teatro · Palhaçaria</span>
+  <h1>Grupo Trampulim</h1>
+  <p>Com nariz e sapato na bagagem, riso frouxo na cara e amor no coração, criamos uma porção mágica de espetáculos desde 1994.</p>
+  <div class="btn-group">
+    <a href="#repertorio" class="btn btn-primary">Ver Repertório</a>
+    <a href="#contato" class="btn btn-outline">Fale Conosco</a>
+  </div>
+</section>
+
+<!-- ── ESPETÁCULOS ── -->
+<section class="section" id="repertorio">
+  <div class="container">
+    <p class="section-tag">Repertório</p>
+    <h2 class="section-title center">Nossos Espetáculos</h2>
+    <p class="section-subtitle center">Trinta anos de criação, pesquisa e palco. Produções para todos os públicos.</p>
+    <div class="grid-3">
+      <div class="card"><h3>A Rainha Procura</h3><p>Espetáculo familiar inspirado no xadrez. Uma rainha em luto parte em busca de peças para restaurar o seu reino.</p><span class="card-link">Saiba mais →</span></div>
+      <div class="card"><h3>Casamento</h3><p>O casamento como terreno fértil para a comédia. Exploração bem-humorada das dinâmicas do matrimônio.</p><span class="card-link">Saiba mais →</span></div>
+      <div class="card"><h3>Invasão de Palhaços</h3><p>Palhaços invadem espaços inesperados com instrumentos e improvisação. Performance de rua que transforma qualquer lugar em palco.</p><span class="card-link">Saiba mais →</span></div>
+      <div class="card"><h3>Manotas Musicais</h3><p>Benedita e Sabonete tentam apresentar um concerto clássico — e o público vira a orquestra.</p><span class="card-link">Saiba mais →</span></div>
+      <div class="card"><h3>Uma Surpresa Para Benedita</h3><p>Uma palhaça devotada prepara um jantar especial. Os imprevistos revelam, com humor, dinâmicas de relacionamento.</p><span class="card-link">Saiba mais →</span></div>
+      <div class="card"><h3>Partida</h3><p>Benedita Jacarandá foge do seu criador. Investigação poética sobre relações fraturadas. Premiado em 2022.</p><span class="card-link">Saiba mais →</span></div>
+      <div class="card"><h3>Pratubatê</h3><p>Show de percussão interativa onde cada espectador recebe um tambor e assume o papel de protagonista.</p><span class="card-link">Saiba mais →</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NAS EMPRESAS ── -->
+<div class="band" id="empresas">
+  <div class="band-inner">
+    <div>
+      <p style="color:var(--yellow);font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;">Para empresas</p>
+      <h2>Arte que conecta equipes</h2>
+      <p>Há mais de quinze anos criamos conexões fortes de um jeito leve e divertido. Pratubatê, Trampulimprovisa e performances personalizadas para o seu evento corporativo.</p>
+    </div>
+    <a href="#contato" class="btn btn-primary" style="flex-shrink:0;">Conhecer os serviços</a>
+  </div>
+</div>
+
+<!-- ── OFICINAS ── -->
+<section class="section" id="oficinas" style="background:#fff;">
+  <div class="container">
+    <p class="section-tag">Formação</p>
+    <h2 class="section-title">Oficinas</h2>
+    <p class="section-subtitle">Ser palhaço é um estado que requer uma lógica específica. Nossas oficinas ensinam essa linguagem por meio de jogos cênicos.</p>
+    <div class="grid-3">
+      <div class="card"><p style="color:var(--red);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;">Iniciação</p><h3>O Jogo do Palhaço – Estado</h3><p>Desconstrução de preconceitos e ferramentas fundamentais para o trabalho cênico. Para qualquer nível.</p></div>
+      <div class="card"><p style="color:var(--red);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;">Intervenção de rua</p><h3>Invenção da Invasão</h3><p>Até 30 artistas. Ferramentas práticas para criar intervenções improvisadas em espaços do cotidiano.</p></div>
+      <div class="card"><p style="color:var(--red);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;">Improvisação teatral</p><h3>Oficina Trampulimpro</h3><p>Palhaço + improvisação teatral. Espontaneidade, presença e expressão cômica para profissionais das artes cênicas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VÍDEOS ── -->
+<section class="section" id="videos">
+  <div class="container" style="max-width:800px;">
+    <p class="section-tag">Extra, Extra</p>
+    <h2 class="section-title">Depósito de Bobagens</h2>
+    <p class="section-subtitle">Espetáculos, bastidores e bobagens de todo o tipo no nosso canal do YouTube.</p>
+    <div style="aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.15);">
+      <iframe
+        src="https://www.youtube.com/embed?listType=user_uploads&list=GrupoTrampulim"
+        title="Canal Grupo Trampulim"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="width:100%;height:100%;border:none;"
+        loading="lazy"
+      ></iframe>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <a href="https://www.youtube.com/GrupoTrampulim" target="_blank" class="btn btn-primary">Ver canal no YouTube</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTATO ── -->
+<section class="section" id="contato" style="background:#fff;">
+  <div class="container" style="max-width:640px;">
+    <p class="section-tag">Contato</p>
+    <h2 class="section-title">Fale com a gente</h2>
+    <p class="section-subtitle">Quer contratar um espetáculo, uma oficina ou um projeto corporativo? Escolha o canal que preferir.</p>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:40px;">
+      <a href="https://wa.me/5531986891687?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Grupo%20Trampulim." target="_blank"
+         style="display:flex;align-items:center;gap:12px;background:#25D366;color:#fff;padding:16px 20px;border-radius:12px;font-weight:600;">
+        <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp — (31) 98689-1687
+      </a>
+      <a href="mailto:contato@trampulim.com.br"
+         style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #E5E7EB;color:#374151;padding:16px 20px;border-radius:12px;font-weight:500;transition:border-color .15s;">
+        <svg width="20" height="20" fill="none" stroke="#C0392B" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        contato@trampulim.com.br
+      </a>
+    </div>
+
+    <form style="display:flex;flex-direction:column;gap:14px;">
+      <input type="text" placeholder="Seu nome *" style="border:1px solid #E5E7EB;border-radius:10px;padding:14px 16px;font-size:.9rem;font-family:inherit;outline:none;" />
+      <input type="tel" placeholder="Telefone (com DDD)" style="border:1px solid #E5E7EB;border-radius:10px;padding:14px 16px;font-size:.9rem;font-family:inherit;outline:none;" />
+      <input type="email" placeholder="E-mail *" style="border:1px solid #E5E7EB;border-radius:10px;padding:14px 16px;font-size:.9rem;font-family:inherit;outline:none;" />
+      <textarea rows="5" placeholder="Sua mensagem *" style="border:1px solid #E5E7EB;border-radius:10px;padding:14px 16px;font-size:.9rem;font-family:inherit;outline:none;resize:none;"></textarea>
+      <button type="submit" class="btn btn-primary" style="width:100%;cursor:pointer;border:none;font-family:inherit;">Enviar mensagem</button>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3>Grupo Trampulim</h3>
+      <p>Circo, teatro e palhaçaria desde 1994.</p>
+      <p>Belo Horizonte – MG, Brasil.</p>
+      <a href="mailto:contato@trampulim.com.br">contato@trampulim.com.br</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <a href="#grupo">Histórico</a>
+      <a href="#repertorio">Espetáculos</a>
+      <a href="#repertorio">Intervenções e Números</a>
+      <a href="#empresas">Nas Empresas</a>
+      <a href="#oficinas">Oficinas</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <div class="footer-col">
+      <h4>Redes Sociais</h4>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/trampulim" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/GrupoTrampulim" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.youtube.com/GrupoTrampulim" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          YouTube
+        </a>
+        <a href="https://www.linkedin.com/company/grupo-trampulim/" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Grupo Trampulim de Circo e Teatro. Todos os direitos reservados.
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLUTUANTE ── -->
+<a href="https://wa.me/5531986891687?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Grupo%20Trampulim." target="_blank" class="whatsapp-btn" aria-label="WhatsApp">
+  <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>

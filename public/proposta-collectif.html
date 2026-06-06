@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo Trampulim — Proposta Visual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --creme:   #F7F4EF;
+      --preto:   #1A1614;
+      --vermelho:#B5281C;
+      --amarelo: #E8B84B;
+      --cinza:   #8A8278;
+      --cinza-claro: #C4BFBA;
+      --linha:   rgba(26,22,20,.1);
+      --nav-h:   68px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--creme);
+      color: var(--preto);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1,h2,h3,h4,h5 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -.03em;
+    }
+
+    a { color: inherit; text-decoration: none; cursor: pointer; }
+    img { display: block; }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    @media (max-width: 768px) { .container { padding: 0 20px; } }
+
+    /* ─── Reveal ─────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      background: var(--creme);
+      border-bottom: 1px solid var(--linha);
+      transition: box-shadow .3s;
+    }
+    #nav.scrolled { box-shadow: 0 2px 20px rgba(26,22,20,.07); }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+      gap: 24px;
+    }
+
+    .nav-logo img {
+      height: 38px;
+      width: auto;
+    }
+
+    /* Dropdown menus */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-item { position: relative; }
+
+    .nav-item > a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--cinza);
+      padding: 8px 12px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color .2s, background .2s;
+      white-space: nowrap;
+    }
+    .nav-item > a:hover { color: var(--preto); background: rgba(26,22,20,.04); }
+    .nav-item > a .chevron {
+      width: 12px; height: 12px;
+      transition: transform .2s;
+      flex-shrink: 0;
+    }
+    .nav-item:hover > a .chevron { transform: rotate(180deg); }
+
+    /* Dropdown panel */
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: var(--creme);
+      border: 1px solid var(--linha);
+      border-radius: 2px;
+      min-width: 200px;
+      padding: 6px 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity .2s, transform .2s;
+      box-shadow: 0 8px 24px rgba(26,22,20,.08);
+      z-index: 600;
+    }
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--cinza);
+      transition: color .15s, background .15s;
+    }
+    .nav-dropdown a:hover { color: var(--preto); background: rgba(26,22,20,.03); }
+
+    .nav-cta-btn {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      border: 1.5px solid var(--preto);
+      padding: 9px 20px;
+      border-radius: 2px;
+      color: var(--preto);
+      white-space: nowrap;
+      transition: background .2s, color .2s;
+      flex-shrink: 0;
+    }
+    .nav-cta-btn:hover { background: var(--preto); color: var(--creme); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      flex-shrink: 0;
+    }
+    .nav-hamburger span {
+      width: 24px; height: 1.5px;
+      background: var(--preto);
+      display: block;
+      transition: transform .25s, opacity .25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    @media (max-width: 1000px) {
+      .nav-menu { display: none; }
+      .nav-cta-btn { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* Mobile drawer */
+    #nav-drawer {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0; bottom: 0;
+      background: var(--creme);
+      z-index: 490;
+      overflow-y: auto;
+      padding: 24px 20px 40px;
+      flex-direction: column;
+    }
+    #nav-drawer.open { display: flex; }
+
+    .drawer-section { margin-bottom: 8px; }
+    .drawer-section-title {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--cinza-claro);
+      padding: 14px 4px 8px;
+      display: block;
+    }
+    .drawer-link {
+      display: block;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--preto);
+      padding: 10px 4px;
+      border-bottom: 1px solid var(--linha);
+      transition: color .2s;
+    }
+    .drawer-link:hover { color: var(--vermelho); }
+    .drawer-sub-link {
+      display: block;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--cinza);
+      padding: 10px 4px;
+      border-bottom: 1px solid var(--linha);
+      transition: color .2s;
+    }
+    .drawer-sub-link:hover { color: var(--preto); }
+    .drawer-cta {
+      margin-top: 28px;
+      background: var(--vermelho);
+      color: var(--creme) !important;
+      padding: 16px 24px;
+      border-radius: 2px;
+      text-align: center;
+      font-size: 14px !important;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      padding-top: var(--nav-h);
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      align-items: stretch;
+      border-bottom: 1px solid var(--linha);
+    }
+
+    .hero-text {
+      padding: 64px 56px 64px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hero-eyebrow {
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--cinza);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--cinza-claro);
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 6vw, 96px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: .92;
+      color: var(--preto);
+      margin-bottom: 44px;
+    }
+    .hero-title .accent { color: var(--vermelho); }
+
+    .hero-lead {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.72;
+      color: var(--cinza);
+      max-width: 400px;
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-solid {
+      background: var(--vermelho);
+      color: var(--creme);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      padding: 14px 26px;
+      border-radius: 2px;
+      transition: background .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .btn-solid:hover { background: #901f16; }
+
+    .btn-text {
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--cinza);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s, gap .2s;
+    }
+    .btn-text:hover { color: var(--preto); gap: 13px; }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(26,22,20,.15) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 38%;
+      background: var(--amarelo);
+      z-index: 2;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 40px; right: 32px;
+      background: var(--amarelo);
+      color: var(--preto);
+      padding: 16px 20px;
+      border-radius: 2px;
+      z-index: 3;
+      line-height: 1;
+    }
+    .hero-badge strong {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      display: block;
+    }
+    .hero-badge span {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      display: block;
+      color: rgba(26,22,20,.6);
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; grid-template-rows: auto 50svh; min-height: auto; }
+      .hero-text { padding: 48px 20px 40px; }
+      .hero-title { font-size: clamp(46px, 12vw, 72px); }
+      .hero-visual { min-height: 0; }
+      .hero-badge { bottom: 16px; right: 16px; }
+      .hero-badge strong { font-size: 34px; }
+    }
+
+    /* ─── TICKER ─────────────────────────────────────────── */
+    .ticker {
+      background: var(--preto);
+      overflow: hidden;
+      padding: 13px 0;
+    }
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerMove 30s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes tickerMove {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,.35);
+      padding: 0 28px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .ticker-sep {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--vermelho);
+      flex-shrink: 0;
+    }
+
+    /* ─── STATS ──────────────────────────────────────────── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--linha);
+    }
+    .stat-cell {
+      padding: 52px 40px;
+      border-right: 1px solid var(--linha);
+      position: relative;
+      overflow: hidden;
+      transition: background .35s;
+      cursor: default;
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-cell::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 28px; height: 2px;
+      background: var(--amarelo);
+      transition: width .4s ease, background .35s;
+    }
+    .stat-cell:hover { background: var(--preto); }
+    .stat-cell:hover::after { width: 100%; background: var(--vermelho); }
+    .stat-cell:hover .stat-num { color: var(--creme); }
+    .stat-cell:hover .stat-lbl { color: rgba(247,244,239,.35); }
+    .stat-num {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(46px, 4.5vw, 74px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1;
+      color: var(--preto);
+      transition: color .35s;
+      margin-bottom: 10px;
+    }
+    .stat-lbl {
+      font-size: 11.5px;
+      font-weight: 400;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--cinza);
+      transition: color .35s;
+    }
+    @media (max-width: 900px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(1), .stat-cell:nth-child(2) { border-bottom: 1px solid var(--linha); }
+    }
+    @media (max-width: 480px) {
+      .stat-cell { padding: 36px 20px; }
+    }
+
+    /* ─── INTRO ──────────────────────────────────────────── */
+    .intro {
+      padding: 108px 0;
+      border-bottom: 1px solid var(--linha);
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--cinza);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 10px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 22px; height: 1px;
+      background: var(--cinza-claro);
+    }
+    .intro-body h2 {
+      font-size: clamp(32px, 3.5vw, 50px);
+      margin-bottom: 32px;
+      line-height: 1.05;
+    }
+    .intro-body h2 em { font-style: normal; color: var(--vermelho); }
+    .intro-body p {
+      font-size: 16.5px;
+      font-weight: 300;
+      line-height: 1.78;
+      color: var(--cinza);
+      max-width: 540px;
+      margin-bottom: 18px;
+    }
+    .link-ul {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--preto);
+      border-bottom: 1px solid rgba(26,22,20,.22);
+      padding-bottom: 3px;
+      margin-top: 10px;
+      transition: color .2s, border-color .2s, gap .2s;
+    }
+    .link-ul:hover { color: var(--vermelho); border-color: var(--vermelho); gap: 13px; }
+    @media (max-width: 768px) { .intro-grid { grid-template-columns: 1fr; gap: 24px; } }
+
+    /* ─── ESPETÁCULOS ────────────────────────────────────── */
+    .shows { padding: 0 0 0; }
+    .section-bar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 60px 0 0;
+      margin-bottom: 44px;
+    }
+    .section-bar h2 {
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+    .link-sm {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--cinza);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: color .2s, gap .2s;
+    }
+    .link-sm:hover { color: var(--preto); gap: 11px; }
+
+    .shows-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--linha);
+      border-left: 1px solid var(--linha);
+    }
+    .show-card {
+      border-right: 1px solid var(--linha);
+      border-bottom: 1px solid var(--linha);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .show-card.featured { grid-column: span 2; }
+    .show-card.last     { grid-column: span 2; }
+
+    .show-img {
+      overflow: hidden;
+      background: var(--preto);
+      position: relative;
+    }
+    .show-card:not(.featured):not(.last) .show-img { aspect-ratio: 4/3; }
+    .show-card.featured .show-img  { aspect-ratio: 21/9; }
+    .show-card.last .show-img      { aspect-ratio: 16/6; }
+
+    .show-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .65s cubic-bezier(.16,1,.3,1);
+    }
+    .show-card:hover .show-img img { transform: scale(1.05); }
+
+    .show-info {
+      padding: 22px 26px 26px;
+      position: relative;
+    }
+    .show-tag {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--vermelho);
+      margin-bottom: 7px;
+      display: block;
+    }
+    .show-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      color: var(--preto);
+    }
+    .show-card.featured .show-name { font-size: 26px; }
+    .show-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--cinza);
+      line-height: 1.55;
+      margin-top: 7px;
+    }
+    .show-credit {
+      font-size: 11px;
+      color: var(--cinza-claro);
+      margin-top: 5px;
+      display: block;
+    }
+    .show-arrow {
+      position: absolute;
+      bottom: 22px; right: 22px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--linha);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(.8);
+      transition: opacity .2s, transform .2s, background .2s, border-color .2s;
+    }
+    .show-card:hover .show-arrow { opacity: 1; transform: scale(1); background: var(--vermelho); border-color: var(--vermelho); }
+
+    @media (max-width: 900px) {
+      .shows-grid { grid-template-columns: repeat(2, 1fr); }
+      .show-card.featured { grid-column: span 2; }
+      .show-card.last { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      .shows-grid { grid-template-columns: 1fr; }
+      .show-card.featured, .show-card.last { grid-column: span 1; }
+      .show-card.featured .show-img { aspect-ratio: 4/3; }
+    }
+
+    /* ─── VÍDEO ──────────────────────────────────────────── */
+    .video-block {
+      background: var(--preto);
+      border-top: 1px solid rgba(26,22,20,.3);
+      border-bottom: 1px solid rgba(26,22,20,.3);
+    }
+    .video-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+    .video-copy {
+      padding: 64px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid rgba(247,244,239,.06);
+    }
+    .video-eyebrow {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--amarelo);
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+    .video-title {
+      font-size: clamp(30px, 3vw, 48px);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1.0;
+      color: var(--creme);
+      margin-bottom: 18px;
+    }
+    .video-desc {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.72;
+      color: rgba(247,244,239,.38);
+      max-width: 340px;
+      margin-bottom: 36px;
+    }
+    .btn-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--creme);
+      transition: gap .2s;
+    }
+    .btn-play:hover { gap: 20px; }
+    .play-ring {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(247,244,239,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s, border-color .2s;
+      flex-shrink: 0;
+      color: var(--creme);
+    }
+    .btn-play:hover .play-ring { background: var(--amarelo); border-color: var(--amarelo); color: var(--preto); }
+    .video-embed {
+      position: relative;
+      background: #0c0a09;
+    }
+    .video-embed::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--amarelo);
+      z-index: 1;
+    }
+    .video-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .video-inner { grid-template-columns: 1fr; min-height: auto; }
+      .video-copy { padding: 48px 20px; border-right: none; border-bottom: 1px solid rgba(247,244,239,.06); }
+      .video-embed { min-height: 240px; }
+    }
+
+    /* ─── EMPRESAS ───────────────────────────────────────── */
+    .empresas {
+      padding: 108px 0;
+      border-bottom: 1px solid var(--linha);
+    }
+    .empresas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .empresas-visual { position: relative; }
+    .empresas-photo {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .empresas-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .empresas-badge {
+      position: absolute;
+      top: -16px; right: -16px;
+      background: var(--amarelo);
+      color: var(--preto);
+      padding: 14px 18px;
+      border-radius: 2px;
+      line-height: 1;
+    }
+    .empresas-badge strong {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      display: block;
+    }
+    .empresas-badge small {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: rgba(26,22,20,.6);
+      margin-top: 3px;
+      display: block;
+    }
+    .empresas-copy h2 {
+      font-size: clamp(30px, 3vw, 46px);
+      margin-bottom: 24px;
+      line-height: 1.0;
+    }
+    .empresas-copy p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--cinza);
+      max-width: 440px;
+      margin-bottom: 16px;
+    }
+    .services {
+      list-style: none;
+      margin: 28px 0;
+    }
+    .services li {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--linha);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--preto);
+    }
+    .services li:first-child { border-top: 1px solid var(--linha); }
+    .services li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--vermelho);
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .empresas-grid { grid-template-columns: 1fr; gap: 52px; }
+      .empresas-badge { top: -10px; right: 8px; }
+    }
+
+    /* ─── MARCAS ─────────────────────────────────────────── */
+    .marcas {
+      background: var(--preto);
+      padding: 64px 0;
+    }
+    .marcas-lbl {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,.18);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .marcas-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+    }
+    .marca-item {
+      border: 1px solid rgba(247,244,239,.06);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 64px;
+      transition: border-color .2s, background .2s;
+    }
+    .marca-item:hover { border-color: rgba(247,244,239,.15); background: rgba(247,244,239,.03); }
+    .marca-item img {
+      max-width: 80px;
+      max-height: 32px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: .35;
+      transition: opacity .2s;
+    }
+    .marca-item:hover img { opacity: .6; }
+
+    /* ─── OFICINAS ───────────────────────────────────────── */
+    .oficinas {
+      padding: 108px 0;
+      border-top: 1px solid var(--linha);
+      border-bottom: 1px solid var(--linha);
+    }
+    .oficinas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--linha);
+      border-left: 1px solid var(--linha);
+      margin-top: 44px;
+    }
+    .oficina-card {
+      border-right: 1px solid var(--linha);
+      border-bottom: 1px solid var(--linha);
+      padding: 40px 32px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background .35s;
+      cursor: default;
+    }
+    .oficina-card:hover { background: var(--preto); }
+    .oficina-card:hover .oc-num   { color: var(--vermelho); }
+    .oficina-card:hover .oc-title { color: var(--creme); }
+    .oficina-card:hover .oc-desc  { color: rgba(247,244,239,.35); }
+    .oc-num {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      color: var(--cinza-claro);
+      transition: color .35s;
+    }
+    .oc-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      color: var(--preto);
+      transition: color .35s;
+    }
+    .oc-desc {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--cinza);
+      transition: color .35s;
+    }
+    @media (max-width: 768px) { .oficinas-grid { grid-template-columns: 1fr; } }
+
+    /* ─── CTA ────────────────────────────────────────────── */
+    .cta-strip {
+      background: var(--vermelho);
+      padding: 88px 0;
+    }
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .cta-inner h2 {
+      font-size: clamp(34px, 4vw, 60px);
+      letter-spacing: -.04em;
+      line-height: .98;
+      color: var(--creme);
+    }
+    .cta-inner p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(247,244,239,.5);
+      margin-top: 14px;
+      max-width: 340px;
+    }
+    .btn-cta {
+      background: var(--creme);
+      color: var(--vermelho);
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background .2s;
+    }
+    .btn-cta:hover { background: white; }
+    @media (max-width: 768px) { .cta-inner { flex-direction: column; align-items: flex-start; } }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--preto);
+      padding: 64px 0 32px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(247,244,239,.06);
+      margin-bottom: 24px;
+    }
+    .footer-logo img {
+      height: 34px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: .7;
+      margin-bottom: 14px;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(247,244,239,.3);
+      max-width: 220px;
+    }
+    .f-socials {
+      display: flex;
+      gap: 8px;
+      margin-top: 22px;
+    }
+    .f-social {
+      width: 32px; height: 32px;
+      border: 1px solid rgba(247,244,239,.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(247,244,239,.3);
+      transition: border-color .2s, color .2s;
+    }
+    .f-social:hover { border-color: var(--amarelo); color: var(--amarelo); }
+    .footer-col h4 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--creme);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col li a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(247,244,239,.32);
+      transition: color .2s;
+    }
+    .footer-col li a:hover { color: var(--creme); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 11.5px;
+      color: rgba(247,244,239,.18);
+      flex-wrap: wrap;
+    }
+    @media (max-width: 900px) {
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: span 2; }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: span 1; }
+    }
+
+    /* ─── WhatsApp ───────────────────────────────────────── */
+    .wa-btn {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      width: 50px; height: 50px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 400;
+      box-shadow: 0 3px 16px rgba(37,211,102,.3);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wa-btn:hover { transform: scale(1.1); box-shadow: 0 5px 22px rgba(37,211,102,.4); }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--creme); }
+    ::-webkit-scrollbar-thumb { background: rgba(26,22,20,.18); border-radius: 3px; }
+    :focus-visible { outline: 2px solid var(--vermelho); outline-offset: 3px; }
+  </style>
+</head>
+
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────── -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+
+      <a href="/" class="nav-logo">
+        <img src="/marca-trampulim-grande.png" alt="Grupo Trampulim" />
+      </a>
+
+      <ul class="nav-menu">
+        <!-- O Grupo com dropdown -->
+        <li class="nav-item">
+          <a href="/o-grupo-trampulim/historico" tabindex="0">
+            O Grupo
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="/o-grupo-trampulim/historico">Histórico</a>
+            <a href="/o-grupo-trampulim/ficha-tecnica">Ficha Técnica</a>
+            <a href="/o-grupo-trampulim/premios">Prêmios</a>
+            <a href="/o-grupo-trampulim/cronologia">Cronologia</a>
+          </div>
+        </li>
+
+        <!-- Repertório com dropdown -->
+        <li class="nav-item">
+          <a href="/repertorio/espetaculos" tabindex="0">
+            Repertório
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="/repertorio/espetaculos">Espetáculos</a>
+            <a href="/repertorio/intervencoes-e-numeros">Intervenções e Números</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="/nas-empresas">Nas Empresas</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/oficinas">Oficinas</a>
+        </li>
+
+        <!-- Extra, Extra com dropdown -->
+        <li class="nav-item">
+          <a href="/extra-extra/deposito-de-bobagens" tabindex="0">
+            Extra, Extra
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="/extra-extra/deposito-de-bobagens">Depósito de Bobagens</a>
+            <a href="/extra-extra/impeto">Ímpeto</a>
+          </div>
+        </li>
+      </ul>
+
+      <a href="/contato" class="nav-cta-btn">Contato</a>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div id="nav-drawer">
+  <div class="drawer-section">
+    <span class="drawer-section-title">O Grupo</span>
+    <a href="/o-grupo-trampulim/historico" class="drawer-sub-link">Histórico</a>
+    <a href="/o-grupo-trampulim/ficha-tecnica" class="drawer-sub-link">Ficha Técnica</a>
+    <a href="/o-grupo-trampulim/premios" class="drawer-sub-link">Prêmios</a>
+    <a href="/o-grupo-trampulim/cronologia" class="drawer-sub-link">Cronologia</a>
+  </div>
+  <div class="drawer-section">
+    <span class="drawer-section-title">Repertório</span>
+    <a href="/repertorio/espetaculos" class="drawer-sub-link">Espetáculos</a>
+    <a href="/repertorio/intervencoes-e-numeros" class="drawer-sub-link">Intervenções e Números</a>
+  </div>
+  <a href="/nas-empresas" class="drawer-link">Nas Empresas</a>
+  <a href="/oficinas" class="drawer-link">Oficinas</a>
+  <div class="drawer-section">
+    <span class="drawer-section-title">Extra, Extra</span>
+    <a href="/extra-extra/deposito-de-bobagens" class="drawer-sub-link">Depósito de Bobagens</a>
+    <a href="/extra-extra/impeto" class="drawer-sub-link">Ímpeto</a>
+  </div>
+  <a href="/contato" class="drawer-cta">Contato</a>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Belo Horizonte · Desde 1994</p>
+    <h1 class="hero-title">
+      Palhaçaria,<br/>
+      <span class="accent">música</span><br/>
+      e improviso
+    </h1>
+    <p class="hero-lead">
+      Com nariz e sapato na bagagem, o Grupo Trampulim criou, nos últimos 30 anos, uma porção mágica de espetáculos.
+    </p>
+    <div class="hero-actions">
+      <a href="/repertorio/espetaculos" class="btn-solid">
+        Ver repertório
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="/contato" class="btn-text">
+        Fale conosco
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <img src="/a-rainha-procura-pri-garcia.jpg" alt="A Rainha Procura — Grupo Trampulim" />
+    <div class="hero-badge">
+      <strong>30+</strong>
+      <span>Anos em cena</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TICKER ─────────────────────────────────────────────── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">A Rainha Procura<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Casamento<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Invasão de Palhaços<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Manotas Musicais<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Uma Surpresa para Benedita<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Partida<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Pratubatê<span class="ticker-sep"></span></span>
+    <span class="ticker-item">19 Prêmios<span class="ticker-sep"></span></span>
+    <span class="ticker-item">870+ Apresentações<span class="ticker-sep"></span></span>
+    <span class="ticker-item">A Rainha Procura<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Casamento<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Invasão de Palhaços<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Manotas Musicais<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Uma Surpresa para Benedita<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Partida<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Pratubatê<span class="ticker-sep"></span></span>
+    <span class="ticker-item">19 Prêmios<span class="ticker-sep"></span></span>
+    <span class="ticker-item">870+ Apresentações<span class="ticker-sep"></span></span>
+  </div>
+</div>
+
+<!-- ─── STATS ──────────────────────────────────────────────── -->
+<section>
+  <div class="stats-row">
+    <div class="stat-cell reveal">
+      <div class="stat-num">30+</div>
+      <div class="stat-lbl">Anos de trajetória</div>
+    </div>
+    <div class="stat-cell reveal reveal-d1">
+      <div class="stat-num">870+</div>
+      <div class="stat-lbl">Apresentações realizadas</div>
+    </div>
+    <div class="stat-cell reveal reveal-d2">
+      <div class="stat-num">21</div>
+      <div class="stat-lbl">Espetáculos criados</div>
+    </div>
+    <div class="stat-cell reveal reveal-d3">
+      <div class="stat-num">19</div>
+      <div class="stat-lbl">Prêmios e reconhecimentos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTRO ──────────────────────────────────────────────── -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="eyebrow reveal">O Grupo</div>
+      <div class="intro-body reveal reveal-d1">
+        <h2>Arte que <em>move</em>,<br/>circo que <em>fala</em>.</h2>
+        <p>
+          Fundado em 1994 em Belo Horizonte, o Grupo Trampulim constrói há três décadas uma linguagem própria que atravessa o circo, o teatro e a música — sempre com rigor artístico e generosidade com o público.
+        </p>
+        <p>
+          Prêmio Nacional das Artes da Brincadeira 2025 (PNAB), o grupo já se apresentou em festivais no Brasil, Argentina, Uruguai e Europa.
+        </p>
+        <a href="/o-grupo-trampulim/historico" class="link-ul">
+          Conheça nossa história
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ESPETÁCULOS ────────────────────────────────────────── -->
+<section class="shows">
+  <div class="container">
+    <div class="section-bar reveal">
+      <h2>Nossos Espetáculos</h2>
+      <a href="/repertorio/espetaculos" class="link-sm">
+        Ver todos
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="shows-grid">
+
+    <div class="show-card featured">
+      <div class="show-img">
+        <img src="/a-rainha-procura-pri-garcia.jpg" alt="A Rainha Procura" />
+      </div>
+      <div class="show-info">
+        <span class="show-tag">Estreia 2024</span>
+        <h3 class="show-name">A Rainha Procura</h3>
+        <p class="show-desc">Espetáculo familiar inspirado no xadrez. Uma rainha em luto sai em busca de peças para restaurar o seu reino.</p>
+        <span class="show-credit">© Pri Garcia</span>
+        <div class="show-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-img">
+        <img src="/casamento-dsc08554.jpg" alt="Casamento" />
+      </div>
+      <div class="show-info">
+        <span class="show-tag">Repertório</span>
+        <h3 class="show-name">Casamento</h3>
+        <p class="show-desc">O casamento como terreno fértil para a comédia.</p>
+        <span class="show-credit">© Lina Mintz</span>
+        <div class="show-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-img">
+        <img src="/invasao-bs-fotografias.jpg" alt="Invasão de Palhaços" />
+      </div>
+      <div class="show-info">
+        <span class="show-tag">Repertório</span>
+        <h3 class="show-name">Invasão de Palhaços</h3>
+        <p class="show-desc">Performance de rua que transforma qualquer lugar em palco.</p>
+        <span class="show-credit">© BS Fotografias</span>
+        <div class="show-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-img">
+        <img src="/manotas-arnaldo-sete.jpg" alt="Manotas Musicais" />
+      </div>
+      <div class="show-info">
+        <span class="show-tag">Repertório</span>
+        <h3 class="show-name">Manotas Musicais</h3>
+        <p class="show-desc">Benedita e Sabonete tentam apresentar um concerto clássico improvável.</p>
+        <span class="show-credit">© Arnaldo Sete</span>
+        <div class="show-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-img">
+        <img src="/uma-surpresa-netum-lima.jpg" alt="Uma Surpresa Para Benedita" />
+      </div>
+      <div class="show-info">
+        <span class="show-tag">Repertório</span>
+        <h3 class="show-name">Uma Surpresa Para Benedita</h3>
+        <p class="show-desc">Uma palhaça devotada prepara um jantar especial.</p>
+        <span class="show-credit">© Netum Lima</span>
+        <div class="show-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-card">
+      <div class="show-img">
+        <img src="/partida-tamas-bodolay-3.jpg" alt="Partida" />
+      </div>
+      <div class="show-info">
+        <span class="show-tag">Repertório</span>
+        <h3 class="show-name">Partida</h3>
+        <p class="show-desc">Uma investigação poética sobre relações fraturadas e identidade.</p>
+        <span class="show-credit">© Tamás Bodolay</span>
+        <div class="show-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-card last">
+      <div class="show-img">
+        <img src="/pratubate-andre-fossati.jpg" alt="Pratubatê" />
+      </div>
+      <div class="show-info">
+        <span class="show-tag">Corporativo · Interativo</span>
+        <h3 class="show-name">Pratubatê</h3>
+        <p class="show-desc">Show de percussão interativo onde cada espectador recebe um tambor e assume o papel de protagonista.</p>
+        <span class="show-credit">© André Fossati</span>
+        <div class="show-arrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── VÍDEO DESTAQUE ─────────────────────────────────────── -->
+<section class="video-block">
+  <div class="video-inner">
+    <div class="video-copy">
+      <p class="video-eyebrow">Nas Empresas · Destaque</p>
+      <h2 class="video-title">Pratubatê<br/>Stellantis</h2>
+      <p class="video-desc">
+        Uma experiência única de ritmo e energia para eventos corporativos. O Pratubatê transforma qualquer ambiente em um happening coletivo de percussão e improviso.
+      </p>
+      <a href="/nas-empresas" class="btn-play">
+        <span class="play-ring">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+        Conhecer o Pratubatê
+      </a>
+    </div>
+    <div class="video-embed">
+      <iframe
+        src="https://www.youtube.com/embed/EEJ479If97o"
+        title="Pratubatê Stellantis — Grupo Trampulim"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EMPRESAS ───────────────────────────────────────────── -->
+<section class="empresas">
+  <div class="container">
+    <div class="empresas-grid">
+      <div class="empresas-visual reveal">
+        <div class="empresas-photo">
+          <img src="/galeria/pcorp-g1.jpg" alt="Pratubatê corporativo — Grupo Trampulim" />
+        </div>
+        <div class="empresas-badge">
+          <strong>26+</strong>
+          <small>Marcas atendidas</small>
+        </div>
+      </div>
+      <div class="empresas-copy reveal reveal-d1">
+        <h2>Arte que<br/>conecta<br/>equipes</h2>
+        <p>
+          Há mais de 30 anos criamos conexões fortes de um jeito leve e divertido por meio da arte. Usamos a energia das artes cênicas e da música para desenvolver comunicação, criatividade, empatia e colaboração.
+        </p>
+        <ul class="services">
+          <li>Pratubatê — percussão coletiva interativa</li>
+          <li>Trampulimprovisa — teatro de improviso</li>
+          <li>Performances personalizadas</li>
+        </ul>
+        <a href="/nas-empresas" class="btn-solid">Saiba mais</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARCAS ─────────────────────────────────────────────── -->
+<section class="marcas">
+  <div class="container">
+    <p class="marcas-lbl">Empresas que já viveram a experiência</p>
+    <div class="marcas-grid">
+      <div class="marca-item"><img src="/marcas/stellantis.png" alt="Stellantis" /></div>
+      <div class="marca-item"><img src="/marcas/petrobras.png" alt="Petrobras" /></div>
+      <div class="marca-item"><img src="/marcas/vale.png" alt="Vale" /></div>
+      <div class="marca-item"><img src="/marcas/mercadolivre.png" alt="Mercado Livre" /></div>
+      <div class="marca-item"><img src="/marcas/arcelormittal.png" alt="ArcelorMittal" /></div>
+      <div class="marca-item"><img src="/marcas/unimed.png" alt="Unimed" /></div>
+      <div class="marca-item"><img src="/marcas/cemig.png" alt="Cemig" /></div>
+      <div class="marca-item"><img src="/marcas/usiminas.png" alt="Usiminas" /></div>
+      <div class="marca-item"><img src="/marcas/sicoob.png" alt="Grupo Sicoob" /></div>
+      <div class="marca-item"><img src="/marcas/localiza.png" alt="Localiza" /></div>
+      <div class="marca-item"><img src="/marcas/energisa.png" alt="Energisa" /></div>
+      <div class="marca-item"><img src="/marcas/globo.png" alt="Grupo Globo" /></div>
+      <div class="marca-item"><img src="/marcas/thyssenkrupp.png" alt="Thyssenkrupp" /></div>
+      <div class="marca-item"><img src="/marcas/vli.png" alt="VLI" /></div>
+      <div class="marca-item"><img src="/marcas/copasa.png" alt="Copasa" /></div>
+      <div class="marca-item"><img src="/marcas/anglogold.png" alt="AngloGold Ashanti" /></div>
+      <div class="marca-item"><img src="/marcas/hermespardini.png" alt="Hermes Pardini" /></div>
+      <div class="marca-item"><img src="/marcas/hotmart.png" alt="Hotmart" /></div>
+      <div class="marca-item"><img src="/marcas/fornodeminas.png" alt="Forno de Minas" /></div>
+      <div class="marca-item"><img src="/marcas/sympla.png" alt="Sympla" /></div>
+      <div class="marca-item"><img src="/marcas/gerdau.png" alt="Gerdau" /></div>
+      <div class="marca-item"><img src="/marcas/natura.png" alt="Natura" /></div>
+      <div class="marca-item"><img src="/marcas/sesc.png" alt="Sesc" /></div>
+      <div class="marca-item"><img src="/marcas/sebrae.png" alt="Sebrae" /></div>
+      <div class="marca-item"><img src="/marcas/pirelli.png" alt="Pirelli" /></div>
+      <div class="marca-item"><img src="/marcas/fiat.png" alt="Fiat" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OFICINAS ──────────────────────────────────────────── -->
+<section class="oficinas">
+  <div class="container">
+    <div class="section-bar reveal">
+      <h2>Oficinas</h2>
+      <a href="/oficinas" class="link-sm">
+        Ver programa
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <p style="font-size:15px;font-weight:300;color:var(--cinza);margin-bottom:8px;">Formação em palhaço, improvisação e intervenção de rua. Para atores, estudantes e artistas de circo.</p>
+    <div class="oficinas-grid">
+      <div class="oficina-card reveal">
+        <span class="oc-num">01</span>
+        <h3 class="oc-title">O Jogo do Palhaço – Estado</h3>
+        <p class="oc-desc">Investigação prática do estado cômico e da presença cênica através do universo do palhaço contemporâneo.</p>
+      </div>
+      <div class="oficina-card reveal reveal-d1">
+        <span class="oc-num">02</span>
+        <h3 class="oc-title">Invenção da Invasão</h3>
+        <p class="oc-desc">Metodologia de criação de espetáculos de rua e intervenções urbanas a partir da cultura circense e teatral.</p>
+      </div>
+      <div class="oficina-card reveal reveal-d2">
+        <span class="oc-num">03</span>
+        <h3 class="oc-title">Trampulimpro</h3>
+        <p class="oc-desc">Teatro de improviso com técnicas do circo — presença, escuta, jogo e criação coletiva em tempo real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ────────────────────────────────────────────────── -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2>Vamos criar<br/>algo juntos?</h2>
+        <p>Espetáculos, eventos corporativos, festivais, oficinas — fale com a gente.</p>
+      </div>
+      <a href="/contato" class="btn-cta">Entrar em contato</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="/marca-trampulim-grande.png" alt="Grupo Trampulim" />
+        </div>
+        <p>Circo, teatro e palhaçaria desde 1994.<br/>Belo Horizonte – MG, Brasil.</p>
+        <div class="f-socials">
+          <a href="https://www.instagram.com/trampulim" class="f-social" aria-label="Instagram" target="_blank" rel="noopener">Ig</a>
+          <a href="https://www.facebook.com/GrupoTrampulim" class="f-social" aria-label="Facebook" target="_blank" rel="noopener">Fb</a>
+          <a href="https://www.youtube.com/GrupoTrampulim" class="f-social" aria-label="YouTube" target="_blank" rel="noopener">Yt</a>
+          <a href="https://www.linkedin.com/company/grupo-trampulim/" class="f-social" aria-label="LinkedIn" target="_blank" rel="noopener">Li</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>O Grupo</h4>
+        <ul>
+          <li><a href="/o-grupo-trampulim/historico">Histórico</a></li>
+          <li><a href="/o-grupo-trampulim/ficha-tecnica">Ficha Técnica</a></li>
+          <li><a href="/o-grupo-trampulim/premios">Prêmios</a></li>
+          <li><a href="/o-grupo-trampulim/cronologia">Cronologia</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Repertório</h4>
+        <ul>
+          <li><a href="/repertorio/espetaculos">Espetáculos</a></li>
+          <li><a href="/repertorio/intervencoes-e-numeros">Intervenções</a></li>
+          <li><a href="/nas-empresas">Nas Empresas</a></li>
+          <li><a href="/oficinas">Oficinas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Extra</h4>
+        <ul>
+          <li><a href="/extra-extra/deposito-de-bobagens">Depósito de Bobagens</a></li>
+          <li><a href="/extra-extra/impeto">Ímpeto</a></li>
+          <li><a href="/contato">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Grupo Trampulim de Circo e Teatro. Todos os direitos reservados.</span>
+      <span>contato@trampulim.com.br</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/5531986891687" class="wa-btn" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+  // Nav scroll shadow
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Mobile hamburger
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('nav-drawer');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Fechar drawer ao clicar em link
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Fechar drawer ao pressionar Esc
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      hamburger.focus();
+    }
+  });
+
+  // Reveal on scroll (IntersectionObserver)
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const equipo = [
+  { nome: 'Tiago Mafra', personagem: 'Sabonete', funcao: 'Payaso, dirección, músico, co-creador' },
+  { nome: 'Adriana Morales', personagem: 'Benedita Jacarandá', funcao: 'Payasa, dirección artística, investigación, producción' },
+  { nome: 'Poliana Tuchia', personagem: 'Socorro', funcao: 'Payasa, actriz, músico, gestión de contenido (desde 2003)' },
+  { nome: 'Chaya Vazquez', personagem: 'Conselhos', funcao: 'Payasa, percusionista, sonidista' },
+  { nome: 'Rafael Protzner', personagem: 'Alfinete', funcao: 'Payaso, actor, investigador teatral' },
+  { nome: 'Isabela Leite', personagem: 'Batata Doce', funcao: 'Payasa, percusionista y producción (desde 2011)' },
+  { nome: 'Marcos Nascimento', personagem: 'Môishôi', funcao: 'Payaso, dirección de escena y técnico (15+ años)' },
+];
+
+const apoio = [
+  { nome: 'Flávia Mafra', funcao: 'Iluminación, fotografía, finanzas (desde 2000)' },
+  { nome: 'Polyane Santos', funcao: 'Producción y atención (desde 2016)' },
+  { nome: 'Maria Carolina Campos', funcao: 'Consultora de proyectos culturales (desde 2007)' },
+  { nome: 'Márcio Júnior', funcao: 'Equipo técnico (desde 2003)' },
+];
+---
+
+<Layout title="Ficha Técnica" description="El equipo completo del Grupo Trampulim — artistas, personajes y colaboradores." lang="es">
+  <section class="container-site py-16 max-w-4xl">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Grupo Trampulim</p>
+    <h1 class="section-title">Ficha Técnica</h1>
+    <p class="text-gray-500 mb-10 max-w-xl">
+      "La unión hace la fuerza" es el principio que mantiene al grupo unido durante tres décadas, produciendo circo,
+      teatro y formación artística por Brasil y el mundo.
+    </p>
+
+    <h2 class="text-2xl font-display mb-6">Elenco artístico</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+      {equipo.map((m) => (
+        <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
+          <p class="font-semibold text-lg">{m.nome}</p>
+          <p class="text-trampulim-red text-sm font-medium">{m.personagem}</p>
+          <p class="text-gray-500 text-sm mt-1">{m.funcao}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="text-2xl font-display mb-6">Equipo de apoyo</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {apoio.map((m) => (
+        <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm">
+          <p class="font-semibold">{m.nome}</p>
+          <p class="text-gray-500 text-sm mt-1">{m.funcao}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

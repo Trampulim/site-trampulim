@@ -1,0 +1,50 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const shows = [
+  { ano: '2024', titulo: 'A Rainha Procura', concepção: 'César Gouvêa & Elisa Rossin', direção: 'César Gouvêa', elenco: 'Adriana Morales, Tiago Mafra, Rafael Protzner & Ricardo Ikier' },
+  { ano: '2023', titulo: 'Casamento', concepção: 'Grupo Trampulim', direção: 'José Luis Saldaña', elenco: 'Adriana Morales & Tiago Mafra' },
+  { ano: '2022', titulo: 'Partida', concepção: 'Adriana Morales', direção: 'Tiago Mafra', elenco: 'Adriana Morales' },
+  { ano: '2019', titulo: 'Academia Brasileira de Bestas', concepção: 'Grupo Trampulim', direção: 'Rafael Protzner', elenco: 'Adriana Morales, Poliana Tuchia & Tiago Mafra' },
+  { ano: '2017', titulo: 'Acorda', concepção: 'Grupo Trampulim', direção: 'Paula Manata', elenco: 'Adriana Morales, Poliana Tuchia, Chaya Vazquez, Isabela Leite & Tiago Mafra' },
+  { ano: '2013', titulo: 'PupuRIR', concepção: 'Grupo Trampulim', direção: 'Rafael Protzner & Tiago Mafra', elenco: 'Adriana Morales, Poliana Tuchia, Rafael Protzner & Tiago Mafra' },
+  { ano: '2011', titulo: 'Experimento', concepção: 'Grupo Trampulim', direção: 'Mariana Muniz & Grupo Trampulim', elenco: 'Adriana Morales, Poliana Tuchia, Chaya Vazquez, Rafael Protzner & Tiago Mafra' },
+  { ano: '2009', titulo: 'Risco e Riso', concepção: 'Grupo Trampulim', direção: 'Mariana Muniz', elenco: 'Adriana Morales, Poliana Tuchia, Chaya Vazquez, Rafael Protzner & Tiago Mafra' },
+  { ano: '2008', titulo: 'Manotas Musicais', concepção: 'Adriana Morales & Tiago Mafra', direção: 'Fernando Escrich', elenco: 'Adriana Morales, Isabela Leite, Marcos Nascimento, Rafael Protzner & Tiago Mafra' },
+  { ano: '2008', titulo: 'Pratubatê', concepção: 'Adriana Morales & Tiago Mafra', direção: 'Adriana Morales & Tiago Mafra', elenco: 'Adriana Morales, Poliana Tuchia, Marcos Henrique, Isabela Leite & Tiago Mafra' },
+  { ano: '2007', titulo: 'O Labirinto', concepção: 'Grupo Trampulim', direção: 'Tiago Gambogi', elenco: 'Adriana Morales & Tiago Mafra' },
+  { ano: '2006', titulo: 'Invasão de Palhaços', concepção: 'Adriana Morales & Tiago Mafra', direção: 'Collective', elenco: 'Adriana Morales, Chaya Vazquez, Poliana Tuchia, Rafael Protzner & Tiago Mafra' },
+  { ano: '2003', titulo: 'Uma Surpresa Para Benedita', concepção: 'Adriana Morales & Tiago Mafra', direção: 'Rogério Sette Câmara, Adriana Morales & Tiago Mafra', elenco: 'Adriana Morales & Tiago Mafra' },
+  { ano: '2002', titulo: 'Álbum de Família', concepção: 'André Miglio', direção: 'Paula Manata', elenco: 'André Miglio, Roberta Manata, Tana Guimarães & others' },
+  { ano: '2001', titulo: 'A Ponte', concepção: 'Rodrigo Matheus', direção: 'Rodrigo Matheus', elenco: 'Adriana Morales, Tiago Mafra & others' },
+  { ano: '1999', titulo: 'Oraprocircus', concepção: 'Grupo Trampulim', direção: 'Geraldim Miranda', elenco: 'Grupo Trampulim' },
+  { ano: '1997', titulo: 'Panis et Circensis', concepção: 'Grupo Trampulim', direção: 'Geraldim Miranda', elenco: 'Grupo Trampulim' },
+  { ano: '1996', titulo: 'O Cortejo', concepção: 'Grupo Trampulim', direção: 'Gabriel Guimard', elenco: 'Grupo Trampulim & Grupo Armatrux' },
+  { ano: '1995', titulo: 'O Filme', concepção: 'Grupo Trampulim', direção: 'Rogério Sette Câmara', elenco: 'Grupo Trampulim' },
+  { ano: '1994', titulo: 'O Circo', concepção: 'Grupo Trampulim', direção: 'Rogério Sette Câmara', elenco: 'Grupo Trampulim' },
+];
+---
+
+<Layout title="Timeline" description="All of Grupo Trampulim's shows — 30 years of scenic creations." lang="en">
+  <section class="container-site py-16 max-w-4xl">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Grupo Trampulim</p>
+    <h1 class="section-title">Timeline</h1>
+    <p class="text-gray-500 mb-10">21 shows over 30 years of history.</p>
+
+    <div class="space-y-4">
+      {shows.map((m) => (
+        <div class="grid grid-cols-[4rem_1fr] gap-4 items-start border-b border-gray-100 pb-4">
+          <span class="text-trampulim-red font-semibold text-sm pt-0.5">{m.ano}</span>
+          <div>
+            <p class="font-display text-lg">{m.titulo}</p>
+            <p class="text-gray-500 text-sm mt-1">
+              <span class="font-medium text-gray-600">Concept:</span> {m.concepção} ·
+              <span class="font-medium text-gray-600"> Direction:</span> {m.direção}
+            </p>
+            <p class="text-gray-400 text-sm mt-0.5">{m.elenco}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

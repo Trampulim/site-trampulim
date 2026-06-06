@@ -1,0 +1,256 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Carrossel from '../../components/Carrossel.astro';
+
+const espetaculos = [
+  // 2024
+  {
+    id: 'a-rainha-procura',
+    titulo: 'A Rainha Procura',
+    videoId: 'Q4gw3XRUR24',
+    sinopse: 'Espetáculo familiar inspirado no xadrez. Uma rainha em luto parte em busca de peças para restaurar o seu reino. Na versão do Trampulim, Benedita Jacarandá vive a Rainha desiludida, enquanto Sabonete e Alfinete interpretam os palhaços. O convidado Ricardo Ikier faz o papel do Peão. A plateia terá a decisão final de cada apresentação em suas mãos.',
+    fotos: [
+      { src: '/galeria/rainha-g2.jpg', credito: 'Pri Garcia' },
+      { src: '/galeria/rainha-g1.jpg', credito: 'Pri Garcia' },
+      { src: '/galeria/rainha-g3.jpg', credito: 'Pri Garcia' },
+      { src: '/galeria/rainha-g4.jpg', credito: 'Pri Garcia' },
+      { src: '/galeria/rainha-g5.jpg', credito: 'Pri Garcia' },
+    ],
+  },
+  // 2023
+  {
+    id: 'casamento',
+    titulo: 'Casamento',
+    videoId: 'sgsRJVKdxd8',
+    sinopse: 'Benedita e Sabonete não conhecem nenhuma receita, fórmula, método ou segredo para um casamento feliz e duradouro, mas mergulham de cabeça nesse tema desafiador e garantem: o casamento é um terreno fértil para construir histórias, às vezes boas de viver e, às vezes, só boas de contar mesmo. Dirigido pelo mexicano José Luis Saldaña, com assistência de Rafael Protzner.',
+    fotos: [
+      { src: '/galeria/casamento-g1.jpg', credito: 'Lina Mintz' },
+      { src: '/galeria/casamento-g2.jpg', credito: 'Lina Mintz' },
+      { src: '/galeria/casamento-g3.jpg', credito: 'Lina Mintz' },
+      { src: '/galeria/casamento-g4.jpg', credito: 'Lina Mintz' },
+      { src: '/galeria/casamento-g5.jpg', credito: 'Lina Mintz' },
+      { src: '/galeria/casamento-g6.jpg', credito: 'Lina Mintz' },
+    ],
+  },
+  // 2022
+  {
+    id: 'partida',
+    titulo: 'Partida',
+    videoId: 'zmVabBp772s',
+    sinopse: 'Benedita Jacarandá foge do seu criador. Uma investigação poética sobre relações fraturadas, pertencimento e identidade. Solo de Adriana Morales com direção de Tiago Mafra. Premiado como Nova Dramaturgia pela Prefeitura de Belo Horizonte em 2022.',
+    fotos: [
+      { src: '/galeria/partida-g1.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g2.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g3.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g4.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g5.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g6.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g7.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g8.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g9.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g10.jpg', credito: 'Tamás Bodolay' },
+      { src: '/galeria/partida-g11.jpg', credito: 'Tamás Bodolay' },
+    ],
+  },
+  // 2009
+  {
+    id: 'manotas-musicais',
+    titulo: 'Manotas Musicais',
+    videoId: 'vBGLs2PI6Rc',
+    sinopse: 'Benedita e Sabonete resolveram que são músicos clássicos. Para isso convidam uma banda composta por três exímios paspalhos! O que era para ser um grande concerto se transforma em um caos musical delicioso — e o público vira a orquestra.',
+    fotos: [
+      { src: '/galeria/manotas-g1.jpg', credito: 'André Fossati' },
+      { src: '/galeria/manotas-g2.jpg', credito: 'André Fossati' },
+      { src: '/galeria/manotas-g3.jpg', credito: 'André Fossati' },
+      { src: '/galeria/manotas-g4.jpg', credito: 'Flávia Mafra' },
+      { src: '/galeria/manotas-g5.jpg', credito: 'Tamás Bodolay' },
+    ],
+  },
+  // 2008
+  {
+    id: 'pratubate',
+    titulo: 'Pratubatê',
+    videoId: '2ReYqDFvUA4',
+    sinopse: 'Quatro músico-improvisadores distribuem tambores para o público. Cada espectador recebe um instrumento e assume o papel de protagonista. Um show de percussão interativa que usa a música como linguagem de conexão coletiva — cada apresentação é única e irrepetível.',
+    fotos: [
+      { src: '/galeria/pratu-g1.jpg', credito: 'Isabela Leite' },
+      { src: '/galeria/pratu-g2.jpg', credito: 'André Fossati' },
+      { src: '/galeria/pratu-g3.jpg', credito: 'André Fossati' },
+      { src: '/galeria/pratu-g4.jpg', credito: 'André Fossati' },
+      { src: '/galeria/pratu-g5.jpg', credito: 'André Fossati' },
+      { src: '/galeria/pratu-g6.jpg', credito: 'André Fossati' },
+      { src: '/galeria/pratu-g7.jpg', credito: 'André Fossati' },
+    ],
+  },
+  // 2006
+  {
+    id: 'invasao-de-palhacos',
+    titulo: 'Invasão de Palhaços',
+    videoId: 'm6whfVQGHzk',
+    sinopse: 'Palhaços invadem espaços inesperados — ruas, praças, feiras e eventos — armados com instrumentos e técnicas de improvisação. Uma performance de rua que transforma qualquer espaço em palco e qualquer transeúnte em cúmplice involuntário.',
+    fotos: [
+      { src: '/galeria/invasao-g1.jpg', credito: 'Igor Cerqueira' },
+      { src: '/galeria/invasao-g2.jpg', credito: 'Igor Cerqueira' },
+      { src: '/galeria/invasao-g3.jpg', credito: 'Augusto Barros' },
+      { src: '/galeria/invasao-g4.jpg', credito: 'Rafael Protzner' },
+      { src: '/galeria/invasao-g5.jpg', credito: 'Bruno Guimarães' },
+      { src: '/galeria/invasao-g6.jpg', credito: 'Bruno Guimarães' },
+    ],
+  },
+  // 2003
+  {
+    id: 'uma-surpresa-para-benedita',
+    titulo: 'Uma Surpresa Para Benedita',
+    videoId: 'ZdL-08mI490',
+    sinopse: 'Uma palhaça devotada prepara um jantar especial. Os dois se deparam com toda a sorte de imprevistos que revelam, com humor e afeto, as dinâmicas de um relacionamento. O espetáculo de pesquisa em palhaço que deu origem à trajetória artística do grupo — em cartaz desde 2003.',
+    fotos: [
+      { src: '/galeria/benedita-g1.jpg', credito: 'Netum Lima' },
+      { src: '/galeria/benedita-g2.jpg', credito: 'João Castilho' },
+      { src: '/galeria/benedita-g3.jpg', credito: 'João Castilho' },
+      { src: '/galeria/benedita-g4.jpg', credito: 'Agência Viewtiful' },
+    ],
+  },
+];
+
+// Fichas técnicas por espetáculo (id → lista de pares rótulo/valor)
+const fichas: Record<string, { rotulo: string; valor: string }[]> = {
+  'a-rainha-procura': [
+    { rotulo: 'Concepção', valor: 'César Gouvêa e Elisa Rossin' },
+    { rotulo: 'Direção Geral', valor: 'César Gouvêa' },
+    { rotulo: 'Texto', valor: 'Rhena de Faria, Cláudio Thebas, Denis Goyos, Davi Taiyu, Álvaro Lages, César Gouvêa e Grupo Trampulim' },
+    { rotulo: 'Elenco', valor: 'Adriana Morales, Rafael Protzner, Tiago Mafra e Ricardo Ikier' },
+    { rotulo: 'Direção de Arte', valor: 'Elisa Rossin' },
+    { rotulo: 'Trilha Sonora', valor: 'Álvaro Lages e Caio Juliano' },
+    { rotulo: 'Iluminação', valor: 'Marcel Gilber · Flávia Mafra' },
+    { rotulo: 'Realização', valor: 'Grupo Trampulim' },
+  ],
+  'casamento': [
+    { rotulo: 'Concepção e Coordenação Geral', valor: 'Grupo Trampulim' },
+    { rotulo: 'Direção Artística', valor: 'José Luis Saldaña' },
+    { rotulo: 'Assistente de Direção', valor: 'Rafael Protzner' },
+    { rotulo: 'Elenco', valor: 'Adriana Morales e Tiago Mafra' },
+    { rotulo: 'Músico', valor: 'Rafael Macedo' },
+    { rotulo: 'Iluminação', valor: 'Flávia Mafra' },
+    { rotulo: 'Figurino e Cenografia', valor: 'Roberta Mesquita' },
+    { rotulo: 'Realização', valor: 'Grupo Trampulim' },
+  ],
+  'invasao-de-palhacos': [
+    { rotulo: 'Concepção', valor: 'Adriana Morales e Tiago Mafra' },
+    { rotulo: 'Direção', valor: 'Coletiva' },
+    { rotulo: 'Elenco', valor: 'Adriana Morales, Chaya Vazquez, Poliana Tuchia, Rafael Protzner e Tiago Mafra' },
+    { rotulo: 'Realização', valor: 'Grupo Trampulim' },
+  ],
+  'manotas-musicais': [
+    { rotulo: 'Concepção', valor: 'Adriana Morales e Tiago Mafra' },
+    { rotulo: 'Direção', valor: 'Fernando Escrich' },
+    { rotulo: 'Elenco', valor: 'Adriana Morales, Isabela Leite, Marcos Nascimento, Rafael Protzner e Tiago Mafra' },
+    { rotulo: 'Realização', valor: 'Grupo Trampulim' },
+  ],
+  'uma-surpresa-para-benedita': [
+    { rotulo: 'Concepção', valor: 'Adriana Morales e Tiago Mafra' },
+    { rotulo: 'Direção', valor: 'Rogério Sette Câmara, Adriana Morales e Tiago Mafra' },
+    { rotulo: 'Assistência de Direção', valor: 'Ana Virgínia Guimarães e Sérgio Penna' },
+    { rotulo: 'Elenco', valor: 'Adriana Morales e Tiago Mafra' },
+    { rotulo: 'Cenário e Figurino', valor: 'Tana Guimarães' },
+    { rotulo: 'Iluminação', valor: 'Cristiano Aguiar' },
+    { rotulo: 'Trilha Sonora', valor: 'Anderson Guerra, Tiago Mafra e Chaya Vazquez' },
+    { rotulo: 'Realização', valor: 'Grupo Trampulim' },
+  ],
+  'partida': [
+    { rotulo: 'Atuação, dramaturgia e concepção', valor: 'Adriana Morales' },
+    { rotulo: 'Direção', valor: 'Tiago Mafra' },
+    { rotulo: 'Trilha Sonora', valor: 'Chaya Vazquez' },
+    { rotulo: 'Iluminação', valor: 'Flávia Mafra' },
+    { rotulo: 'Cenário e Figurino', valor: 'Ricca Costume' },
+    { rotulo: 'Coordenação de Produção', valor: 'Bela Leite' },
+    { rotulo: 'Realização', valor: 'Grupo Trampulim' },
+  ],
+  'pratubate': [
+    { rotulo: 'Concepção e Roteiro', valor: 'Adriana Morales e Tiago Mafra' },
+    { rotulo: 'Direção Artística', valor: 'Adriana Morales' },
+    { rotulo: 'Direção Musical', valor: 'Tiago Mafra' },
+    { rotulo: 'Elenco', valor: 'Adriana Morales, Marcos Henrique, Isabela Leite e Tiago Mafra' },
+    { rotulo: 'Cenografia', valor: 'Adriana Morales, Flávia Mafra e Tiago Mafra' },
+    { rotulo: 'Figurino', valor: 'Júnia Melilo' },
+    { rotulo: 'Iluminação', valor: 'Cristiano Aguiar' },
+    { rotulo: 'Realização', valor: 'Grupo Trampulim' },
+  ],
+};
+---
+
+<Layout
+  title="Espetáculos"
+  description="As produções teatrais do Grupo Trampulim — palhaçaria, teatro e performance para todos os públicos."
+>
+  <section class="container-site py-16">
+    <p class="eyebrow mb-2">Repertório</p>
+    <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">Espetáculos</h1>
+    <p class="text-trampulim-text/60 max-w-xl mb-16 leading-relaxed">
+      Com nariz e sapato na bagagem, o Grupo Trampulim criou, nos últimos 30 anos, uma porção mágica de espetáculos.
+    </p>
+
+    <div class="space-y-24">
+      {espetaculos.map((e, i) => (
+        <article id={e.id} class="scroll-mt-20">
+          <h2 class="text-2xl md:text-3xl font-display font-bold mb-6">{e.titulo}</h2>
+
+          <!-- Vídeo + Carrossel lado a lado no desktop -->
+          <div class={`grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 ${i % 2 === 0 ? '' : 'md:[direction:rtl]'}`}>
+
+            <!-- Vídeo release -->
+            <div class="aspect-video overflow-hidden shadow-lg md:[direction:ltr]">
+              <iframe
+                src={`https://www.youtube.com/embed/${e.videoId}`}
+                title={`${e.titulo} — Grupo Trampulim`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                class="w-full h-full"
+                loading="lazy"
+              ></iframe>
+            </div>
+
+            <!-- Carrossel de fotos -->
+            <div class="md:[direction:ltr]">
+              <Carrossel id={e.id} fotos={e.fotos} />
+            </div>
+          </div>
+
+          <!-- Sinopse -->
+          <p class="text-trampulim-text/70 leading-relaxed max-w-2xl">{e.sinopse}</p>
+
+          <!-- Ficha técnica expansível -->
+          {fichas[e.id] && (
+            <details class="group mt-5 max-w-2xl border border-gray-200 rounded-xl overflow-hidden">
+              <summary class="cursor-pointer list-none px-5 py-3 flex items-center justify-between font-semibold text-sm text-trampulim-dark hover:bg-gray-50 transition-colors">
+                <span>Saiba mais — Ficha técnica</span>
+                <span class="text-trampulim-red transition-transform group-open:rotate-45 text-lg leading-none">+</span>
+              </summary>
+              <dl class="px-5 pb-5 pt-1 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+                {fichas[e.id].map((f) => (
+                  <>
+                    <dt class="font-semibold text-gray-500">{f.rotulo}</dt>
+                    <dd class="text-trampulim-text/80">{f.valor}</dd>
+                  </>
+                ))}
+              </dl>
+            </details>
+          )}
+
+          <!-- CTA WhatsApp -->
+          <a
+            href={`https://wa.me/5531986891687?text=${encodeURIComponent(`Olá! Tenho interesse no espetáculo "${e.titulo}". Gostaria de mais informações.`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block mt-5 text-sm font-semibold text-trampulim-red hover:underline"
+          >
+            Solicitar informações →
+          </a>
+
+          {i < espetaculos.length - 1 && (
+            <hr class="mt-16 border-gray-100" />
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>

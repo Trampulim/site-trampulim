@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const workshops = [
+  {
+    titulo: 'The Clown Game – State',
+    tipo: 'Introduction',
+    descricao: 'An introduction to clown that dismantles preconceptions and equips artists with essential tools for scenic work. The clown state requires a specific logic — this workshop teaches that language through scenic games, practices, training, research and reflection.',
+    publicoAlvo: 'Actors, performers, circus and performing arts students at any level.',
+  },
+  {
+    titulo: 'Invention of the Invasion',
+    tipo: 'Street intervention',
+    descricao: 'Workshop for up to 30 artists. Participants receive practical tools to create improvised street interventions in everyday spaces. Covers the relationship with public space, the passer-by as involuntary accomplice and the art of presence in the unexpected.',
+    publicoAlvo: 'Circus, street and theatre artists interested in urban intervention.',
+  },
+  {
+    titulo: 'Trampulimpro Workshop',
+    tipo: 'Theatrical improvisation',
+    descricao: 'The combination of clown and theatrical improvisation as a practice for expanding scenic presence. The workshop emphasises physical exercises, spontaneity and comic expression, exploring what happens when the unexpected becomes an opportunity for creation.',
+    publicoAlvo: 'Performing arts professionals, theatre students and circus artists.',
+  },
+];
+---
+
+<Layout
+  title="Workshops"
+  description="Clown, improvisation and street intervention workshops by Grupo Trampulim for artists and performing arts students."
+  lang="en"
+>
+  <section class="container-site py-16">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Training</p>
+    <h1 class="section-title">Workshops</h1>
+    <p class="text-gray-500 max-w-xl mb-12">
+      Being a clown is a state that requires a specific logic. Grupo Trampulim's workshops teach that
+      language through scenic games, providing tools for artistic projects or personal development.
+    </p>
+
+    <div class="space-y-8">
+      {workshops.map((o) => (
+        <article class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+          <p class="text-trampulim-red text-xs font-semibold uppercase tracking-widest mb-1">{o.tipo}</p>
+          <h2 class="text-2xl font-display mb-3">{o.titulo}</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">{o.descricao}</p>
+          <p class="text-sm text-gray-400">
+            <span class="font-semibold text-gray-600">Target audience:</span> {o.publicoAlvo}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-gray-500 mb-6">Interested in hosting a Grupo Trampulim workshop?</p>
+      <a
+        href={`https://wa.me/5531986891687?text=${encodeURIComponent('Hello! I am interested in a Grupo Trampulim workshop. I would love more information.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+      >
+        Chat on WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,287 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Carrossel from '../../components/Carrossel.astro';
+
+const galeriaPratubate = [
+  { src: '/galeria/pcorp-g1.jpg', credito: 'João Bosco' },
+  { src: '/galeria/pcorp-g2.jpg', credito: 'João Bosco' },
+  { src: '/galeria/pcorp-g3.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g4.jpg', credito: 'Jackson Romanelli' },
+  { src: '/galeria/pcorp-g5.jpg', credito: 'Jackson Romanelli' },
+  { src: '/galeria/pcorp-g6.jpg', credito: 'Cecília / Rede Cidadã' },
+  { src: '/galeria/pcorp-g7.jpg', credito: 'Polyane Santos' },
+  { src: '/galeria/pcorp-g8.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g9.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g10.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g11.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g12.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g13.jpg', credito: 'Divulgação' },
+  { src: '/galeria/pcorp-g14.jpg', credito: 'Divulgação' },
+];
+
+const numbers = [
+  { valor: '243+', label: 'corporate events delivered' },
+  { valor: '247+', label: 'Pratubatê performances' },
+  { valor: '30+', label: 'years of experience' },
+  { valor: '650+', label: 'drums ready for your team' },
+];
+
+const clientes = [
+  { nome: 'Stellantis', logo: '/marcas/stellantis.png' },
+  { nome: 'Petrobras', logo: '/marcas/petrobras.png' },
+  { nome: 'Vale', logo: '/marcas/vale.png' },
+  { nome: 'Mercado Livre', logo: '/marcas/mercadolivre.png' },
+  { nome: 'ArcelorMittal', logo: '/marcas/arcelormittal.png' },
+  { nome: 'Unimed', logo: '/marcas/unimed.png' },
+  { nome: 'Cemig', logo: '/marcas/cemig.png' },
+  { nome: 'Usiminas', logo: '/marcas/usiminas.png' },
+  { nome: 'Grupo Sicoob', logo: '/marcas/sicoob.png' },
+  { nome: 'Localiza', logo: '/marcas/localiza.png' },
+  { nome: 'Energisa', logo: '/marcas/energisa.png' },
+  { nome: 'Grupo Globo', logo: '/marcas/globo.png' },
+  { nome: 'Thyssenkrupp', logo: '/marcas/thyssenkrupp.png' },
+  { nome: 'VLI', logo: '/marcas/vli.png' },
+  { nome: 'Copasa', logo: '/marcas/copasa.png' },
+  { nome: 'AngloGold Ashanti', logo: '/marcas/anglogold.png' },
+  { nome: 'Hermes Pardini', logo: '/marcas/hermespardini.png' },
+  { nome: 'Hotmart', logo: '/marcas/hotmart.png' },
+  { nome: 'Forno de Minas', logo: '/marcas/fornodeminas.png' },
+  { nome: 'Sympla', logo: '/marcas/sympla.png' },
+  { nome: 'Gerdau', logo: '/marcas/gerdau.png' },
+  { nome: 'Natura', logo: '/marcas/natura.png' },
+  { nome: 'Sesc', logo: '/marcas/sesc.png' },
+  { nome: 'Sebrae', logo: '/marcas/sebrae.png' },
+  { nome: 'Pirelli', logo: '/marcas/pirelli.png' },
+  { nome: 'Fiat', logo: '/marcas/fiat.png' },
+  { nome: 'Itaú', logo: '/marcas/itau.png' },
+  { nome: 'FIESC', logo: '/marcas/fiesc.png' },
+  { nome: 'CNI', logo: '/marcas/cni.png' },
+];
+
+const benefits = [
+  { titulo: 'Humanisation & Unity', descricao: 'The team sees itself in a new way — more connected and empathetic.' },
+  { titulo: 'Motivation & Wellbeing', descricao: 'An energy boost that renews enthusiasm and improves the organisational climate.' },
+  { titulo: 'Celebration', descricao: 'The memory of a collective achievement that strengthens company culture.' },
+];
+
+const steps = [
+  { titulo: 'Pre-production', descricao: 'We handle all the technical logistics of Pratubatê at your event.' },
+  { titulo: 'Customisation', descricao: 'We create a personalised artistic script after a detailed briefing.' },
+  { titulo: 'Set-up', descricao: 'Our team sets up the full structure well in advance on the day of the event.' },
+  { titulo: 'Showtime', descricao: 'A pulsating, interactive experience of nearly one hour with music, rhythm and humour.' },
+];
+---
+
+<Layout
+  title="For Companies"
+  description="Pratubatê — Grupo Trampulim's interactive show that transforms corporate teams through music and drums."
+  lang="en"
+>
+  <!-- Hero -->
+  <section class="bg-trampulim-dark text-white py-20 px-4">
+    <div class="container-site max-w-3xl">
+      <p class="text-trampulim-yellow uppercase tracking-widest text-xs font-semibold mb-2">For companies</p>
+      <h1 class="text-4xl md:text-5xl font-display mb-6 leading-tight">Trampulim<br/>for Companies</h1>
+      <p class="text-white/70 text-lg leading-relaxed">
+        For over 30 years we have created <strong class="text-white">strong connections in a light and joyful way</strong> through art.
+        We use the energy and depth of performing arts and music to connect people and develop
+        the most important skills in the workplace: communication, creativity, empathy and collaboration.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hook question -->
+  <section class="relative py-24 px-4 text-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="/tambores-bg.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-trampulim-dark/80"></div>
+    </div>
+    <div class="relative z-10 container-site max-w-2xl text-white">
+      <h2 class="text-3xl md:text-4xl font-display mb-6">Is your team really in sync?</h2>
+      <p class="text-white/80 leading-relaxed text-lg mb-4">
+        In day-to-day corporate life, we seek synergy, communication and engagement. We talk about "rowing in the same direction",
+        but in practice, everyone is often in their own rhythm.
+      </p>
+      <p class="text-white/80 leading-relaxed text-lg">
+        How do you break the routine and transform a group of individuals into a true orchestra — united and pulsating?
+      </p>
+    </div>
+  </section>
+
+  <!-- Pratubatê feature -->
+  <section class="bg-trampulim-light py-16 px-4">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-display mb-6">Pratubatê</h2>
+      <p class="text-xl text-gray-700 leading-relaxed mb-6">
+        Imagine an event where every team member is not a mere spectator, but the protagonist of an unforgettable experience.
+        It's not a lecture. It's not a show. <strong>It's a human connection tool disguised as a celebration.</strong>
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        PRATUBATÊ is an interactive show that uses music and drums as a communication tool.
+        It was developed for companies and institutions that seek to evoke teamwork, cooperation, partnership
+        and unity within a macro system. The company is like an orchestra — each department has its own tuning
+        and potential, but all work together for a common goal.
+      </p>
+      <p class="text-gray-600 leading-relaxed">
+        Suddenly, every participant holds a drum. The initial scepticism quickly gives way to curiosity.
+        Under our guidance, the timid sound of an individual begins to join that of the colleague next to them.
+        Within minutes, what was noise becomes rhythm. Communication happens without words. Hierarchies dissolve.
+        The entire room vibrates with a powerful, unison energy — living proof that together we can create something great.
+      </p>
+
+      <!-- Pratubatê corporate video -->
+      <div class="aspect-video overflow-hidden shadow-xl mt-10">
+        <iframe
+          src="https://www.youtube.com/embed/EEJ479If97o"
+          title="Pratubatê for companies — Grupo Trampulim"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          class="w-full h-full"
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <!-- Pratubatê corporate gallery -->
+      <div class="mt-8 max-w-3xl mx-auto">
+        <Carrossel id="pratubate-corp" fotos={galeriaPratubate} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-2xl font-display mb-10 text-center">The legacy Pratubatê leaves behind</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {benefits.map((b) => (
+          <div class="bg-trampulim-light rounded-2xl p-7 border border-gray-100">
+            <h3 class="font-display text-xl mb-2">{b.titulo}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{b.descricao}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Numbers -->
+  <section class="bg-trampulim-dark text-white py-16 px-4">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-2xl font-display mb-10 text-center">Our story told through results</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {numbers.map((n) => (
+          <div>
+            <p class="text-4xl font-display text-trampulim-yellow mb-2">{n.valor}</p>
+            <p class="text-white/60 text-sm leading-snug">{n.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-2xl font-display mb-10 text-center">From first contact to applause</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {steps.map((e, i) => (
+          <div class="text-center">
+            <div class="w-10 h-10 rounded-full bg-trampulim-red text-white font-bold flex items-center justify-center mx-auto mb-4 text-lg">
+              {i + 1}
+            </div>
+            <h3 class="font-semibold mb-2">{e.titulo}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{e.descricao}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section class="bg-trampulim-light py-16 px-4">
+    <div class="container-site max-w-4xl">
+      <h2 class="text-2xl font-display mb-2 text-center">Key clients</h2>
+      <p class="text-center text-gray-500 text-sm mb-10">Companies that have already experienced Pratubatê</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        {clientes.map((c) => (
+          <div class="bg-white border border-gray-100 rounded-xl shadow-sm p-5 h-24 hover:shadow-md transition-shadow">
+            <img
+              src={c.logo}
+              alt={c.nome}
+              title={c.nome}
+              loading="lazy"
+              class="w-full h-full object-contain"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Other services -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container-site max-w-4xl">
+      <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">We also offer</p>
+      <h2 class="text-2xl font-display mb-8">Other services for companies</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <article class="bg-trampulim-light rounded-2xl p-7 border border-gray-100">
+          <p class="text-trampulim-red text-xs font-semibold uppercase tracking-widest mb-1">Applied improv theatre</p>
+          <h3 class="text-xl font-display mb-3">Trampulimprovisa</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            Three actors and a musician create live stories from audience suggestions. The improv games
+            promote corporate reflection in a light and engaging way, developing creativity, adaptability,
+            communication, trust and team spirit.
+          </p>
+          <ul class="space-y-1">
+            {['Creativity & innovation', 'Adaptability to change', 'Assertive communication', 'Trust & team spirit'].map((b) => (
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <span class="text-trampulim-red mt-0.5">✓</span>{b}
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article class="bg-trampulim-light rounded-2xl p-7 border border-gray-100">
+          <p class="text-trampulim-red text-xs font-semibold uppercase tracking-widest mb-1">Bespoke creation</p>
+          <h3 class="text-xl font-display mb-3">Custom Performances</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            Artistic interventions developed specifically for each client. We work in partnership with the company
+            to create an experience that reflects the culture and objectives of the event.
+          </p>
+          <ul class="space-y-1">
+            {['Safety and compliance events', 'Training & workshops', 'Celebrations & special dates', 'Conventions & product launches'].map((b) => (
+              <li class="flex items-start gap-2 text-sm text-gray-700">
+                <span class="text-trampulim-red mt-0.5">✓</span>{b}
+              </li>
+            ))}
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-4 text-center bg-trampulim-light border-t border-gray-100">
+    <div class="container-site max-w-xl">
+      <h2 class="text-3xl font-display mb-4">Shall we talk?</h2>
+      <p class="text-gray-500 mb-2">
+        We have several formats and versions — from pocket to large productions, including what fits your budget.
+      </p>
+      <p class="text-gray-500 mb-8">Pricing varies according to the event's characteristics. We serve all of Brazil.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={`https://wa.me/5531986891687?text=${encodeURIComponent('Hello! I would like information about Pratubatê for a corporate event.')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary"
+        >
+          Chat on WhatsApp
+        </a>
+        <a href="/en/contato" class="inline-block border border-trampulim-dark text-trampulim-dark px-6 py-3 rounded-full font-semibold hover:bg-trampulim-dark hover:text-white transition-colors">
+          Send a message
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

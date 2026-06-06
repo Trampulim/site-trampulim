@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const premios = [
+  { ano: 2025, descricao: 'Prêmio para Agentes Culturais da PNAB — Prefeitura de Belo Horizonte' },
+  { ano: 2022, descricao: 'Prêmio Novas Dramaturgias pela produção "Partida"' },
+  { ano: 2021, descricao: 'Financiamento via Lei Aldir Blanc para projetos virtuais' },
+  { ano: 2016, descricao: 'Prêmio Cena Música e Trilha Cultural BDMG para circulação de "ACORDA"' },
+  { ano: 2015, descricao: 'Troféu Rosivaldo Olivetto — melhor espetáculo, figurino, maquiagem e atriz coadjuvante' },
+  { ano: 2015, descricao: 'Prêmio Carequinha — "PupuRIR"' },
+  { ano: 2014, descricao: 'Prêmio Cena Minas e Prêmio Carequinha' },
+  { ano: 2013, descricao: 'Prêmio BDMG Cultura — "Invasão de Palhaços"' },
+  { ano: 2011, descricao: 'Prêmio Carequinha e Prêmio de Artes de Rua — "Riso Passageiro"' },
+  { ano: 2010, descricao: 'Prêmio Myriam Muniz — "Risco e Riso"' },
+  { ano: 2009, descricao: 'Prêmio Usiminas Simparc (destaques em interpretação) e Prêmio Sesc Sated' },
+  { ano: 2007, descricao: 'Prêmio Carequinha — "Uma dúzia de Trampulim"' },
+];
+---
+
+<Layout
+  title="Prêmios"
+  description="Reconhecimentos e prêmios recebidos pelo Grupo Trampulim ao longo de 30 anos de trajetória."
+>
+  <section class="container-site py-16 max-w-3xl">
+    <p class="text-trampulim-red uppercase tracking-widest text-xs font-semibold mb-2">Grupo Trampulim</p>
+    <h1 class="section-title">Prêmios e Reconhecimentos</h1>
+    <p class="text-gray-500 mb-10">
+      Três décadas de criação artística reconhecidas por prêmios nacionais de circo, teatro e artes de rua.
+    </p>
+
+    <ol class="relative border-l border-trampulim-red/30 space-y-8">
+      {premios.map((p) => (
+        <li class="ml-6">
+          <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-trampulim-red rounded-full ring-4 ring-trampulim-light">
+            <span class="w-2 h-2 bg-white rounded-full"></span>
+          </span>
+          <time class="text-xs font-semibold uppercase text-trampulim-red tracking-wider">{p.ano}</time>
+          <p class="text-gray-700 mt-1 leading-relaxed">{p.descricao}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Layout>
