@@ -4,7 +4,9 @@
   publish = "dist"
 
 # Quem acessar a raiz (trampulim.com.br) é levado ao site novo (/proposta/)
+# force = true para sobrescrever o index.html do site Astro antigo
 [[redirects]]
   from = "/"
   to = "/proposta/index.html"
   status = 302
+  force = true
