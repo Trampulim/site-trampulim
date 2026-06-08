@@ -129,7 +129,10 @@
       "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/\")",
       "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/en/\")",
       "Bash(npm i *)",
-      "Bash(node -e \"require\\('sharp'\\); console.log\\('sharp OK', require\\('sharp'\\).versions.vips ? 'vips '+require\\('sharp'\\).versions.vips : ''\\)\")"
+      "Bash(node -e \"require\\('sharp'\\); console.log\\('sharp OK', require\\('sharp'\\).versions.vips ? 'vips '+require\\('sharp'\\).versions.vips : ''\\)\")",
+      "Bash(curl -s -o /dev/null -w \"manotas-g1.webp: %{http_code} | %{content_type} | %{size_download} bytes\\\\n\" \"https://grupotrampulim.netlify.app/galeria/manotas-g1.webp\")",
+      "Bash(curl -s -o /dev/null -w \"manotas-g1.jpg: %{http_code}\\\\n\" \"https://grupotrampulim.netlify.app/galeria/manotas-g1.jpg\")",
+      "Bash(git commit -q -m 'Lightbox: centraliza foto ampliada no mobile \\(usa dvh em vez de vh\\) *)"
     ]
   }
 }

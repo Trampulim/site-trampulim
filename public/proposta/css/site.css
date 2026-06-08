@@ -461,7 +461,8 @@ main { padding-top: var(--nav-h); }
 
 /* Lightbox */
 .lightbox {
-  position: fixed; inset: 0; z-index: 1000;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 100vh; height: 100dvh; /* dvh: respeita a barra do navegador no mobile */
   display: flex; align-items: center; justify-content: center; padding: 4vw;
   background: rgba(26,22,20,.82);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -470,7 +471,7 @@ main { padding-top: var(--nav-h); }
 .lightbox.open { opacity: 1; pointer-events: auto; }
 .lightbox { cursor: zoom-out; }
 .lightbox img {
-  max-width: 92vw; max-height: 88vh; object-fit: contain;
+  max-width: 92vw; max-height: 88vh; max-height: 88dvh; object-fit: contain;
   border-radius: 3px; box-shadow: 0 24px 70px rgba(0,0,0,.55);
   transform: scale(.94); transition: transform .3s cubic-bezier(.16,1,.3,1);
   cursor: zoom-out;
