@@ -222,34 +222,112 @@
     });
   });
 
-  /* ---- Lightbox da galeria do espetáculo ---- */
-  var galImgs = document.querySelectorAll('.show-marquee .marquee-item img');
-  if (galImgs.length) {
+  /* ---- Galerias em tira de filme: auto-scroll + arrasto/swipe/trackpad + lightbox ---- */
+  var marqueeRows = document.querySelectorAll('.show-marquee .marquee-row');
+  if (marqueeRows.length) {
+    var SPEED = 42; // px por segundo (movimento automático)
+
+    /* Lightbox (único) */
     var lb = document.createElement('div');
     lb.className = 'lightbox';
     lb.innerHTML = '<img alt="" />';
     document.body.appendChild(lb);
     var lbImg = lb.querySelector('img');
-    var tracks = document.querySelectorAll('.marquee-track');
+    var lbOpen = false;
+    function openLb(src) { lbImg.src = src; lb.classList.add('open'); document.body.style.overflow = 'hidden'; lbOpen = true; }
+    function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; lbOpen = false; }
+    lb.addEventListener('click', closeLb);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lbOpen) closeLb(); });
 
-    function openLb(src) {
-      lbImg.src = src;
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      tracks.forEach(function (t) { t.style.animationPlayState = 'paused'; });
-    }
-    function closeLb() {
-      lb.classList.remove('open');
-      document.body.style.overflow = '';
-      tracks.forEach(function (t) { t.style.removeProperty('animation-play-state'); });
-    }
-    galImgs.forEach(function (img) {
-      img.addEventListener('click', function () { openLb(img.getAttribute('src')); });
+    var states = [];
+    marqueeRows.forEach(function (row) {
+      var track = row.querySelector('.marquee-track');
+      if (!track) return;
+      /* Duplica todo o conteúdo uma vez → loop sem emenda, independente da duplicação do HTML */
+      var clone = track.cloneNode(true);
+      while (clone.firstChild) { track.appendChild(clone.firstChild); }
+
+      var st = { row: row, track: track, dir: row.classList.contains('rtl') ? -1 : 1, userUntil: 0, dragging: false, moved: 0 };
+      states.push(st);
+
+      function half() { return track.scrollWidth / 2; }
+      function wrap() {
+        var h = half();
+        if (h <= 0) return;
+        if (row.scrollLeft >= h) row.scrollLeft -= h;
+        else if (row.scrollLeft <= 0) row.scrollLeft += h;
+      }
+      st.wrap = wrap;
+      if (st.dir < 0) row.scrollLeft = half(); // começa "no meio" para poder ir nas duas direções
+
+      function userActive() { st.userUntil = performance.now() + 1600; }
+
+      row.addEventListener('wheel', function (e) { if (Math.abs(e.deltaX) >= Math.abs(e.deltaY)) userActive(); }, { passive: true });
+      row.addEventListener('touchstart', userActive, { passive: true });
+      row.addEventListener('touchmove', userActive, { passive: true });
+      row.addEventListener('scroll', wrap, { passive: true });
+
+      /* Arrasto com mouse — com LIMIAR (clique vs arrasto). Sem pointer capture
+         (capture roubava o clique). Touch/trackpad usam a rolagem nativa. */
+      var DRAG_THRESHOLD = 6;
+      function onMove(e) {
+        if (!st.pending) return;
+        var dx = e.clientX - st.startX;
+        if (!st.dragging) {
+          if (Math.abs(dx) < DRAG_THRESHOLD) return; // ainda é um clique
+          st.dragging = true; row.classList.add('dragging');
+        }
+        row.scrollLeft = st.startScroll - dx;
+        userActive();
+      }
+      function onUp() {
+        window.removeEventListener('pointermove', onMove);
+        window.removeEventListener('pointerup', onUp);
+        st.pending = false;
+        row.classList.remove('dragging');
+        // swallow do clique nativo seguinte (abrimos manualmente aqui)
+        st.suppressClick = true;
+        setTimeout(function () { st.suppressClick = false; }, 120);
+        if (st.dragging) {
+          st.dragging = false; // foi arrasto → não abre
+        } else if (st.downImg) {
+          // clique limpo do mouse → abre EXATAMENTE a foto pressionada (imune a micro-desvio)
+          openLb(st.downImg.getAttribute('src'));
+        }
+        st.downImg = null;
+      }
+      row.addEventListener('pointerdown', function (e) {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return; // só mouse; touch = nativo
+        st.pending = true; st.dragging = false; st.startX = e.clientX; st.startScroll = row.scrollLeft;
+        st.downImg = (e.target && e.target.tagName === 'IMG') ? e.target : null;
+        window.addEventListener('pointermove', onMove);
+        window.addEventListener('pointerup', onUp);
+      });
+
+      /* Lightbox no toque (tap): mouse já é tratado no pointerup acima */
+      track.querySelectorAll('.marquee-item img').forEach(function (img) {
+        img.addEventListener('click', function () {
+          if (st.suppressClick) { st.suppressClick = false; return; }
+          openLb(img.getAttribute('src'));
+        });
+      });
     });
-    lb.addEventListener('click', closeLb); // clicar na foto (ou fora) fecha
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && lb.classList.contains('open')) closeLb();
-    });
+
+    var last = performance.now();
+    var canHover = !window.matchMedia || window.matchMedia('(hover: hover)').matches;
+    function frame(now) {
+      var dt = Math.min((now - last) / 1000, 0.05); last = now;
+      for (var i = 0; i < states.length; i++) {
+        var st = states[i];
+        if (lbOpen || st.dragging || now < st.userUntil) continue;
+        // pausa quando o cursor está sobre a fileira (estado :hover do próprio navegador)
+        if (canHover && st.row.matches(':hover')) continue;
+        st.row.scrollLeft += st.dir * SPEED * dt;
+        st.wrap();
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
   }
 
   var form = document.getElementById('contato-form');

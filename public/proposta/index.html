@@ -57,28 +57,7 @@
     .intro-body h2 em { font-style: normal; color: var(--vermelho); }
     .intro-body p { font-size: 16.5px; font-weight: 300; line-height: 1.78; color: var(--cinza); max-width: 540px; margin-bottom: 18px; }
     @media (max-width: 768px) { .intro-grid { grid-template-columns: 1fr; gap: 24px; } }
-    /* Espetáculos grid */
-    .shows { padding-bottom: 0; }
-    .shows-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linha); border-left: 1px solid var(--linha); }
-    .show-card { border-right: 1px solid var(--linha); border-bottom: 1px solid var(--linha); overflow: hidden; position: relative; }
-    .show-card.featured { grid-column: span 2; }
-    .show-card.last { grid-column: span 2; }
-    .show-img { overflow: hidden; background: var(--preto); }
-    .show-card:not(.featured):not(.last) .show-img { aspect-ratio: 4/3; }
-    .show-card.featured .show-img { aspect-ratio: 16/6; }
-    .show-card.last .show-img { aspect-ratio: 16/6; }
-    .show-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .65s cubic-bezier(.16,1,.3,1); }
-    .show-card:hover .show-img img { transform: scale(1.05); }
-    .show-info { padding: 22px 26px 26px; position: relative; }
-    .show-tag { font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--vermelho); margin-bottom: 7px; display: block; }
-    .show-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; color: var(--preto); }
-    .show-card.featured .show-name { font-size: 26px; }
-    .show-desc { font-size: 13px; font-weight: 300; color: var(--cinza); line-height: 1.55; margin-top: 7px; }
-    .show-credit { font-size: 11px; color: var(--cinza-claro); margin-top: 5px; display: block; }
-    .show-arrow { position: absolute; bottom: 22px; right: 22px; width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--linha); display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(.8); transition: opacity .2s, transform .2s, background .2s, border-color .2s; }
-    .show-card:hover .show-arrow { opacity: 1; transform: scale(1); background: var(--vermelho); border-color: var(--vermelho); }
-    @media (max-width: 900px) { .shows-grid { grid-template-columns: repeat(2, 1fr); } .show-card.featured, .show-card.last { grid-column: span 2; } }
-    @media (max-width: 560px) { .shows-grid { grid-template-columns: 1fr; } .show-card.featured, .show-card.last { grid-column: span 1; } .show-card.featured .show-img { aspect-ratio: 4/3; } }
+    /* Espetáculos grid → agora em site.css (compartilhado com a página Espetáculos) */
     /* Empresas (home) */
     .empresas { padding: 108px 0; border-top: 1px solid var(--linha); }
     .empresas-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }

@@ -404,6 +404,19 @@ main { padding-top: var(--nav-h); }
   gap: 24px;
 }
 .section-bar h2 { font-size: clamp(26px, 3.5vw, 44px); letter-spacing: -.04em; }
+
+/* Seção com galeria em tira de filme (Oficinas + Números) */
+.gallery-block { padding: 74px 0 0; border-top: 1px solid var(--linha); }
+.gallery-block:first-of-type { border-top: none; padding-top: 8px; }
+.gallery-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; }
+.gallery-head .card-num { font-size: 13px; }
+.gallery-block h2 { font-size: clamp(28px, 3.2vw, 46px); letter-spacing: -.035em; line-height: 1.02; margin-bottom: 20px; }
+.gallery-block .o-desc { font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--cinza); max-width: 700px; }
+.gallery-block .card-meta { margin-top: 16px; max-width: 700px; }
+.gallery-block .gallery-credit { font-size: 12px; color: var(--cinza-claro); letter-spacing: .03em; margin-top: 14px; }
+.gallery-block .marquee { margin-top: 44px; }
+/* respiro entre a última galeria e o CTA vermelho */
+.gallery-block + .cta-strip { margin-top: 88px; }
 .link-sm {
   font-size: 12px;
   font-weight: 500;
@@ -434,9 +447,12 @@ main { padding-top: var(--nav-h); }
 .show-marquee .marquee-item { width: auto; height: 240px; background: transparent; border-radius: 2px; }
 .show-marquee .marquee-item img { width: auto; height: 100%; object-fit: contain; object-position: center; }
 @media (max-width: 700px) { .show-marquee .marquee-item { height: 168px; } }
-.show-marquee .marquee-item img { cursor: zoom-in; }
-/* Pausa o movimento quando o cursor passa por cima da galeria */
-.show-marquee:hover .marquee-track { animation-play-state: paused; }
+.show-marquee .marquee-item img { user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
+/* Rolagem controlável: movimento automático + arrasto (mouse), swipe (touch) e dois dedos (trackpad) */
+/* Cursor sempre lupa+ sobre a galeria (mesmo podendo arrastar) */
+.show-marquee .marquee-row { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; cursor: zoom-in; }
+.show-marquee .marquee-row::-webkit-scrollbar { display: none; }
+.show-marquee .marquee-track { animation: none !important; }
 
 /* Lightbox */
 .lightbox {
@@ -705,30 +721,28 @@ main { padding-top: var(--nav-h); }
 .ficha-row dd { font-size: 14px; font-weight: 300; color: var(--cinza); line-height: 1.5; }
 @media (max-width: 600px) { .ficha-row { grid-template-columns: 1fr; gap: 2px; } }
 
-/* Listagem de espetáculos (cards grandes) */
-.shows-list { display: flex; flex-direction: column; }
-.show-row {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 48px;
-  padding: 56px 0;
-  border-bottom: 1px solid var(--linha);
-  align-items: center;
-}
-.show-row:first-child { border-top: 1px solid var(--linha); }
-.show-row.flip .show-row-media { order: 2; }
-.show-row-media { aspect-ratio: 4/3; overflow: hidden; border-radius: 2px; background: var(--preto); }
-.show-row-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1); }
-.show-row:hover .show-row-media img { transform: scale(1.04); }
-.show-row-body .tag {
-  font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--vermelho);
-}
-.show-row-body h2 { font-size: clamp(26px, 3vw, 40px); margin: 10px 0 16px; letter-spacing: -.03em; }
-.show-row-body p { font-size: 15.5px; font-weight: 300; line-height: 1.7; color: var(--cinza); margin-bottom: 20px; }
-@media (max-width: 820px) {
-  .show-row { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
-  .show-row.flip .show-row-media { order: 0; }
-}
+/* Grade editorial de espetáculos (compartilhada: home + página Espetáculos) */
+.shows { padding-bottom: 0; }
+.shows-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linha); border-left: 1px solid var(--linha); }
+.show-card { border-right: 1px solid var(--linha); border-bottom: 1px solid var(--linha); overflow: hidden; position: relative; }
+.show-card.featured { grid-column: span 2; }
+.show-card.last { grid-column: span 2; }
+.show-img { overflow: hidden; background: var(--preto); }
+.show-card:not(.featured):not(.last) .show-img { aspect-ratio: 4/3; }
+.show-card.featured .show-img { aspect-ratio: 16/6; }
+.show-card.last .show-img { aspect-ratio: 16/6; }
+.show-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .65s cubic-bezier(.16,1,.3,1); }
+.show-card:hover .show-img img { transform: scale(1.05); }
+.show-info { padding: 22px 26px 26px; position: relative; }
+.show-tag { font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--vermelho); margin-bottom: 7px; display: block; }
+.show-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; color: var(--preto); }
+.show-card.featured .show-name { font-size: 26px; }
+.show-desc { font-size: 13px; font-weight: 300; color: var(--cinza); line-height: 1.55; margin-top: 7px; }
+.show-credit { font-size: 11px; color: var(--cinza-claro); margin-top: 5px; display: block; }
+.show-arrow { position: absolute; bottom: 22px; right: 22px; width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--linha); display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(.8); transition: opacity .2s, transform .2s, background .2s, border-color .2s; }
+.show-card:hover .show-arrow { opacity: 1; transform: scale(1); background: var(--vermelho); border-color: var(--vermelho); }
+@media (max-width: 900px) { .shows-grid { grid-template-columns: repeat(2, 1fr); } .show-card.featured, .show-card.last { grid-column: span 2; } }
+@media (max-width: 560px) { .shows-grid { grid-template-columns: 1fr; } .show-card.featured, .show-card.last { grid-column: span 1; } .show-card.featured .show-img { aspect-ratio: 4/3; } }
 
 /* ════════════════════════════════════════════════════════════
    GALERIA DE MARCAS

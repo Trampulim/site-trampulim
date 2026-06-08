@@ -12,3 +12,6 @@ npm-debug.log*
 backups/
 marcas_backup_original/
 *.docx
+
+# Config local da ferramenta (pode conter segredos)
+.claude/settings.local.json
