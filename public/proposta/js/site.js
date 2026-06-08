@@ -334,7 +334,21 @@
   var form = document.getElementById('contato-form');
   if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var ok = document.getElementById('form-ok'); if (ok) ok.style.display = 'block';
-    form.reset();
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    var data = new FormData(form);
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString() })
+      .then(function () {
+        var ok = document.getElementById('form-ok'); if (ok) ok.style.display = 'block';
+        form.reset();
+        btn.disabled = false;
+      })
+      .catch(function () {
+        var ok = document.getElementById('form-ok');
+        if (ok) { ok.style.background='#fef2f2'; ok.style.borderColor='#ef4444'; ok.style.color='#b91c1c';
+          ok.textContent='Erro ao enviar. Por favor, tente o WhatsApp ou e-mail.'; ok.style.display='block'; }
+        btn.disabled = false;
+      });
   });
 })();
