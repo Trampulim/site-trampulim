@@ -122,7 +122,10 @@
       "mcp__Claude_in_Chrome__navigate",
       "mcp__Claude_in_Chrome__computer",
       "mcp__Claude_in_Chrome__find",
-      "Bash(git commit -q -m 'Galerias interativas, grade de Espetáculos, Números e Oficinas com fotos *)"
+      "Bash(git commit -q -m 'Galerias interativas, grade de Espetáculos, Números e Oficinas com fotos *)",
+      "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/js/site.js\")",
+      "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/oficinas.html\")",
+      "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/intervencoes.html\")"
     ]
   }
 }

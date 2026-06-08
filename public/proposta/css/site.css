@@ -321,37 +321,42 @@ main { padding-top: var(--nav-h); }
   flex-direction: column;
 }
 #nav-drawer.open { display: flex; }
+.drawer-group { border-bottom: 1px solid var(--linha); padding: 4px 0 8px; }
 .drawer-section-title {
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--cinza-claro);
-  padding: 14px 4px 6px;
+  padding: 10px 4px 4px;
   display: block;
 }
 .drawer-link {
   display: block;
   font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: -.03em;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -.02em;
   color: var(--preto);
-  padding: 10px 4px;
-  border-bottom: 1px solid var(--linha);
+  padding: 8px 4px;
   transition: color .2s;
 }
 .drawer-link:hover { color: var(--vermelho); }
+.drawer-subs { display: flex; flex-direction: column; padding-left: 12px; }
 .drawer-sub-link {
   display: block;
-  font-size: 16px;
+  font-size: 14.5px;
   font-weight: 400;
   color: var(--cinza);
-  padding: 10px 4px;
-  border-bottom: 1px solid var(--linha);
+  padding: 6px 4px;
   transition: color .2s;
 }
 .drawer-sub-link:hover { color: var(--preto); }
+/* Idioma — lado a lado */
+.drawer-langs { display: flex; gap: 18px; padding: 4px 4px 0; }
+.drawer-lang-link { font-size: 15px; font-weight: 600; color: var(--cinza-claro); transition: color .2s; }
+.drawer-lang-link.cur { color: var(--vermelho); }
+.drawer-lang-link:hover { color: var(--preto); }
 .drawer-cta {
   margin-top: 28px;
   background: var(--vermelho);

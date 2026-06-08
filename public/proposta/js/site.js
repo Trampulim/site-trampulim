@@ -119,16 +119,17 @@
 
   /* ---- Drawer mobile ---- */
   var drawerInner = NAV.map(function (item) {
+    var head = '<a href="' + item.href + '" class="drawer-link">' + item.label + '</a>';
+    var subs = '';
     if (item.children) {
-      var subs = item.children.map(function (c) {
+      subs = '<div class="drawer-subs">' + item.children.map(function (c) {
         return '<a href="' + c.href + '" class="drawer-sub-link">' + c.label + '</a>';
-      }).join('');
-      return '<span class="drawer-section-title">' + item.label + '</span>' + subs;
+      }).join('') + '</div>';
     }
-    return '<a href="' + item.href + '" class="drawer-link">' + item.label + '</a>';
+    return '<div class="drawer-group">' + head + subs + '</div>';
   }).join('');
-  var drawerLang = '<span class="drawer-section-title">' + t.langLabel + '</span>' +
-    langs.map(function (l) { return '<a href="' + l[2] + rel + '" class="drawer-sub-link' + (l[0]===lang?' cur':'') + '">' + l[1] + '</a>'; }).join('');
+  var drawerLang = '<div class="drawer-group drawer-lang"><span class="drawer-section-title">' + t.langLabel + '</span><div class="drawer-langs">' +
+    langs.map(function (l) { return '<a href="' + l[2] + rel + '" class="drawer-lang-link' + (l[0]===lang?' cur':'') + '">' + l[1] + '</a>'; }).join('') + '</div></div>';
   var drawerSocials = '<div class="drawer-socials">' +
     SOCIALS.map(function (s) { return socialLink(s, 'drawer-social', 18); }).join('') + '</div>';
   var drawerHTML = '<div id="nav-drawer">' + drawerInner + drawerLang + '<a href="' + BASE + 'contato.html" class="drawer-cta">' + t.contato + '</a>' + drawerSocials + '</div>';
