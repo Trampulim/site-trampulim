@@ -125,7 +125,11 @@
       "Bash(git commit -q -m 'Galerias interativas, grade de Espetáculos, Números e Oficinas com fotos *)",
       "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/js/site.js\")",
       "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/oficinas.html\")",
-      "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/intervencoes.html\")"
+      "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/intervencoes.html\")",
+      "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/\")",
+      "Bash(curl -s \"https://grupotrampulim.netlify.app/proposta/en/\")",
+      "Bash(npm i *)",
+      "Bash(node -e \"require\\('sharp'\\); console.log\\('sharp OK', require\\('sharp'\\).versions.vips ? 'vips '+require\\('sharp'\\).versions.vips : ''\\)\")"
     ]
   }
 }
