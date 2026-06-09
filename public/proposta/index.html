@@ -77,8 +77,11 @@
   <script>
     (function(){
       var fotos = ['rainha','casamento','invasao','manotas','benedita','partida','pratubate'];
-      // enquadramento vertical por foto (mostra mais o topo onde a cabeça é cortada)
-      var pos = {
+      var isMobile = window.matchMedia('(max-width: 600px)').matches;
+      // posições desktop (originais)
+      var posDesktop = { benedita: 'center 18%', manotas: 'center 82%' };
+      // posições mobile (corrigidas para não cortar rostos)
+      var posMobile  = {
         benedita:  'center top',
         manotas:   'center 82%',
         casamento: 'center top',
@@ -87,10 +90,11 @@
         pratubate: 'center top',
         rainha:    'center 30%'
       };
+      var pos = isMobile ? posMobile : posDesktop;
       var pick = fotos[Math.floor(Math.random()*fotos.length)];
       var el = document.getElementById('heroShot');
       el.src = '/home-selecao/' + pick + '.webp';
-      el.style.objectPosition = pos[pick] || 'center top';
+      el.style.objectPosition = pos[pick] || 'center';
     })();
   </script>
 
