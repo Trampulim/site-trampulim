@@ -12,7 +12,8 @@
   <style>
     /* Home — topo: foto-herói randômica + título */
     main { padding-top: var(--nav-h); }
-    .home-shot { width: 100%; height: clamp(390px, 64vh, 680px); overflow: hidden; background: var(--preto); }
+    .home-shot { width: 100%; height: clamp(300px, 64vh, 680px); overflow: hidden; background: var(--preto); }
+    @media (max-width: 600px) { .home-shot { height: clamp(260px, 55vw, 340px); } }
     .home-shot img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
     .hero-top {
       padding: 44px 0 28px;
@@ -77,11 +78,19 @@
     (function(){
       var fotos = ['rainha','casamento','invasao','manotas','benedita','partida','pratubate'];
       // enquadramento vertical por foto (mostra mais o topo onde a cabeça é cortada)
-      var pos = { benedita:'center 18%', manotas:'center 82%' };
+      var pos = {
+        benedita:  'center 18%',
+        manotas:   'center 82%',
+        casamento: 'center top',
+        partida:   'center top',
+        invasao:   'center top',
+        pratubate: 'center top',
+        rainha:    'center 30%'
+      };
       var pick = fotos[Math.floor(Math.random()*fotos.length)];
       var el = document.getElementById('heroShot');
       el.src = '/home-selecao/' + pick + '.webp';
-      el.style.objectPosition = pos[pick] || 'center';
+      el.style.objectPosition = pos[pick] || 'center top';
     })();
   </script>
 
