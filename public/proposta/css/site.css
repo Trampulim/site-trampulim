@@ -972,6 +972,7 @@ main { padding-top: var(--nav-h); }
    FOOTER
    ════════════════════════════════════════════════════════════ */
 footer { background: var(--preto); padding: 64px 0 32px; }
+blockquote footer { background: transparent !important; padding: 0 !important; }
 .footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
