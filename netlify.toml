@@ -1,7 +1,7 @@
 # Configuração de deploy do Netlify — Grupo Trampulim
 [build]
-  command = "npm run build"
-  publish = "dist"
+  command = ""
+  publish = "public"
 
 # Quem acessar a raiz (trampulim.com.br) é levado ao site novo (/proposta/)
 # force = true para sobrescrever o index.html do site Astro antigo
