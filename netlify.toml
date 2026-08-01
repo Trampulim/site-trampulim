@@ -1,12 +1,61 @@
-# Configuração de deploy do Netlify — Grupo Trampulim
+# ══════════════════════════════════════════════════════════════
+# Grupo Trampulim — configuração Netlify
+# Site estático servido de public/ (equivale ao public_html da HostGator).
+# ══════════════════════════════════════════════════════════════
+
 [build]
   command = ""
   publish = "public"
 
-# Quem acessar a raiz (trampulim.com.br) é levado ao site novo (/proposta/)
-# force = true para sobrescrever o index.html do site Astro antigo
+# ---- Redirects (ordem importa: primeiro match vence) ----------------------
+
+# PLAYER — fica na HostGator. Encaminha /player/* para o servidor de origem,
+# preservando a URL (o PWA usa caminhos absolutos /player/... e escopo /player).
+# >>> PENDENTE: criar na HostGator o subdomínio hg.trampulim.com.br
+#     (registro A → 216.172.161.107) servindo o mesmo public_html.
 [[redirects]]
-  from = "/"
-  to = "/proposta/index.html"
-  status = 302
+  from = "/player/*"
+  to = "https://hg.trampulim.com.br/player/:splat"
+  status = 200
   force = true
+
+# URLs antigas /proposta/... → nova raiz (equivale ao antigo .htaccess)
+[[redirects]]
+  from = "/proposta/*"
+  to = "/:splat"
+  status = 301
+  force = true
+
+# .php legados: na Netlify não executam e seriam servidos como texto puro
+# (anti-spam.php contém o segredo dos tokens). Bloqueia servindo a home.
+[[redirects]]
+  from = "/*.php"
+  to = "/"
+  status = 301
+  force = true
+
+# ---- Headers de segurança + cache -----------------------------------------
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/galeria/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"

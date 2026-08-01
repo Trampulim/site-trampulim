@@ -1,0 +1,54 @@
+# ══════════════════════════════════════════════════════════════
+# Grupo Trampulim — link-in-bio
+# Vira o .htaccess raiz do subdomínio link.trampulim.com.br
+# (Document Root = public_html/link). Segurança + HTTPS + cache.
+# ══════════════════════════════════════════════════════════════
+
+DirectoryIndex index.html
+
+# ---- Força HTTPS ----
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ---- Headers de segurança ----
+<IfModule mod_headers.c>
+  # HSTS — só passa a valer sobre HTTPS (2 anos). Sem "preload" porque
+  # preload pertence ao domínio raiz (apex), não a um subdomínio.
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+
+  # Content-Security-Policy — libera SÓ os hosts que a página usa:
+  #   Fontes:      fonts.googleapis.com / fonts.gstatic.com
+  #   Meta Pixel:  connect.facebook.net (script) + www.facebook.com (img)
+  #   GA4:         googletagmanager.com + *.google-analytics.com
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+</IfModule>
+
+# ---- MIME + cache ----
+<IfModule mod_mime.c>
+  AddType application/json .json
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # links.json muda com frequência → sem cache longo
+  <FilesMatch "\.json$">
+    ExpiresDefault "access plus 5 minutes"
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # estáticos versionáveis
+  <FilesMatch "\.(css|js)$">
+    ExpiresDefault "access plus 7 days"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpg|jpeg|webp|svg|ico|woff2)$">
+    ExpiresDefault "access plus 30 days"
+  </FilesMatch>
+</IfModule>

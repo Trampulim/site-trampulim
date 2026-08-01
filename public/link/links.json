@@ -1,0 +1,61 @@
+{
+  "profile": {
+    "name": "Grupo Trampulim",
+    "tagline": "Circo, teatro e palhaçaria desde 1994 · Belo Horizonte",
+    "logo": "marca-trampulim-grande.png"
+  },
+
+  "utmDefault": {
+    "source": "linkbio",
+    "medium": "social",
+    "campaign": ""
+  },
+
+  "links": [
+    {
+      "id": "ingressos-casamento",
+      "title": "Ingressos · Casamento — Palácio das Artes",
+      "url": "https://bileto.sympla.com.br/event/122702?share_id=1-copiarlink",
+      "icon": "ticket",
+      "featured": true,
+      "utm": { "campaign": "casamento-palacio-das-artes" }
+    },
+    {
+      "id": "whatsapp",
+      "title": "WhatsApp",
+      "url": "https://wa.me/5531986891687",
+      "icon": "whatsapp",
+      "utm": false
+    },
+    {
+      "id": "instagram",
+      "title": "Instagram",
+      "url": "https://www.instagram.com/trampulim",
+      "icon": "instagram"
+    },
+    {
+      "id": "linkedin",
+      "title": "LinkedIn",
+      "url": "https://www.linkedin.com/company/grupo-trampulim/",
+      "icon": "linkedin"
+    },
+    {
+      "id": "site",
+      "title": "Site oficial · trampulim.com.br",
+      "url": "https://trampulim.com.br",
+      "icon": "globe"
+    },
+    {
+      "id": "youtube",
+      "title": "YouTube",
+      "url": "https://www.youtube.com/GrupoTrampulim",
+      "icon": "youtube"
+    },
+    {
+      "id": "facebook",
+      "title": "Facebook",
+      "url": "https://www.facebook.com/GrupoTrampulim",
+      "icon": "facebook"
+    }
+  ]
+}

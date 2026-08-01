@@ -1,0 +1,11 @@
+# Site servido a partir da raiz (public_html)
+RewriteEngine On
+
+# Bloqueia acesso direto ao modulo anti-spam (contem o segredo dos tokens)
+<Files "anti-spam.php">
+  Require all denied
+</Files>
+
+# Redireciona URLs antigas /proposta/... para a nova raiz (301 permanente)
+RewriteRule ^proposta/(.*)$ /$1 [R=301,L]
+RewriteRule ^proposta/?$ / [R=301,L]

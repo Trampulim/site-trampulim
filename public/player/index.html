@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Trampulim Player">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icon-192.png?v=4">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
+  <link rel="stylesheet" href="app.css">
+  <title>Trampulim Player</title>
+</head>
+<body>
+<div id="app">
+
+  <!-- Header -->
+  <header>
+    <button class="btn-icon" id="btn-back" title="Voltar" style="display:none">←</button>
+    <h1 id="header-title"><span>TRAMPULIM</span> · PLAYER</h1>
+  </header>
+
+  <!-- Main -->
+  <div id="main">
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <h2>Espetáculos</h2>
+      <div id="show-list"></div>
+      <button class="show-add" id="btn-new-show">+ Novo espetáculo</button>
+    </aside>
+
+    <!-- Tracklist -->
+    <section id="tracklist-panel">
+      <div id="tracklist-header" style="display:none">
+        <span id="show-title">—</span>
+        <div id="header-actions">
+          <button class="btn-icon btn-offline" id="btn-save-offline" title="Salvar para tocar offline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg></button>
+          <label class="btn-icon btn-import" title="Importar arquivos de áudio do celular">
+            📁
+            <input type="file" id="file-import" accept="audio/*" multiple style="display:none">
+          </label>
+        </div>
+      </div>
+      <div id="tracklist">
+        <div class="empty-state">
+          <span class="big">🎭</span>
+          <p>Selecione um espetáculo<br>na lista ao lado</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Player bar -->
+  <footer id="player">
+
+    <!-- Coluna esquerda: info + progresso + controles + crossfade -->
+    <div id="player-left">
+
+      <div id="player-top">
+        <div id="track-art">♪</div>
+        <div id="track-meta">
+          <div id="track-title">—</div>
+          <div id="track-show"></div>
+        </div>
+      </div>
+
+      <div id="progress-row">
+        <span id="time-cur">0:00</span>
+        <input type="range" id="progress" min="0" max="100" value="0" step="0.1">
+        <span id="time-tot">0:00</span>
+      </div>
+
+      <div id="player-bottom">
+        <div id="controls">
+          <button class="ctrl-btn" id="btn-prev" title="Anterior">⏮</button>
+          <button class="ctrl-btn" id="btn-play" title="Play/Pause">▶</button>
+          <button class="ctrl-btn" id="btn-next" title="Próxima">⏭</button>
+        </div>
+        <div id="crossfade-section">
+          <label class="cf-label">CROSSFADE</label>
+          <input type="range" id="crossfade-dur" min="0" max="10" value="3" step="0.5">
+          <span id="cf-val">3s</span>
+          <label class="cf-auto" title="Tocar a próxima faixa automaticamente ao terminar">
+            <input type="checkbox" id="autoplay-end" checked>
+            <span class="lbl-full">AUTOPLAY</span>
+            <span class="lbl-short">AUTO</span>
+          </label>
+          <label class="cf-auto" title="Fazer crossfade automático entre as faixas">
+            <input type="checkbox" id="auto-crossfade">
+            <span class="lbl-full">CROSSFADE AUTO</span>
+            <span class="lbl-short">FADE</span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Coluna direita: fader de volume estilo console -->
+    <div id="vol-section">
+      <span class="vol-label">VOL</span>
+      <div id="vol-track">
+        <div id="fader-rail"></div>
+        <div id="fader-thumb"></div>
+      </div>
+      <span id="vol-pct">100%</span>
+    </div>
+
+  </footer>
+
+</div>
+
+<!-- Modal novo espetáculo -->
+<div class="modal-overlay" id="modal-new-show" style="display:none">
+  <div class="modal">
+    <h3>Novo espetáculo</h3>
+    <input type="text" id="new-show-name" placeholder="Ex: Invasão de Palhaços" maxlength="60" autocomplete="off">
+    <div class="modal-actions">
+      <button class="btn-cancel" id="btn-cancel-show">Cancelar</button>
+      <button class="btn-primary" id="btn-confirm-show">Criar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script>
+// Fixa a altura do app na altura real visível (resolve o espaço sobrando
+// embaixo quando a barra do navegador aparece/some no celular)
+function setAppHeight() {
+  document.documentElement.style.setProperty('--app-h', window.innerHeight + 'px');
+}
+setAppHeight();
+window.addEventListener('resize', setAppHeight);
+window.addEventListener('orientationchange', setAppHeight);
+if (window.visualViewport) window.visualViewport.addEventListener('resize', setAppHeight);
+
+// Ajuste de view ao redimensionar (ex: rotação do dispositivo)
+window.addEventListener('resize', () => {
+  const app = document.getElementById('app');
+  if (window.innerWidth > 600) {
+    app.classList.remove('view-shows', 'view-tracks');
+    document.getElementById('btn-back').style.display = 'none';
+  }
+});
+</script>
+<script src="app.js"></script>
+</body>
+</html>

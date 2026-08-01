@@ -15,3 +15,11 @@ marcas_backup_original/
 
 # Config local da ferramenta (pode conter segredos)
 .claude/settings.local.json
+
+# PHP legado — vive SÓ na HostGator, não vai pro Netlify.
+# anti-spam.php contém o segredo dos tokens; nenhum deles roda na Netlify
+# (formulário migrou para Netlify Forms; player usa proxy → HostGator).
+public/enviar.php
+public/anti-spam.php
+public/token.php
+public/player/listar.php

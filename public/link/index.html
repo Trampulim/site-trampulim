@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Grupo Trampulim — Links</title>
+  <meta name="description" content="Ingressos, redes sociais e contato do Grupo Trampulim — circo, teatro e palhaçaria desde 1994 em Belo Horizonte." />
+  <link rel="canonical" href="https://link.trampulim.com.br/" />
+
+  <!-- Open Graph (preview ao compartilhar) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Grupo Trampulim" />
+  <meta property="og:title" content="Grupo Trampulim — Links" />
+  <meta property="og:description" content="Ingressos, redes sociais e contato do Grupo Trampulim — circo, teatro e palhaçaria desde 1994." />
+  <meta property="og:url" content="https://link.trampulim.com.br/" />
+  <meta property="og:image" content="https://link.trampulim.com.br/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Grupo Trampulim — Links" />
+  <meta name="twitter:description" content="Ingressos, redes sociais e contato do Grupo Trampulim." />
+  <meta name="twitter:image" content="https://link.trampulim.com.br/og.jpg" />
+
+  <!-- Favicon (cópia local — pasta auto-contida p/ subdomínio) -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+
+  <!-- Fontes: as mesmas do site institucional -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/link.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="head">
+      <img class="logo" id="logo" src="marca-trampulim-grande.png" alt="Grupo Trampulim" width="220" height="80" />
+      <p class="tagline" id="tagline"></p>
+    </header>
+
+    <nav class="links" id="links" aria-label="Links do Grupo Trampulim">
+      <!-- botões injetados por link.js a partir de links.json -->
+    </nav>
+
+    <footer class="foot">
+      <span>© <span id="year"></span> Grupo Trampulim</span>
+    </footer>
+  </main>
+
+  <!-- IDs de rastreamento (públicos por natureza) -->
+  <script src="config.js"></script>
+  <!-- Lógica: carrega links.json, renderiza botões, dispara tracking -->
+  <script src="js/link.js"></script>
+</body>
+</html>
