@@ -9,15 +9,8 @@
 
 # ---- Redirects (ordem importa: primeiro match vence) ----------------------
 
-# PLAYER — fica na HostGator. Encaminha /player/* para o servidor de origem,
-# preservando a URL (o PWA usa caminhos absolutos /player/... e escopo /player).
-# >>> PENDENTE: criar na HostGator o subdomínio hg.trampulim.com.br
-#     (registro A → 216.172.161.107) servindo o mesmo public_html.
-[[redirects]]
-  from = "/player/*"
-  to = "https://hg.trampulim.com.br/player/:splat"
-  status = 200
-  force = true
+# Player agora é servido 100% pela Netlify (áudios estáticos em /player/audio/,
+# lista em /player/audio.json). Não depende mais de proxy para a HostGator.
 
 # URLs antigas /proposta/... → nova raiz (equivale ao antigo .htaccess)
 [[redirects]]
@@ -59,3 +52,9 @@
   for = "/galeria/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+# Áudios do player: imutáveis, cache longo
+[[headers]]
+  for = "/player/audio/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"

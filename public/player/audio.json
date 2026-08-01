@@ -1,0 +1,74 @@
+[
+  {
+    "id": "manotas-musicais",
+    "nome": "manotas musicais",
+    "faixas": [
+      {
+        "file": "01-TRILHA MANOTAS LENTA-Balanced-Medium.mp3",
+        "name": "01-TRILHA MANOTAS LENTA-Balanced-Medium",
+        "url": "/player/audio/manotas-musicais/01-TRILHA%20MANOTAS%20LENTA-Balanced-Medium.mp3"
+      },
+      {
+        "file": "02-TRILHA MANOTAS RAPIDA-Balanced-Medium.mp3",
+        "name": "02-TRILHA MANOTAS RAPIDA-Balanced-Medium",
+        "url": "/player/audio/manotas-musicais/02-TRILHA%20MANOTAS%20RAPIDA-Balanced-Medium.mp3"
+      }
+    ]
+  },
+  {
+    "id": "uma-surpresa-para-benedita",
+    "nome": "uma surpresa para benedita",
+    "faixas": [
+      {
+        "file": "01- FAIXA - ENTRADA.mp3",
+        "name": "01- FAIXA - ENTRADA",
+        "url": "/player/audio/uma-surpresa-para-benedita/01-%20FAIXA%20-%20ENTRADA.mp3"
+      },
+      {
+        "file": "02- FAIXA - A RECEITA.mp3",
+        "name": "02- FAIXA - A RECEITA",
+        "url": "/player/audio/uma-surpresa-para-benedita/02-%20FAIXA%20-%20A%20RECEITA.mp3"
+      },
+      {
+        "file": "03- FAIXA - PROCURA GALINHA.mp3",
+        "name": "03- FAIXA - PROCURA GALINHA",
+        "url": "/player/audio/uma-surpresa-para-benedita/03-%20FAIXA%20-%20PROCURA%20GALINHA.mp3"
+      },
+      {
+        "file": "04- FAIXA - ACHOU GALINHA.mp3",
+        "name": "04- FAIXA - ACHOU GALINHA",
+        "url": "/player/audio/uma-surpresa-para-benedita/04-%20FAIXA%20-%20ACHOU%20GALINHA.mp3"
+      },
+      {
+        "file": "05- FAIXA - BENEDITA CHORA.mp3",
+        "name": "05- FAIXA - BENEDITA CHORA",
+        "url": "/player/audio/uma-surpresa-para-benedita/05-%20FAIXA%20-%20BENEDITA%20CHORA.mp3"
+      },
+      {
+        "file": "06- FAIXA - BILLIE.mp3",
+        "name": "06- FAIXA - BILLIE",
+        "url": "/player/audio/uma-surpresa-para-benedita/06-%20FAIXA%20-%20BILLIE.mp3"
+      },
+      {
+        "file": "07- FAIXA - GALINHA NO FOGAO.mp3",
+        "name": "07- FAIXA - GALINHA NO FOGAO",
+        "url": "/player/audio/uma-surpresa-para-benedita/07-%20FAIXA%20-%20GALINHA%20NO%20FOGAO.mp3"
+      },
+      {
+        "file": "08- FAIXA - GAS.mp3",
+        "name": "08- FAIXA - GAS",
+        "url": "/player/audio/uma-surpresa-para-benedita/08-%20FAIXA%20-%20GAS.mp3"
+      },
+      {
+        "file": "09- FAIXA - MAQUINA DO TEMPO.mp3",
+        "name": "09- FAIXA - MAQUINA DO TEMPO",
+        "url": "/player/audio/uma-surpresa-para-benedita/09-%20FAIXA%20-%20MAQUINA%20DO%20TEMPO.mp3"
+      },
+      {
+        "file": "10- FAIXA - SABONETE SE DECLARA.mp3",
+        "name": "10- FAIXA - SABONETE SE DECLARA",
+        "url": "/player/audio/uma-surpresa-para-benedita/10-%20FAIXA%20-%20SABONETE%20SE%20DECLARA.mp3"
+      }
+    ]
+  }
+]

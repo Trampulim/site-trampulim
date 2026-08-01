@@ -61,7 +61,7 @@ function loadShowsLocal() {
 /* ── Fetch shows ─────────────────────────────────── */
 async function fetchShows() {
   try {
-    const res = await fetch('listar.php', { cache: 'no-store' });
+    const res = await fetch('audio.json', { cache: 'no-store' });
     return await res.json();
   } catch { return []; }
 }

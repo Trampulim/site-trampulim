@@ -1,4 +1,4 @@
-const CACHE = 'trampulim-player-v4';
+const CACHE = 'trampulim-player-v5';
 const ASSETS = [
   '/player/',
   '/player/index.html',
@@ -28,11 +28,18 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
-  // listar.php — sempre rede (lista do servidor), nunca cache
-  if (url.pathname.endsWith('listar.php')) {
-    e.respondWith(fetch(e.request).catch(() => new Response('[]', {
-      headers: { 'Content-Type': 'application/json' }
-    })));
+  // audio.json — lista de trilhas: rede primeiro (atualiza), cai pro cache
+  // quando offline, e por fim lista vazia.
+  if (url.pathname.endsWith('audio.json')) {
+    e.respondWith(
+      fetch(e.request).then(res => {
+        const copy = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, copy));
+        return res;
+      }).catch(() => caches.match(e.request).then(r => r || new Response('[]', {
+        headers: { 'Content-Type': 'application/json' }
+      })))
+    );
     return;
   }
 
